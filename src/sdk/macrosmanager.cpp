@@ -128,25 +128,30 @@ void MacrosManager::ClearProjectKeys()
     m_Macros[_T("LANGUAGE")]   = wxLocale::GetLanguageName(wxLocale::GetSystemLanguage());
     m_Macros[_T("ENCODING")]   = wxLocale::GetSystemEncodingName();
 
+    m_Macros[_T("CMD_SHELL")] = Manager::Get()->GetConfigManager(_T("app"))->Read(_T("/console_shell"), DEFAULT_CONSOLE_SHELL);
+    m_Macros[_T("CMD_DFLT_SHELL")] = DEFAULT_CONSOLE_SHELL;
+
     if (platform::windows)
     {
         m_Macros[_T("CMD_NULL")]  = _T("NUL");
 
         const wxString cmd(_T("cmd /c "));
-        m_Macros[_T("CMD_CP")]    = cmd + _T("copy");
-        m_Macros[_T("CMD_RM")]    = cmd + _T("del");
-        m_Macros[_T("CMD_MV")]    = cmd + _T("move");
-        m_Macros[_T("CMD_MKDIR")] = cmd + _T("md");
-        m_Macros[_T("CMD_RMDIR")] = cmd + _T("rd");
+        m_Macros[_T("CMD_CP")]              = cmd + _T("copy");
+        m_Macros[_T("CMD_RM")]              = cmd + _T("del");
+        m_Macros[_T("CMD_MV")]              = cmd + _T("move");
+        m_Macros[_T("CMD_MKDIR")]           = cmd + _T("md");
+        m_Macros[_T("CMD_RMDIR")]           = cmd + _T("rd");
+        m_Macros[_T("CMD_IGNORERR")]        = _T("|| cmd /c exit 0");
     }
     else
     {
-        m_Macros[_T("CMD_CP")]     = _T("cp --preserve=timestamps");
-        m_Macros[_T("CMD_RM")]     = _T("rm");
-        m_Macros[_T("CMD_MV")]     = _T("mv");
-        m_Macros[_T("CMD_NULL")]   = _T("/dev/null");
-        m_Macros[_T("CMD_MKDIR")]  = _T("mkdir -p");
-        m_Macros[_T("CMD_RMDIR")]  = _T("rmdir");
+        m_Macros[_T("CMD_CP")]              = _T("cp --preserve=timestamps");
+        m_Macros[_T("CMD_RM")]              = _T("rm");
+        m_Macros[_T("CMD_MV")]              = _T("mv");
+        m_Macros[_T("CMD_NULL")]            = _T("/dev/null");
+        m_Macros[_T("CMD_MKDIR")]           = _T("mkdir -p");
+        m_Macros[_T("CMD_RMDIR")]           = _T("rmdir");
+        m_Macros[_T("CMD_IGNORERR")]        = _T("|| true");
     }
 
     cbWorkspace* wksp = Manager::Get()->GetProjectManager()->GetWorkspace();
