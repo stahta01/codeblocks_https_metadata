@@ -325,11 +325,24 @@ void MacrosManager::RecalcVars(cbProject* project, EditorBase* editor, ProjectBu
         m_LastProject = project;
     }
 
-    // get compiler variables
     if (target)
     {
+        if (platform::windows)
+        {
+            bool IsCygwin = target->GetCompilerID().IsSameAs(_T("cygwin"));
+            if (IsCygwin)
+            {
+                m_Macros[_T("CMD_MKDIR")]           = _T("mkdir -p");
+                m_Macros[_T("CMD_CP")]              = _T("cp --preserve=timestamps");
+            }
+            else
+            {
+                m_Macros[_T("CMD_MKDIR")]           = _T("cmd /c md");
+                m_Macros[_T("CMD_CP")]              = _T("cmd /c copy");
+            }
+        }
         const Compiler* compiler = CompilerFactory::GetCompiler(target->GetCompilerID());
-        ReadMacros(m_Macros, compiler);
+        ReadMacros(m_Macros, compiler); // get compiler variables
     }
 
     ReadMacros(m_Macros, project);
