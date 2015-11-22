@@ -11,8 +11,6 @@ rem $HeadURL: https://jenslody@svn.berlios.de/svnroot/repos/codeblocks/trunk/src
 rem
 
 md ..\..\..\devel30\share\CodeBlocks\images\settings > nul 2>&1
-md ..\..\..\output30\share\CodeBlocks\images\settings > nul 2>&1
 copy .\*.png ..\..\..\devel30\share\CodeBlocks\images\settings\ > nul 2>&1
-copy .\*.png ..\..\..\output30\share\CodeBlocks\images\settings\ > nul 2>&1
 exit 0
 
