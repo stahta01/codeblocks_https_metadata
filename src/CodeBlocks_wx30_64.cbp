@@ -147,6 +147,7 @@
 					<Add library="sqstdlib30_64" />
 					<Add library="squirrel30_64" />
 					<Add library="gdi32" />
+					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)" />
 					<Add directory="devel30_64" />
 					<Add directory="sdk/scripting/lib" />
 				</Linker>
@@ -200,6 +201,7 @@
 					<Add library="rpcrt4" />
 					<Add library="advapi32" />
 					<Add library="wsock32" />
+					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)" />
 					<Add directory="devel30_64" />
 					<Add directory="exchndl/win64/lib" />
 				</Linker>
@@ -734,7 +736,6 @@
 			<Add directory="$(#WX30_64)/lib/gcc_dll$(WX_CFG)/msw$(WX_SUFFIX)" />
 		</ResourceCompiler>
 		<Linker>
-			<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)" />
 			<Add directory="base/tinyxml" />
 			<Add directory="$(#WX30_64.lib)/gcc_dll$(WX_CFG)" />
 		</Linker>
