@@ -69,8 +69,6 @@
 					<Add after="zip -j9 ..\..\..\devel30\share\CodeBlocks\help_plugin.zip manifest.xml *.xrc *.png" />
 					<Add after="cmd /c if not exist ..\..\..\devel30\share\CodeBlocks\docs mkdir ..\..\..\devel30\share\CodeBlocks\docs" />
 					<Add after="xcopy /Y index.ini ..\..\..\devel30\share\CodeBlocks\docs" />
-					<Add after="cmd /c if not exist ..\..\..\output30\share\CodeBlocks\docs mkdir ..\..\..\output30\share\CodeBlocks\docs" />
-					<Add after="xcopy /Y index.ini ..\..\..\output30\share\CodeBlocks\docs" />
 					<Mode after="always" />
 				</ExtraCommands>
 			</Target>

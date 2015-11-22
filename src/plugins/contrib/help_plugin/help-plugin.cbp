@@ -71,8 +71,6 @@
 					<Add after="zip -j9 ..\..\..\devel\share\CodeBlocks\help_plugin.zip manifest.xml *.xrc *.png" />
 					<Add after="cmd /c if not exist ..\..\..\devel\share\CodeBlocks\docs mkdir ..\..\..\devel\share\CodeBlocks\docs" />
 					<Add after="xcopy /Y index.ini ..\..\..\devel\share\CodeBlocks\docs" />
-					<Add after="cmd /c if not exist ..\..\..\output\share\CodeBlocks\docs mkdir ..\..\..\output\share\CodeBlocks\docs" />
-					<Add after="xcopy /Y index.ini ..\..\..\output\share\CodeBlocks\docs" />
 					<Mode after="always" />
 				</ExtraCommands>
 			</Target>
