@@ -62,18 +62,20 @@ AutoDetectResult CompilerOW::AutoDetectInstallationDir()
 
     if (!m_MasterPath.IsEmpty())
     {
-        AddIncludeDir(m_MasterPath + wxFILE_SEP_PATH + wxT("h"));
-        AddIncludeDir(m_MasterPath + wxFILE_SEP_PATH + wxT("h") + wxFILE_SEP_PATH + wxT("nt"));
-        AddLibDir(m_MasterPath + wxFILE_SEP_PATH + wxT("lib386"));
-        AddLibDir(m_MasterPath + wxFILE_SEP_PATH + wxT("lib386") + wxFILE_SEP_PATH + wxT("nt"));
-        AddResourceIncludeDir(m_MasterPath + wxFILE_SEP_PATH + wxT("h"));
-        AddResourceIncludeDir(m_MasterPath + wxFILE_SEP_PATH + wxT("h") + wxFILE_SEP_PATH + wxT("nt"));
+        wxString compiler_folder = wxT("$(TARGET_COMPILER_DIR)");
+
+        AddIncludeDir(compiler_folder + wxT("h"));
+        AddIncludeDir(compiler_folder + wxT("h") + wxFILE_SEP_PATH + wxT("nt"));
+        AddLibDir(compiler_folder + wxT("lib386"));
+        AddLibDir(compiler_folder + wxT("lib386") + wxFILE_SEP_PATH + wxT("nt"));
+        AddResourceIncludeDir(compiler_folder + wxT("h"));
+        AddResourceIncludeDir(compiler_folder + wxT("h") + wxFILE_SEP_PATH + wxT("nt"));
         m_ExtraPaths.Add(m_MasterPath + wxFILE_SEP_PATH + wxT("binnt"));
         m_ExtraPaths.Add(m_MasterPath + wxFILE_SEP_PATH + wxT("binw"));
     }
     wxSetEnv(wxT("WATCOM"), m_MasterPath);
 
-    return wxFileExists(m_MasterPath + wxFILE_SEP_PATH + wxT("binnt") + wxFILE_SEP_PATH + m_Programs.C) ? adrDetected : adrGuessed;
+    return wxFileExists(m_MasterPath + wxFILE_SEP_PATH + wxT("binw") + wxFILE_SEP_PATH + m_Programs.C) ? adrDetected : adrGuessed;
 }
 
 void CompilerOW::LoadSettings(const wxString& baseKey)
