@@ -9,7 +9,9 @@ GtkPathDefault    <- _T("$(#gtk)");
 GtkPathDefaultInc <- _T("$(#gtk.include)");
 GtkPathDefaultLib <- _T("$(#gtk.lib)");
 GtkPath <- _T("");
-// GtkVersion <- 1; // 0 - GTK+, 1 - GTK+-2.0
+GtkVersion <- 0; // 0 - GTK+-2.0, 1 - GTK+-3.0
+GtkHeaderFolder <- _T("gtk-2.0");
+GtkLibName <- _T("gtk-win32-2.0")
 
 function BeginWizard()
 {
@@ -24,15 +26,12 @@ function BeginWizard()
                            "\"include\" and \"lib\".");
 
     Wizard.AddInfoPage(_T("GtkIntro"), intro_msg);
+    Wizard.AddGenericSingleChoiceListPage(_T("GtkVersionPage"), _T("Please select the GTK+ version you want to use."), _T("GTK+ 2.x;GTK+ 3.x"), GtkVersion); // select GTK+ version
     Wizard.AddProjectPathPage();
     if (PLATFORM == PLATFORM_MSW)
     {
         Wizard.AddGenericSelectPathPage(_T("GtkPath"), gtkpath_msg, _T("GTK's location:"), GtkPathDefault);
     }
-    /*else
-    {
-        Wizard.AddGenericSingleChoiceListPage(_T("GtkVersionPage"), _T("Please select the GTK+ version you want to use."), _T("GTK+ 1.x;GTK+ 2.x"), GtkVersion); // select GTK+ version
-    }*/
     Wizard.AddCompilerPage(_T(""), _T("gcc*"), true, true);
 }
 
@@ -54,14 +53,14 @@ function OnLeave_GtkPath(fwd)
         local dir_nomacro_inc = GetCompilerIncludeDir(dir, GtkPathDefault, GtkPathDefaultInc);
         if (dir_nomacro_inc.IsEmpty())
             return false;
-        if (!VerifyFile(dir_nomacro_inc + wxFILE_SEP_PATH + _T("gtk-2.0") + wxFILE_SEP_PATH +_T("gtk"), _T("gtk.h"), _T("GTK's include")))
+        if (!VerifyFile(dir_nomacro_inc + wxFILE_SEP_PATH + GtkHeaderFolder + wxFILE_SEP_PATH +_T("gtk"), _T("gtk.h"), _T("GTK's include")))
             return false;
 
         // verify library dependencies
         local dir_nomacro_lib = GetCompilerLibDir(dir, GtkPathDefault, GtkPathDefaultLib);
         if (dir_nomacro_lib.IsEmpty())
             return false;
-        if (!VerifyLibFile(dir_nomacro_lib, _T("gtk-win32-2.0"), _T("GTK's")))
+        if (!VerifyLibFile(dir_nomacro_lib, GtkLibName, _T("GTK's")))
             return false;
 
 
@@ -97,6 +96,11 @@ function OnLeave_GtkVersionPage(fwd)
     if (fwd)
     {
         GtkVersion = Wizard.GetListboxSelection(_T("GenericChoiceList"));
+        if (GtkVersion == 1)
+        {
+            GtkHeaderFolder <- _T("gtk-3.0");
+            GtkLibName <- _T("gtk-3")
+        }
     }
     return true;
 }
@@ -104,6 +108,8 @@ function OnLeave_GtkVersionPage(fwd)
 // return the files this project contains
 function GetFilesDir()
 {
+    if (GtkVersion == 1)
+        return _T("gtk/v3files");
     return _T("gtk/files");
 }
 
@@ -113,14 +119,14 @@ function SetupProject(project)
     if (PLATFORM == PLATFORM_MSW)
     {
         project.AddIncludeDir(GtkPathDefaultInc);
-        project.AddIncludeDir(GtkPathDefaultInc + wxFILE_SEP_PATH + _T("gtk-2.0"));
+        project.AddIncludeDir(GtkPathDefaultInc + wxFILE_SEP_PATH + GtkHeaderFolder);
         project.AddIncludeDir(GtkPathDefaultInc + wxFILE_SEP_PATH + _T("cairo"));
         project.AddIncludeDir(GtkPathDefaultInc + wxFILE_SEP_PATH + _T("gdk"));
         project.AddIncludeDir(GtkPathDefaultInc + wxFILE_SEP_PATH + _T("glib-2.0"));
         // Notice GtkPathDefault*Lib* at some positions. This is correct as of 2.8.20
         project.AddIncludeDir(GtkPathDefaultLib + wxFILE_SEP_PATH + _T("glib-2.0") + wxFILE_SEP_PATH + _T("include"));
         project.AddIncludeDir(GtkPathDefaultInc + wxFILE_SEP_PATH + _T("pango-1.0"));
-        project.AddIncludeDir(GtkPathDefaultLib + wxFILE_SEP_PATH + _T("gtk-2.0")  + wxFILE_SEP_PATH + _T("include"));
+        project.AddIncludeDir(GtkPathDefaultLib + wxFILE_SEP_PATH + GtkHeaderFolder  + wxFILE_SEP_PATH + _T("include"));
         project.AddIncludeDir(GtkPathDefaultInc + wxFILE_SEP_PATH + _T("atk-1.0"));
         if ( IO.DirectoryExists(GtkPathDefaultInc + wxFILE_SEP_PATH + _T("gdk-pixbuf-2.0")) )
             project.AddIncludeDir(GtkPathDefaultInc + wxFILE_SEP_PATH + _T("gdk-pixbuf-2.0"));
@@ -128,7 +134,7 @@ function SetupProject(project)
         project.AddLibDir(GtkPathDefaultLib);
 
         // add link libraries
-        project.AddLinkLib(_T("gtk-win32-2.0"));
+        project.AddLinkLib(GtkLibName);
         project.AddLinkLib(_T("gobject-2.0"));
         project.AddLinkLib(_T("glib-2.0"));
 
@@ -142,16 +148,16 @@ function SetupProject(project)
     }
     else
     {
-        /*if (GtkVersion == 1)
-        {*/
-        project.AddCompilerOption(_T("`pkg-config gtk+-2.0 --cflags`"));
-        project.AddLinkerOption(_T("`pkg-config gtk+-2.0 --libs`"));
-        /*}
+        if (GtkVersion == 1)
+        {
+            project.AddCompilerOption(_T("`pkg-config gtk+-3.0 --cflags`"));
+            project.AddLinkerOption(_T("`pkg-config gtk+-3.0 --libs`"));
+        }
         else
         {
-            project.AddCompilerOption(_T("`pkg-config gtk+ --cflags`"));
-            project.AddLinkerOption(_T("`pkg-config gtk+ --libs`"));
-        }*/
+            project.AddCompilerOption(_T("`pkg-config gtk+-2.0 --cflags`"));
+            project.AddLinkerOption(_T("`pkg-config gtk+-2.0 --libs`"));
+        }
     }
 
     // enable compiler warnings (project-wide)
