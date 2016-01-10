@@ -9,6 +9,10 @@ GlfwPathDefault    <- _T("$(#glfw)");
 GlfwPathDefaultInc <- _T("$(#glfw.include)");
 GlfwPathDefaultLib <- _T("$(#glfw.lib)");
 GlfwPath <- _T("");
+GlfwVersion <- 0; // 0 - GLFW-2.0, 1 - GlFW-3.0
+GlfwHeaderFolder <- _T("GL");
+GlfwHeaderName <- _T("glfw.h");
+GlfwLibName <- _T("glfw");
 
 function BeginWizard()
 {
@@ -23,10 +27,38 @@ function BeginWizard()
                               "\"include\" and \"lib\".");
 
     Wizard.AddInfoPage(_T("GlfwIntro"), intro_msg);
+    Wizard.AddGenericSingleChoiceListPage(_T("GlfwVersionPage"), _T("Please select the GLFW version you want to use."), _T("GLFW 2.x;GLFW 3.x"), GlfwVersion);
     Wizard.AddProjectPathPage();
     Wizard.AddGenericSelectPathPage(_T("GlfwPath"), glfwpath_descr, _T("Please select GLFW's location:"), GlfwPathDefault);
     Wizard.AddCompilerPage(_T(""), _T("*"), true, true);
 }
+
+////////////////////////////////////////////////////////////////////////////////
+// GLFW's version page
+////////////////////////////////////////////////////////////////////////////////
+
+function OnLeave_GlfwVersionPage(fwd)
+{
+    if (fwd)
+    {
+        GlfwVersion = Wizard.GetListboxSelection(_T("GenericChoiceList"));
+        if (GlfwVersion == 1)
+        {
+            GlfwHeaderFolder <- _T("GLFW");
+            GlfwHeaderName <- _T("glfw3.h");
+            if (PLATFORM == PLATFORM_MSW)
+            {
+                GlfwLibName <- _T("glfw3");
+            }
+            else
+            {
+                GlfwLibName <- _T("glfw"); // Debian Linux uses same libname for version 2 and 3.
+            }
+        }
+    }
+    return true;
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // GLFW's path page
@@ -46,13 +78,13 @@ function OnLeave_GlfwPath(fwd)
         local dir_nomacro_inc = GetCompilerIncludeDir(dir, GlfwPathDefault, GlfwPathDefaultInc);
         if (dir_nomacro_inc.IsEmpty())
             return false;
-        if (!VerifyFile(dir_nomacro_inc + wxFILE_SEP_PATH + _T("GL"), _T("glfw.h"), _T("GLFW's include"))) return false;
+        if (!VerifyFile(dir_nomacro_inc + wxFILE_SEP_PATH + GlfwHeaderFolder, GlfwHeaderName, _T("GLFW's include"))) return false;
 
         // verify library dependencies
         local dir_nomacro_lib = GetCompilerLibDir(dir, GlfwPathDefault, GlfwPathDefaultLib);
         if (dir_nomacro_lib.IsEmpty())
             return false;
-        if (!VerifyLibFile(dir_nomacro_lib, _T("glfw"), _T("GLFW's"))) return false;
+        if (!VerifyLibFile(dir_nomacro_lib, GlfwLibName, _T("GLFW's"))) return false;
 
 
         GlfwPath = dir; // Remember the original selection.
@@ -81,6 +113,8 @@ function OnLeave_GlfwPath(fwd)
 // return the files this project contains
 function GetFilesDir()
 {
+    if (GlfwVersion == 1)
+        return _T("glfw/v3files");
     return _T("glfw/files");
 }
 
@@ -92,7 +126,7 @@ function SetupProject(project)
     project.AddLibDir(GlfwPathDefaultLib);
 
     // add link libraries
-    project.AddLinkLib(_T("glfw"));
+    project.AddLinkLib(GlfwLibName);
     if (PLATFORM == PLATFORM_MSW)
     {
         project.AddLinkLib(_T("opengl32"));
