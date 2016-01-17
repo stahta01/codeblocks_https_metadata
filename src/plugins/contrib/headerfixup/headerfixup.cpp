@@ -30,8 +30,11 @@ namespace
 
 HeaderFixup::HeaderFixup()
 {
-  if ( !Manager::LoadResource(_T("headerfixup.zip")) )
-    NotifyMissingFile(_T("headerfixup.zip"));
+    // Make sure our resources are available.
+    // In the generated boilerplate code we have no resources but when
+    // we add some, it will be nice that this code is in place already ;)
+//  if ( !Manager::LoadResource(_T("headerfixup.zip")) )
+//        NotifyMissingFile(_T("headerfixup.zip"));
 }// HeaderFixup
 
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
