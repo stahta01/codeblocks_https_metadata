@@ -9,6 +9,10 @@ SDLPathDefault    <- _T("$(#sdl)");
 SDLPathDefaultInc <- _T("$(#sdl.include)");
 SDLPathDefaultLib <- _T("$(#sdl.lib)");
 SDLPath           <- _T("");
+SdlVersion <- 0; // 0 - SDL-1, 1 - SDL-2
+SdlHeaderFolder <- _T("SDL");
+SdlLibName <- _T("SDL")
+SdlMainName <- _T("SDLmain")
 
 function BeginWizard()
 {
@@ -23,10 +27,30 @@ function BeginWizard()
                              "\"include\" and \"lib\".");
 
     Wizard.AddInfoPage(_T("SDLIntro"), intro_msg);
+    Wizard.AddGenericSingleChoiceListPage(_T("SdlVersionPage"), _T("Please select the SDL version you want to use."), _T("SDL 1;SDL 2"), SdlVersion);
     Wizard.AddProjectPathPage();
     if (PLATFORM == PLATFORM_MSW)
         Wizard.AddGenericSelectPathPage(_T("SDLPath"), sdlpath_descr, _T("Please select SDL's location:"), SDLPathDefault);
     Wizard.AddCompilerPage(_T(""), _T("*"), true, true);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// SDL's version page
+////////////////////////////////////////////////////////////////////////////////
+
+function OnLeave_SdlVersionPage(fwd)
+{
+    if (fwd)
+    {
+        SdlVersion = Wizard.GetListboxSelection(_T("GenericChoiceList"));
+        if (SdlVersion == 1)
+        {
+            SdlHeaderFolder <- _T("SDL2");
+            SdlLibName <- _T("SDL2")
+            SdlMainName <- _T("SDL2main")
+        }
+    }
+    return true;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -50,8 +74,8 @@ function OnLeave_SDLPath(fwd)
             
         if (!IO.FileExists(dir_nomacro_inc + wxFILE_SEP_PATH + _T("SDL.h")))
         {
-            if (VerifyFile(dir_nomacro_inc, _T("SDL/SDL.h"), _T("SDL's include")))
-                SDLPathDefaultInc = SDLPathDefaultInc + _T("/SDL");
+            if (VerifyFile(dir_nomacro_inc, SdlHeaderFolder + _T("/SDL.h"), _T("SDL's include")))
+                SDLPathDefaultInc = SDLPathDefaultInc + _T("/") + SdlHeaderFolder;
             else
                 return false;
         }
@@ -61,10 +85,10 @@ function OnLeave_SDLPath(fwd)
         if (dir_nomacro_lib.IsEmpty())
             return false;
 
-        if (!VerifyLibFile(dir_nomacro_lib, _T("SDLmain"), _T("SDL's")))
+        if (!VerifyLibFile(dir_nomacro_lib, SdlMainName, _T("SDL's")))
             return false;
 
-        if (!VerifyLibFile(dir_nomacro_lib, _T("SDL.dll"), _T("SDL's")))
+        if (!VerifyLibFile(dir_nomacro_lib, SdlLibName, _T("SDL's")))
             return false;
 
         SDLPath = dir; // Remember the original selection.
@@ -93,6 +117,8 @@ function OnLeave_SDLPath(fwd)
 // return the files this project contains
 function GetFilesDir()
 {
+    if ( SdlVersion == 1)
+        return _T("sdl/v2files");
     return _T("sdl/files");
 }
 
@@ -106,8 +132,8 @@ function SetupProject(project)
 
         // add link libraries
         project.AddLinkLib(_T("mingw32"));
-        project.AddLinkLib(_T("SDLmain"));
-        project.AddLinkLib(_T("SDL.dll"));
+        project.AddLinkLib(SdlMainName);
+        project.AddLinkLib(SdlLibName);
         project.AddLinkLib(_T("user32"));
         project.AddLinkLib(_T("gdi32"));
         project.AddLinkLib(_T("winmm"));
@@ -118,15 +144,23 @@ function SetupProject(project)
         //project.AddCompilerOption(_T("-D_GNU_SOURCE=1 -D_THREAD_SAFE"));
         project.AddLinkerOption(_T("-framework SDL"));
         // libSDLmain.a does not exist by default, needs to be built from SDLMain.m:
-        project.AddLinkLib(_T("SDLmain"));
+        project.AddLinkLib(SdlMainName);
 
         project.AddLinkerOption(_T("-framework Cocoa")); // SDL dependency
     }
     else
     {
         // unix way
-        project.AddCompilerOption(_T("`sdl-config --cflags`"));
-        project.AddLinkerOption(_T("`sdl-config --libs`"));
+        if ( SdlVersion == 1)
+        {
+            project.AddCompilerOption(_T("`sdl2-config --cflags`"));
+            project.AddLinkerOption(_T("`sdl2-config --libs`"));
+        }
+        else
+        {
+            project.AddCompilerOption(_T("`sdl-config --cflags`"));
+            project.AddLinkerOption(_T("`sdl-config --libs`"));
+        }
     }
 
     // enable compiler warnings (project-wide)
