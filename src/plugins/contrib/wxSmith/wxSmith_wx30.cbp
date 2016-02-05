@@ -15,6 +15,15 @@
 				<Option type="3" />
 				<Option compiler="gcc" />
 				<Option createStaticLib="1" />
+				<Linker>
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_propgrid" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_richtext" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_html" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_aui" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_adv" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_core" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
+				</Linker>
 			</Target>
 			<Target title="wxSmith">
 				<Option platforms="Windows;" />
@@ -27,6 +36,7 @@
 				<Option run_host_application_in_terminal="0" />
 				<Linker>
 					<Add library="wxsmithlib" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
 				</Linker>
 			</Target>
 			<Environment>
@@ -80,7 +90,6 @@
 			<Add option="-Wl,--add-stdcall-alias" />
 			<Add option="-Wl,--enable-auto-import" />
 			<Add option="-mthreads" />
-			<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)" />
 			<Add library="codeblocks" />
 			<Add directory="$(#WX30.lib)/gcc_dll$(WX_CFG)" />
 			<Add directory="$(#WX30.lib)/gcc_dll$(WX_CFG)/msw$(WX_SUFFIX)" />

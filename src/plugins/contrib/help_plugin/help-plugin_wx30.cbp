@@ -64,6 +64,10 @@
 					<Add option="-mthreads" />
 					<Add library="bzip2/libbzip2.a" />
 					<Add library="zlib/libz.a" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_html" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_xrc" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_core" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
 				</Linker>
 				<ExtraCommands>
 					<Add after="zip -j9 ..\..\..\devel30\share\CodeBlocks\help_plugin.zip manifest.xml *.xrc *.png" />
@@ -103,7 +107,6 @@
 			<Add option="-Wl,--enable-auto-image-base" />
 			<Add option="-Wl,--add-stdcall-alias" />
 			<Add option="-Wl,--enable-auto-import" />
-			<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)" />
 			<Add library="codeblocks" />
 			<Add directory="../../../devel30" />
 			<Add directory="$(#WX30.lib)/gcc_dll$(WX_CFG)" />

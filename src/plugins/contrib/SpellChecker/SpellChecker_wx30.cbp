@@ -28,7 +28,6 @@
 					<Add directory="hunspell/" />
 				</Compiler>
 				<Linker>
-					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)" />
 					<Add directory="$(#WX30.lib)/gcc_dll$(WX_CFG)" />
 				</Linker>
 			</Target>
@@ -53,7 +52,6 @@
 				</Compiler>
 				<Linker>
 					<Add library="hunspell" />
-					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)" />
 					<Add directory="../../../devel30" />
 					<Add directory="$(#WX30.lib)/gcc_dll$(WX_CFG)" />
 				</Linker>
@@ -88,7 +86,10 @@
 					<Add library="wxSpellChecker" />
 					<Add library="hunspell" />
 					<Add library="codeblocks" />
-					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_xrc" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_adv" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_core" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
 					<Add directory="../../../devel30" />
 					<Add directory="$(#WX30.lib)/gcc_dll$(WX_CFG)" />
 				</Linker>

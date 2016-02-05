@@ -18,6 +18,10 @@
 					<Add option="-DWXMAKINGDLL_FNB" />
 					<Add directory="wxFlatNotebook/include" />
 				</Compiler>
+				<Linker>
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_core" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
+				</Linker>
 			</Target>
 			<Target title="wxDateTimePicker">
 				<Option platforms="Windows;" />
@@ -42,6 +46,10 @@
 					<Add option="-DWXMAKINGDLL_CHART" />
 					<Add directory="wxchart/include" />
 				</Compiler>
+				<Linker>
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_core" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
+				</Linker>
 			</Target>
 			<Target title="wxCustomButton">
 				<Option platforms="Windows;" />
@@ -54,6 +62,10 @@
 					<Add option="-DWXMAKINGDLL_THINGS" />
 					<Add directory="wxthings/include" />
 				</Compiler>
+				<Linker>
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_core" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
+				</Linker>
 			</Target>
 			<Target title="wxImagePanel">
 				<Option platforms="Windows;" />
@@ -67,6 +79,8 @@
 				</Compiler>
 				<Linker>
 					<Add option="-Wl,--export-all-symbols" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_core" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
 				</Linker>
 			</Target>
 			<Target title="wxSpeedButton">
@@ -78,6 +92,10 @@
 				<Option createStaticLib="1" />
 				<Linker>
 					<Add option="-Wl,--export-all-symbols" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_adv" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_core" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)_xml" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
 				</Linker>
 			</Target>
 			<Target title="wxKWIC">
@@ -92,6 +110,8 @@
 				</Compiler>
 				<Linker>
 					<Add option="-Wl,--export-all-symbols" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_core" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
 				</Linker>
 			</Target>
 			<Target title="wxLED">
@@ -109,6 +129,10 @@
 				</Compiler>
 				<Linker>
 					<Add option="-Wl,--export-all-symbols" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_adv" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_core" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)_xml" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
 				</Linker>
 			</Target>
 			<Target title="wxMathPlot">
@@ -123,6 +147,8 @@
 				</Compiler>
 				<Linker>
 					<Add option="-Wl,--export-all-symbols" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_core" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
 				</Linker>
 			</Target>
 			<Environment>

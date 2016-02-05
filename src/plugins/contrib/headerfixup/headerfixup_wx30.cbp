@@ -59,8 +59,9 @@
 		<Linker>
 			<Add option="-Wl,--enable-auto-import" />
 			<Add option="-mthreads" />
-			<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)" />
 			<Add library="codeblocks" />
+			<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_core" />
+			<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
 		</Linker>
 		<Unit filename="bindings.cpp" />
 		<Unit filename="bindings.h" />

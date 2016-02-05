@@ -47,6 +47,10 @@
 				<Linker>
 					<Add option="-mthreads" />
 					<Add library="bz2" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_xrc" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_core" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)_net" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
 					<Add directory="../../../devel30" />
 				</Linker>
 				<ExtraCommands>
@@ -77,7 +81,6 @@
 		<Linker>
 			<Add option="-Wl,--enable-auto-import" />
 			<Add library="codeblocks" />
-			<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)" />
 			<Add directory="bzip2" />
 			<Add directory="$(#WX30.lib)/gcc_dll$(WX_CFG)" />
 		</Linker>

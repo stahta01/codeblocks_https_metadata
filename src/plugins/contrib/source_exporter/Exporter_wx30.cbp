@@ -27,7 +27,6 @@
 				<Option compiler="gcc" />
 				<Linker>
 					<Add library="wxPdfDocument" />
-					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)" />
 					<Add directory="../../../devel30" />
 				</Linker>
 			</Target>
@@ -39,7 +38,6 @@
 				<Option compiler="gcc" />
 				<Linker>
 					<Add library="wxPdfDocument" />
-					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)" />
 					<Add directory="../../../devel30" />
 				</Linker>
 			</Target>
@@ -51,7 +49,6 @@
 				<Option compiler="gcc" />
 				<Linker>
 					<Add library="wxPdfDocument" />
-					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)" />
 					<Add directory="../../../devel30" />
 				</Linker>
 			</Target>
@@ -76,7 +73,9 @@
 				<Linker>
 					<Add library="codeblocks" />
 					<Add library="wxPdfDocument" />
-					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_core" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)_xml" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
 					<Add library="gdi32" />
 					<Add directory="../../../devel30" />
 					<Add directory="wxPdfDocument/lib30" />
