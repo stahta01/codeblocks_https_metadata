@@ -7,13 +7,19 @@
  * License:
  **************************************************************/
 
-#ifdef WX_PRECOMP
+#ifdef USE_PCH
 #include "wx_pch.h"
 #endif
 
 #ifdef __BORLANDC__
 #pragma hdrstop
 #endif //__BORLANDC__
+
+#ifndef WX_PRECOMP
+#include <wx/menu.h>
+#include <wx/msgdlg.h>
+#include <wx/sizer.h>
+#endif
 
 #include "[FILENAME_PREFIX]Main.h"
 
