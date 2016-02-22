@@ -44,8 +44,9 @@
 			</Target>
 			<Environment>
 				<Variable name="WX_CFG" value="" />
-				<Variable name="WX_COMPILER" value="gcc" />
-				<Variable name="WX_SUFFIX" value="u" />
+				<Variable name="WX_COMPILER" value="gcc471TDM" />
+				<Variable name="WX_SUFFIX" value="ud" />
+				<Variable name="WX_TOOLKIT" value="msw" />
 				<Variable name="WX_VERSION" value="30" />
 			</Environment>
 		</Build>
