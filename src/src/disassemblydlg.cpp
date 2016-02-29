@@ -31,6 +31,7 @@
     #include "projectmanager.h"
 #endif
 
+#include "cbstyledtextctrl.h"
 #include "debuggermanager.h"
 #include "filefilters.h"
 
