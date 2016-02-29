@@ -9,7 +9,7 @@
 #include <wx/dynarray.h>
 #include <wx/hashmap.h>
 #include <wx/intl.h>
-#include <wx/wxscintilla.h> // wxSCI_KEYWORDSET_MAX
+#include "cbstyledtextctrl_enums.h" // cbSCI_KEYWORDSET_MAX
 #include "settings.h"
 #include "globals.h" // HighlightLanguage
 
@@ -57,7 +57,7 @@ struct OptionSet
 {
     wxString m_Langs;
     OptionColours m_Colours;
-    wxString m_Keywords[wxSCI_KEYWORDSET_MAX + 1]; // wxSCI_KEYWORDSET_MAX+1 keyword sets
+    wxString m_Keywords[cbSCI_KEYWORDSET_MAX + 1]; // wxSCI_KEYWORDSET_MAX+1 keyword sets
     wxArrayString m_FileMasks;
     int m_Lexers;
     wxString m_SampleCode;
@@ -65,7 +65,7 @@ struct OptionSet
     int m_DebugLine;
     int m_ErrorLine;
 
-    wxString m_originalKeywords[wxSCI_KEYWORDSET_MAX + 1]; // wxSCI_KEYWORDSET_MAX+1 keyword sets
+    wxString m_originalKeywords[cbSCI_KEYWORDSET_MAX + 1]; // wxSCI_KEYWORDSET_MAX+1 keyword sets
     wxArrayString m_originalFileMasks;
 
     CommentToken comment;
