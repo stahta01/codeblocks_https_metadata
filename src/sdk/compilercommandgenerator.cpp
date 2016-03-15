@@ -1231,10 +1231,12 @@ void CompilerCommandGenerator::SearchDirsFromBackticks(Compiler* compiler, Proje
         size_t pos2 = btOutput.find(_T(' '), pos);
         if (pos2 != pos)
         {
+            wxString aSearchDir;
             if (pos2 == wxString::npos) // whole remaining string
-                m_CompilerSearchDirs[target].Add(btOutput.Mid(pos, btOutput.Length() - pos));
+                aSearchDir = btOutput.Mid(pos, btOutput.Length() - pos);
             else
-                m_CompilerSearchDirs[target].Add(btOutput.Mid(pos, pos2 - pos));
+                aSearchDir = btOutput.Mid(pos, pos2 - pos);
+            m_CompilerSearchDirs[target].Add(aSearchDir);
         }
         ++pos;
     }
@@ -1251,12 +1253,14 @@ void CompilerCommandGenerator::SearchDirsFromBackticks(Compiler* compiler, Proje
         size_t pos2 = btOutput.find(_T(' '), pos);
         if (pos2 != pos)
         {
+            wxString aSearchDir;
             // note that backtick'd expressions always return full paths so no need to
             // re-normalize it here
             if (pos2 == wxString::npos) // whole remaining string
-                m_LinkerSearchDirs[target].Add(btOutput.Mid(pos, btOutput.Length() - pos));
+                aSearchDir = btOutput.Mid(pos, btOutput.Length() - pos);
             else
-                m_LinkerSearchDirs[target].Add(btOutput.Mid(pos, pos2 - pos));
+                aSearchDir = btOutput.Mid(pos, pos2 - pos);
+            m_LinkerSearchDirs[target].Add(aSearchDir);
         }
         ++pos;
     }
