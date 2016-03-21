@@ -805,6 +805,9 @@
 		<Unit filename="include/cbstyledtextctrl.h">
 			<Option target="sdk" />
 		</Unit>
+		<Unit filename="include/cbstyledtextctrl_enums.h">
+			<Option target="sdk" />
+		</Unit>
 		<Unit filename="include/cbthreadedtask.h">
 			<Option target="sdk" />
 		</Unit>
