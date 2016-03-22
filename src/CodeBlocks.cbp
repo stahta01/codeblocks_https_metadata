@@ -4204,6 +4204,60 @@
 		<Unit filename="src/resources/env_settings.xrc">
 			<Option target="src" />
 		</Unit>
+		<Unit filename="src/resources/icons/app.ico">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/icons/asm.ico">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/icons/c.ico">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/icons/cbp.ico">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/icons/cg.ico">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/icons/cpp.ico">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/icons/csd.ico">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/icons/d.ico">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/icons/dev.ico">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/icons/dsp.ico">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/icons/dsw.ico">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/icons/f.ico">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/icons/filetempl.ico">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/icons/h.ico">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/icons/j.ico">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/icons/proj.ico">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/icons/rc.ico">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/icons/template.ico">
+			<Option target="src" />
+		</Unit>
 		<Unit filename="src/resources/main_menu.xrc">
 			<Option target="src" />
 		</Unit>
@@ -4239,6 +4293,9 @@
 			<Option target="src" />
 		</Unit>
 		<Unit filename="src/resources/virtualbuildtargetsdlg.xrc">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/x86.manifest">
 			<Option target="src" />
 		</Unit>
 		<Unit filename="src/scriptconsole.cpp">
