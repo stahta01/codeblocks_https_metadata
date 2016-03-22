@@ -2509,6 +2509,9 @@
 		<Unit filename="plugins/todo/todosettingsdlg.h">
 			<Option target="To-do" />
 		</Unit>
+		<Unit filename="plugins/xpmanifest/manifest.xml">
+			<Option target="XP look &amp; feel" />
+		</Unit>
 		<Unit filename="plugins/xpmanifest/windowsxplooknfeel.cpp">
 			<Option target="XP look &amp; feel" />
 		</Unit>
