@@ -2206,6 +2206,9 @@
 		<Unit filename="plugins/occurrenceshighlighting/occurrencespanel.h">
 			<Option target="Occurrences Highlighting" />
 		</Unit>
+		<Unit filename="plugins/occurrenceshighlighting/resources/manifest.xml">
+			<Option target="Occurrences Highlighting" />
+		</Unit>
 		<Unit filename="plugins/occurrenceshighlighting/resources/occurrenceshighlightingconfigurationpanel.xrc">
 			<Option target="Occurrences Highlighting" />
 		</Unit>
