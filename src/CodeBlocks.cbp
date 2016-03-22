@@ -2266,6 +2266,12 @@
 		<Unit filename="plugins/projectsimporter/projectsimporter.h">
 			<Option target="Projects-workspaces importer" />
 		</Unit>
+		<Unit filename="plugins/projectsimporter/resources/manifest.xml">
+			<Option target="Projects-workspaces importer" />
+		</Unit>
+		<Unit filename="plugins/projectsimporter/resources/project_import_menu.xrc">
+			<Option target="Projects-workspaces importer" />
+		</Unit>
 		<Unit filename="plugins/scriptedwizard/buildtargetpanel.cpp">
 			<Option target="Scripted wizard" />
 		</Unit>
