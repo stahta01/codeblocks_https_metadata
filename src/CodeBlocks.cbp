@@ -762,6 +762,32 @@
 		<Unit filename="build_tools/autorevision/autorevision.cpp">
 			<Option target="AutoRevision" />
 		</Unit>
+		<Unit filename="exchndl/win32/bin/dbghelp.dll">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="exchndl/win32/bin/exchndl.dll">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="exchndl/win32/bin/mgwhelp.dll">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="exchndl/win32/bin/symsrv.dll">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="exchndl/win32/bin/symsrv.yes">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="exchndl/win32/include/exchndl.h">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="exchndl/win32/lib/libexchndl.a">
+			<Option link="0" />
+			<Option target="src" />
+		</Unit>
+		<Unit filename="exchndl/win32/lib/libmgwhelp.a">
+			<Option link="0" />
+			<Option target="src" />
+		</Unit>
 		<Unit filename="include/annoyingdialog.h">
 			<Option target="sdk" />
 		</Unit>
