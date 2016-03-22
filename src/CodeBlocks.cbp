@@ -4258,6 +4258,387 @@
 		<Unit filename="src/resources/icons/template.ico">
 			<Option target="src" />
 		</Unit>
+		<Unit filename="src/resources/images/16x16/bookmark_add.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/dbginfo.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/dbgnext.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/dbgnexti.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/dbgpause.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/dbgrun.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/dbgrunto.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/dbgstep.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/dbgstepi.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/dbgstepout.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/dbgstop.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/dbgwindow.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/editcopy.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/editcut.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/editpaste.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/exit.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/fileclose.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/filefind.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/filefindnext.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/filefindprev.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/filenew.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/fileopen.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/fileprint.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/filequickprint.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/filesave.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/filesaveall.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/filesaveas.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/findf.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/folder.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/folder_new.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/folder_open.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/folder_yel.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/folder_yel_open.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/goto.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/history_clear.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/idea.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/info.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/mark.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/mark_clear.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/mark_next.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/mark_prev.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/newproject.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/next.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/plug.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/prev.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/project-readonly.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/project.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/projectnew.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/redo.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/run.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/searchreplace.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/searchreplacef.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/undo.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/view_sidetree.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/view_tree.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/window_fullscreen.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/workspace-readonly.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/16x16/workspace.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/ascii.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/closebutton.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/codeblocks.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/compile.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/compilerun.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/contents_16x16.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/dbginfo.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/dbgnext.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/dbgnexti.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/dbgpause.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/dbgrun.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/dbgrunto.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/dbgstep.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/dbgstepi.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/dbgstepout.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/dbgstop.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/dbgwindow.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/edit_16x16.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/editcopy.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/editcut.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/editpaste.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/file-missing.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/file-modified.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/file-readonly.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/file.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/filefind.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/filenew.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/fileopen.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/fileprint.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/filesave.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/filesaveall.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/filesaveas.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/flag_16x16.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/folder.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/folder_new.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/folder_open.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/misc_16x16.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/modified_file.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/newproject.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/project-readonly.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/project.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/rc-file-added.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/rc-file-conflict.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/rc-file-external.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/rc-file-gotlock.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/rc-file-lockstolen.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/rc-file-mismatch.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/rc-file-missing.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/rc-file-modified.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/rc-file-noncontrolled.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/rc-file-outofdate.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/rc-file-requireslock.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/rc-file-uptodate.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/readonly.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/rebuild.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/redo.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/run.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/searchreplace.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/source.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/splash.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/splash_0802.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/splash_1005.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/splash_1211.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/splash_1312.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/stop.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/undo.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/vfolder_open.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/workspace-readonly.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/images/workspace.png">
+			<Option target="src" />
+		</Unit>
 		<Unit filename="src/resources/main_menu.xrc">
 			<Option target="src" />
 		</Unit>
@@ -4289,7 +4670,49 @@
 		<Unit filename="src/resources/scripting_settings.xrc">
 			<Option target="src" />
 		</Unit>
+		<Unit filename="src/resources/start_here/blank.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/start_here/cb.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/start_here/new.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/start_here/open.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/start_here/reopen.png">
+			<Option target="src" />
+		</Unit>
 		<Unit filename="src/resources/start_here/start_here.html">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/start_here/tip.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/start_here/title_0802.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/start_here/title_1005.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/start_here/title_1211.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/start_here/title_1312.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/start_here/title_1601.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/start_here/trash.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/start_here/trash_16x16.png">
+			<Option target="src" />
+		</Unit>
+		<Unit filename="src/resources/start_here/www.png">
 			<Option target="src" />
 		</Unit>
 		<Unit filename="src/resources/virtualbuildtargetsdlg.xrc">
