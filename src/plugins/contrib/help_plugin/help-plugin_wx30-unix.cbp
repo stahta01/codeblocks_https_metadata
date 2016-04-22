@@ -8,25 +8,33 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="bzip2">
-				<Option output="bzip2/libbzip2.a" prefix_auto="0" extension_auto="0" />
+				<Option output="../../../lib/contrib/help_plugin/libbzip2.a" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="" />
-				<Option object_output="../../../.objs30/plugins/contrib/help_plugin" />
+				<Option object_output="../../../.objs/plugins/contrib/help_plugin" />
 				<Option type="2" />
 				<Option compiler="gcc" />
 				<Option createDefFile="1" />
 				<Option projectCompilerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="1" />
+				<Option projectIncludeDirsRelation="1" />
+				<Option projectResourceIncludeDirsRelation="1" />
+				<Option projectLibDirsRelation="1" />
 				<Compiler>
 					<Add option="-fPIC" />
 				</Compiler>
 			</Target>
 			<Target title="zlib">
-				<Option output="zlib/libz.a" prefix_auto="0" extension_auto="0" />
+				<Option output="../../../lib/contrib/help_plugin/libz.a" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="" />
-				<Option object_output="../../../.objs30/plugins/contrib/help_plugin" />
+				<Option object_output="../../../.objs/plugins/contrib/help_plugin" />
 				<Option type="2" />
 				<Option compiler="gcc" />
 				<Option createDefFile="1" />
 				<Option projectCompilerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="1" />
+				<Option projectIncludeDirsRelation="1" />
+				<Option projectResourceIncludeDirsRelation="1" />
+				<Option projectLibDirsRelation="1" />
 				<Compiler>
 					<Add option="-fPIC" />
 				</Compiler>
@@ -45,8 +53,9 @@
 					<Add option="$(#CB_RELEASE_TYPE)" />
 				</Compiler>
 				<Linker>
-					<Add library="bzip2/libbzip2.a" />
-					<Add library="zlib/libz.a" />
+					<Add library="libbzip2.a" />
+					<Add library="libz.a" />
+					<Add directory="../../../lib/contrib/help_plugin" />
 				</Linker>
 			</Target>
 			<Environment>
@@ -54,7 +63,7 @@
 			</Environment>
 		</Build>
 		<VirtualTargets>
-			<Add alias="All" targets="bzip2;zlib;help_plugin;" />
+			<Add alias="All" targets="bzip2;help_plugin;" />
 		</VirtualTargets>
 		<Compiler>
 			<Add option="-Wextra" />
@@ -79,9 +88,6 @@
 			<Add option="-Wl,--no-undefined" />
 			<Add library="codeblocks" />
 			<Add directory="../../../devel30" />
-			<Add directory="../../../sdk/scripting/lib" />
-			<Add directory="bzip2" />
-			<Add directory="zlib" />
 		</Linker>
 		<ExtraCommands>
 			<Add after="zip -j9 ../../../devel30/share/codeblocks/help_plugin.zip manifest.xml *.xrc *.png" />
