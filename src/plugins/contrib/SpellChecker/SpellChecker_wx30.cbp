@@ -107,12 +107,12 @@
 					<Add after='xcopy /Y &quot;..\..\..\devel30\share\CodeBlocks\SpellChecker\*&quot; &quot;..\..\..\output30\share\CodeBlocks\SpellChecker\&quot;' />
 					<Mode after="always" />
 				</ExtraCommands>
-				<Environment>
-					<Variable name="WX_CFG" value="" />
-					<Variable name="WX_SUFFIX" value="u" />
-					<Variable name="WX_VERSION" value="30" />
-				</Environment>
 			</Target>
+			<Environment>
+				<Variable name="WX_CFG" value="" />
+				<Variable name="WX_SUFFIX" value="u" />
+				<Variable name="WX_VERSION" value="30" />
+			</Environment>
 		</Build>
 		<VirtualTargets>
 			<Add alias="All" targets="hunspell;wxSpellChecker;plugin;" />
