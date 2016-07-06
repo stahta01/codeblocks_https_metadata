@@ -45,10 +45,6 @@
 					<Mode after="always" />
 				</ExtraCommands>
 			</Target>
-			<Environment>
-				<Variable name="WX_CFG" value="" />
-				<Variable name="WX_SUFFIX" value="u" />
-			</Environment>
 		</Build>
 		<VirtualTargets>
 			<Add alias="All" targets="default;" />

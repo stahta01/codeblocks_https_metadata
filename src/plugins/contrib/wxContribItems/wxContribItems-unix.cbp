@@ -108,9 +108,7 @@
 				</Compiler>
 			</Target>
 			<Environment>
-				<Variable name="WX_CFG" value="" />
 				<Variable name="WX_CONFIG" value="wx-config --version=2.8" />
-				<Variable name="WX_SUFFIX" value="u" />
 			</Environment>
 		</Build>
 		<VirtualTargets>

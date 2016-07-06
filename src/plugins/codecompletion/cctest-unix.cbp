@@ -19,7 +19,6 @@
 			</Target>
 			<Environment>
 				<Variable name="WX_CONFIG" value="wx-config" />
-				<Variable name="WX_SUFFIX" value="u" />
 			</Environment>
 		</Build>
 		<VirtualTargets>
