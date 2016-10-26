@@ -703,7 +703,7 @@
 			</Target>
 			<Environment>
 				<Variable name="WX_CFG" value="" />
-				<Variable name="WX_SUFFIX" value="u" />
+				<Variable name="WX_SUFFIX" value="ud" />
 				<Variable name="WX_VERSION" value="28" />
 			</Environment>
 		</Build>
@@ -729,6 +729,7 @@
 			<Add option="-DCB_PRECOMP" />
 			<Add option="-DWX_PRECOMP" />
 			<Add option="-DwxUSE_UNICODE" />
+			<Add option="-D__WXDEBUG__" />
 			<Add directory="$(#WX.include)" />
 			<Add directory="$(#WX.lib)/gcc_dll$(WX_CFG)/msw$(WX_SUFFIX)" />
 			<Add directory="sdk/wxscintilla/include" />
