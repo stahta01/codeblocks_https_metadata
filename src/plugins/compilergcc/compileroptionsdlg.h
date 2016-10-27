@@ -125,7 +125,7 @@ class CompilerOptionsDlg : public cbConfigurationPanel
         wxArrayString                m_LinkLibs;
         wxArrayString                m_CompilerOptions;
         wxArrayString                m_ResourceCompilerOptions;
-        int                          m_CurrentCompilerIdx;
+        CompilerIndex                m_CurrentCompilerIdx;
         cbProject*                   m_pProject;
         ProjectBuildTarget*          m_pTarget;
         bool                         m_bDirty;                       //!< true if a setting has changed since last save

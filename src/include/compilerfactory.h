@@ -6,14 +6,14 @@
 #ifndef COMPILERFACTORY_H
 #define COMPILERFACTORY_H
 
-#ifndef CB_PRECOMP
-    #include <wx/arrstr.h> // WX_DEFINE_ARRAY
-    #include "compiler.h" // Compiler
-#endif
+#include <wx/arrstr.h> // WX_DEFINE_ARRAY
+#include "compiler.h" // Compiler
 
 #include "settings.h"
 
 class Compiler;
+
+typedef signed short int CompilerIndex;
 
 // Well, not really a factory ;)
 
@@ -25,16 +25,16 @@ class DLLIMPORT CompilerFactory
         /// @return the number of registered compilers.
         static size_t GetCompilersCount();
         /// @return the compiler by an index.
-        static Compiler* GetCompiler(size_t index);
+        static Compiler* GetCompiler(CompilerIndex index);
         /// @return the compiler by a name (ID). *Not* the compiler's title...
         static Compiler* GetCompiler(const wxString& id);
         /// @return the compiler by title.
         static Compiler* GetCompilerByName(const wxString& title);
 
         /// @return the compiler's index from its id. Returns -1 if it doesn't exist.
-        static int GetCompilerIndex(const wxString& id);
+        static CompilerIndex GetCompilerIndex(const wxString& id);
         /// @return the compiler's index. Returns -1 if it doesn't exist.
-        static int GetCompilerIndex(Compiler* compiler);
+        static CompilerIndex GetCompilerIndex(Compiler* compiler);
 
         /// @return true if the specified compiler ID is valid, false if not.
         static bool IsValidCompilerID(const wxString& id){ return GetCompilerIndex(id) != -1; }
@@ -62,7 +62,7 @@ class DLLIMPORT CompilerFactory
 
         static const wxString& GetDefaultCompilerID();
         static Compiler* GetDefaultCompiler();
-        static void SetDefaultCompiler(size_t index);
+        static void SetDefaultCompiler(CompilerIndex index);
         static void SetDefaultCompiler(const wxString& id);
         static void SetDefaultCompiler(Compiler* compiler);
 

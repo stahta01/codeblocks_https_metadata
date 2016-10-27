@@ -29,7 +29,7 @@ size_t CompilerFactory::GetCompilersCount()
     return Compilers.GetCount();
 }
 
-Compiler* CompilerFactory::GetCompiler(size_t index)
+Compiler* CompilerFactory::GetCompiler(CompilerIndex index)
 {
     // NOTE: The index can be -1 , if there is no compiler at all or less than number of compilers.
     /* NOTE: Any negative value of index will be converted to a large unsigned integer.
@@ -68,7 +68,7 @@ Compiler* CompilerFactory::GetCompilerByName(const wxString& title)
     return nullptr;
 }
 
-int CompilerFactory::GetCompilerIndex(const wxString& id)
+CompilerIndex CompilerFactory::GetCompilerIndex(const wxString& id)
 {
     const wxString lid = id.Lower();
     for (size_t i = 0; i < Compilers.GetCount(); ++i)
@@ -87,7 +87,7 @@ int CompilerFactory::GetCompilerIndex(const wxString& id)
     return -1;
 }
 
-int CompilerFactory::GetCompilerIndex(Compiler* compiler)
+CompilerIndex CompilerFactory::GetCompilerIndex(Compiler* compiler)
 {
     for (size_t i = 0; i < Compilers.GetCount(); ++i)
     {
@@ -227,7 +227,7 @@ Compiler* CompilerFactory::GetDefaultCompiler()
     return s_DefaultCompiler;
 }
 
-void CompilerFactory::SetDefaultCompiler(size_t index)
+void CompilerFactory::SetDefaultCompiler(CompilerIndex index)
 {
     if ((Compilers.GetCount() > 0) && (index < Compilers.GetCount()))
         s_DefaultCompiler = Compilers[index];
