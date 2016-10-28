@@ -24,9 +24,9 @@
     #include "uservarmanager.h"
     #include "configmanager.h"
     #include "globals.h"
-    #include "compilerfactory.h"
     #include "compiler.h"
 #endif
+#include "compilerfactory.h"
 
 #include <wx/stdpaths.h> // wxStandardPaths
 #include <cstdlib>

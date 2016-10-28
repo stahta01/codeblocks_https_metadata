@@ -20,11 +20,11 @@
     #include <wx/xrc/xmlres.h>
 
     #include "compiler.h"
-    #include "compilerfactory.h"
     #include "configmanager.h"
     #include "manager.h"
     #include "macrosmanager.h"
 #endif
+#include "compilerfactory.h"
 #include <wx/tooltip.h>
 
 #include "infowindow.h"

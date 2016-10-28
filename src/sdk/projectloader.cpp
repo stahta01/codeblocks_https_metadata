@@ -22,9 +22,9 @@
     #include "logmanager.h"
     #include "macrosmanager.h"
     #include "cbproject.h"
-    #include "compilerfactory.h"
     #include "globals.h"
 #endif
+#include "compilerfactory.h"
 
 #include <wx/dir.h>
 #include <string>

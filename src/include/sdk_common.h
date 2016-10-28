@@ -124,7 +124,6 @@
     #include "cbproject.h"
     #include "cbtool.h"
     #include "cbworkspace.h"
-    #include "compilerfactory.h"
     #include "compiler.h"
     #include "workspaceloader.h"
     #include "editorcolourset.h"

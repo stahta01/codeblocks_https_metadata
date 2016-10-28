@@ -17,11 +17,11 @@
     #include "configmanager.h"
     #include "macrosmanager.h"
     #include "globals.h"
-    #include "compilerfactory.h"
 
     #include <wx/intl.h>
     #include <wx/regex.h>
 #endif
+#include "compilerfactory.h"
 
 #include "compilercommandgenerator.h"
 #include <wx/arrimpl.cpp>

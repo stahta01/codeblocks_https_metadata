@@ -21,7 +21,6 @@
     #include <cbeditor.h>
     #include <cbexception.h>
     #include <cbproject.h>
-    #include <compilerfactory.h>
     #include <configmanager.h>
     #include <editormanager.h>
     #include <logmanager.h>
@@ -33,6 +32,7 @@
 
     #include <tinyxml/tinyxml.h>
 #endif
+#include <compilerfactory.h>
 
 #include <wx/tokenzr.h>
 

@@ -17,9 +17,9 @@
     #include "logmanager.h"
     #include "cbproject.h"
     #include "globals.h"
-    #include "compilerfactory.h"
     #include "compiler.h"
 #endif
+#include "compilerfactory.h"
 
 #include <wx/choicdlg.h>
 

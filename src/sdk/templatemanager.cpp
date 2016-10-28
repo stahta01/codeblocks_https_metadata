@@ -23,10 +23,10 @@
     #include "projectmanager.h"
     #include "cbproject.h"
     #include "globals.h"
-    #include "compilerfactory.h"
     #include "cbplugin.h"
     #include "cbproject.h"
 #endif
+#include "compilerfactory.h"
 
 #include <wx/filedlg.h>
 #include <wx/textdlg.h>

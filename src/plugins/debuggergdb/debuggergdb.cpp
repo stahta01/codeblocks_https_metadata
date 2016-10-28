@@ -30,12 +30,12 @@
     #include "cbeditor.h"
     #include "projectbuildtarget.h"
     #include "sdk_events.h"
-    #include "compilerfactory.h"
     #include "xtra_res.h"
 
     #include "scrollingdialog.h"
     #include "globals.h"
 #endif
+#include "compilerfactory.h"
 
 #include <wx/tokenzr.h>
 #include "editarraystringdlg.h"

@@ -24,12 +24,12 @@
     #include "cbexception.h"
     #include "cbplugin.h"
     #include "cbproject.h"
-    #include "compilerfactory.h"
     #include "configmanager.h"
     #include "editormanager.h"
     #include "logmanager.h"
     #include "projectmanager.h"
 #endif
+#include "compilerfactory.h"
 
 #include <algorithm>
 #include <sstream>

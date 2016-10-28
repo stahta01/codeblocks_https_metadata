@@ -17,7 +17,6 @@
     #include "projectmanager.h"
     #include "pluginmanager.h"
     #include "scriptingmanager.h"
-    #include "compilerfactory.h"
     #include "globals.h"
     #include "cbproject.h"
     #include "cbplugin.h"
@@ -36,6 +35,7 @@
     #include <wx/treectrl.h>
     #include <wx/xrc/xmlres.h>
 #endif
+#include "compilerfactory.h"
 
 #include <wx/radiobox.h>
 

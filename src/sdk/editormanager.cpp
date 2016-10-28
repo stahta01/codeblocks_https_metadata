@@ -20,7 +20,6 @@
     #include "cbeditor.h"
     #include "cbproject.h"
     #include "compiler.h"
-    #include "compilerfactory.h"
     #include "configmanager.h"
     #include "editormanager.h" // class's header file
     #include "filemanager.h"
@@ -32,6 +31,7 @@
     #include "projectmanager.h"
     #include "sdk_events.h"
 #endif
+#include "compilerfactory.h"
 
 #include "annoyingdialog.h"
 #include "cbstyledtextctrl.h"

@@ -24,7 +24,6 @@
     #include "cbeditor.h"
     #include "cbtreectrl.h"
     #include "compiler.h" // GetSwitches
-    #include "compilerfactory.h"
     #include "configmanager.h"
     #include "editormanager.h"
     #include "filemanager.h"
@@ -39,6 +38,7 @@
     #include "projectmanager.h"
     #include "sdk_events.h"
 #endif
+#include "compilerfactory.h"
 
 #include <map>
 #include "projectloader.h"
