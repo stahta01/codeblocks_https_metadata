@@ -161,7 +161,6 @@ BEGIN_EVENT_TABLE(CompilerOptionsDlg, wxPanel)
     EVT_CHOICE(                XRCID("cmbResDirsPolicy"),               CompilerOptionsDlg::OnDirty)
     EVT_CHOICE(                XRCID("cmbLogging"),                     CompilerOptionsDlg::OnDirty)
     EVT_CHECKBOX(              XRCID("chkAlwaysRunPost"),               CompilerOptionsDlg::OnDirty)
-    EVT_CHECKBOX(              XRCID("chkNonPlatComp"),                 CompilerOptionsDlg::OnDirty)
     EVT_TEXT(                  XRCID("txtCompilerOptions"),             CompilerOptionsDlg::OnDirty)
     EVT_TEXT(                  XRCID("txtResourceCompilerOptions"),     CompilerOptionsDlg::OnDirty)
     EVT_TEXT(                  XRCID("txtCompilerDefines"),             CompilerOptionsDlg::OnDirty)
@@ -587,10 +586,6 @@ void CompilerOptionsDlg::DoFillOthers()
         IgnoreOutput = Manager::Get()->GetConfigManager(_T("compiler"))->ReadArrayString(_T("/ignore_output"));
         ArrayString2ListBox(IgnoreOutput, lst);
     }
-
-    chk = XRCCTRL(*this, "chkNonPlatComp", wxCheckBox);
-    if (chk)
-        chk->SetValue(Manager::Get()->GetConfigManager(_T("compiler"))->ReadBool(_T("/non_plat_comp"), false));
 } // DoFillOthers
 
 void CompilerOptionsDlg::DoFillTree()
@@ -2838,20 +2833,6 @@ void CompilerOptionsDlg::OnApply()
             wxArrayString IgnoreOutput;
             ListBox2ArrayString(IgnoreOutput, lst);
             cfg->Write(_T("/ignore_output"), IgnoreOutput);
-        }
-
-        chk = XRCCTRL(*this, "chkNonPlatComp", wxCheckBox);
-        if (chk && (chk->IsChecked() != cfg->ReadBool(_T("/non_plat_comp"), false)))
-        {
-            if (m_Compiler->IsRunning())
-                cbMessageBox(_("You can't change the option to enable or disable non-platform compilers while building!\nSetting ignored..."), _("Warning"), wxICON_WARNING);
-            else
-            {
-                cfg->Write(_T("/non_plat_comp"), (bool)chk->IsChecked());
-                CompilerFactory::UnregisterCompilers();
-                m_Compiler->DoRegisterCompilers();
-                m_Compiler->LoadOptions();
-            }
         }
     }
 
