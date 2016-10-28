@@ -1283,14 +1283,6 @@
 													<border>8</border>
 												</object>
 												<object class="sizeritem">
-													<object class="wxCheckBox" name="chkNonPlatComp">
-														<label>Enable non-platform compilers</label>
-														<tooltip>Enable to use i.e. cross-platform compilers</tooltip>
-													</object>
-													<flag>wxBOTTOM|wxLEFT|wxRIGHT|wxEXPAND</flag>
-													<border>8</border>
-												</object>
-												<object class="sizeritem">
 													<object class="wxStaticLine" name="ID_STATICLINE8" />
 													<flag>wxBOTTOM|wxLEFT|wxRIGHT|wxEXPAND</flag>
 													<border>8</border>

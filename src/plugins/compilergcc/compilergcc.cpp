@@ -859,8 +859,6 @@ void CompilerGCC::LoadOptions()
 
 void CompilerGCC::DoRegisterCompilers()
 {
-    bool nonPlatComp = Manager::Get()->GetConfigManager(_T("compiler"))->ReadBool(_T("/non_plat_comp"), false);
-
     // register built-in compilers
     CompilerFactory::RegisterCompiler(new CompilerMINGW);
     CompilerFactory::RegisterCompiler(new CompilerMSVC);
@@ -921,31 +919,7 @@ void CompilerGCC::DoRegisterCompilers()
             Manager::Get()->GetLogManager()->Log(_("Error: Invalid Code::Blocks compiler definition '") + compilers[i] + wxT("'."));
         else
         {
-            bool val = true;
-            wxString test;
-            if (!nonPlatComp && compiler.GetRoot()->GetAttribute(wxT("platform"), &test))
-            {
-                if (test == wxT("windows"))
-                    val = platform::windows;
-                else if (test == wxT("macosx"))
-                    val = platform::macosx;
-                else if (test == wxT("linux"))
-                    val = platform::Linux;
-                else if (test == wxT("freebsd"))
-                    val = platform::freebsd;
-                else if (test == wxT("netbsd"))
-                    val = platform::netbsd;
-                else if (test == wxT("openbsd"))
-                    val = platform::openbsd;
-                else if (test == wxT("darwin"))
-                    val = platform::darwin;
-                else if (test == wxT("solaris"))
-                    val = platform::solaris;
-                else if (test == wxT("unix"))
-                    val = platform::Unix;
-            }
-            if (val)
-                CompilerFactory::RegisterCompiler(
+            CompilerFactory::RegisterCompiler(
                                    new CompilerXML(compiler.GetRoot()->GetAttribute(wxT("name"), wxEmptyString),
                                                    compiler.GetRoot()->GetAttribute(wxT("id"), wxEmptyString),
                                                    compilers[i]));
