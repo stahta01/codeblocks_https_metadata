@@ -11,7 +11,6 @@
 
 #ifndef CB_PRECOMP
     #include "cbproject.h"
-    #include "compilerfactory.h"
     #include "editormanager.h"
     #include "editorcolourset.h"
     #include "logmanager.h"
@@ -28,6 +27,7 @@
     #include <wx/stattext.h>
     #include <wx/sizer.h>
 #endif
+#include "compilerlist.h"
 
 #ifdef __WXMSW__
 // TODO: equivalent??? -> #include <errno.h>
@@ -350,14 +350,14 @@ void ProjectFileOptionsDlg::FillCompilers()
     // fill compilers combo
     wxChoice* cmb = XRCCTRL(*this, "cmbBuildStageCompiler", wxChoice);
     cmb->Clear();
-    for (unsigned int i = 0; i < CompilerFactory::GetCompilersCount(); ++i)
+    for (unsigned int i = 0; i < CompilerList::GetCompilersCount(); ++i)
     {
-        Compiler* compiler = CompilerFactory::GetCompiler(i);
+        Compiler* compiler = CompilerList::GetCompiler(i);
         if (compiler)
             cmb->Append(compiler->GetName());
     }
     // select project default compiler
-    m_LastBuildStageCompilerSel = CompilerFactory::GetCompilerIndex(m_ProjectFile->GetParentProject()->GetCompilerID());
+    m_LastBuildStageCompilerSel = CompilerList::GetCompilerIndex(m_ProjectFile->GetParentProject()->GetCompilerID());
     cmb->SetSelection(m_LastBuildStageCompilerSel);
 }
 
@@ -365,7 +365,7 @@ void ProjectFileOptionsDlg::UpdateBuildCommand()
 {
     wxChoice* cmb = XRCCTRL(*this, "cmbBuildStageCompiler", wxChoice);
     int idx = cmb->GetSelection();
-    Compiler* compiler = CompilerFactory::GetCompiler(idx);
+    Compiler* compiler = CompilerList::GetCompiler(idx);
     if (!compiler)
       return;
 
@@ -384,7 +384,7 @@ void ProjectFileOptionsDlg::UpdateBuildCommand()
 
 void ProjectFileOptionsDlg::SaveBuildCommandSelection()
 {
-    Compiler* compiler = CompilerFactory::GetCompiler(m_LastBuildStageCompilerSel);
+    Compiler* compiler = CompilerList::GetCompiler(m_LastBuildStageCompilerSel);
     if (compiler)
     {
         m_ProjectFile->customBuild[compiler->GetID()].useCustomBuildCommand = XRCCTRL(*this, "chkBuildStage", wxCheckBox)->GetValue();
