@@ -29,7 +29,6 @@
     #include <wx/xrc/xmlres.h>
 
     #include "compiler.h"
-    #include "compilerfactory.h"
     #include "configmanager.h"
     #include "globals.h"
     #include "macrosmanager.h"
@@ -37,6 +36,8 @@
     #include "logmanager.h"
     #include "projectmanager.h"
 #endif
+#include "compilerlist.h"
+
 #include <wx/filedlg.h>
 #include <wx/propgrid/propgrid.h>
 #include <wx/xml/xml.h>
@@ -300,11 +301,11 @@ CompilerOptionsDlg::CompilerOptionsDlg(wxWindow* parent, CompilerGCC* compiler, 
     // compiler independent (so settings these ones is sufficient)
     DoFillOthers();
     DoFillTree();
-    int compilerIdx = CompilerFactory::GetCompilerIndex(CompilerFactory::GetDefaultCompilerID());
+    int compilerIdx = CompilerList::GetCompilerIndex(CompilerList::GetDefaultCompilerID());
     if (m_pTarget)
-        compilerIdx = CompilerFactory::GetCompilerIndex(m_pTarget->GetCompilerID());
+        compilerIdx = CompilerList::GetCompilerIndex(m_pTarget->GetCompilerID());
     else if (m_pProject)
-        compilerIdx = CompilerFactory::GetCompilerIndex(m_pProject->GetCompilerID());
+        compilerIdx = CompilerList::GetCompilerIndex(m_pProject->GetCompilerID());
     if ((m_pTarget || m_pProject) && compilerIdx == -1)
     {   // unknown user compiler
         // similar code can be found @ OnTreeSelectionChange()
@@ -323,13 +324,13 @@ CompilerOptionsDlg::CompilerOptionsDlg(wxWindow* parent, CompilerGCC* compiler, 
                     CompilerId.wx_str());
         Compiler* comp = 0;
         if ((m_pTarget && m_pTarget->SupportsCurrentPlatform()) || (!m_pTarget && m_pProject))
-            comp = CompilerFactory::SelectCompilerUI(msg);
+            comp = CompilerList::SelectCompilerUI(msg);
 
         if (comp)
         {   // a new compiler was chosen, proceed as if the user manually selected another compiler
             // that means set the compiler selection list accordingly
             // and go directly to (On)CompilerChanged
-            int NewCompilerIdx = CompilerFactory::GetCompilerIndex(comp);
+            int NewCompilerIdx = CompilerList::GetCompilerIndex(comp);
             DoFillCompilerSets(NewCompilerIdx);
             wxCommandEvent Dummy;
             OnCompilerChanged(Dummy);
@@ -343,10 +344,10 @@ CompilerOptionsDlg::CompilerOptionsDlg(wxWindow* parent, CompilerGCC* compiler, 
     }
     else
     {
-        if (!CompilerFactory::GetCompiler(compilerIdx))
+        if (!CompilerList::GetCompiler(compilerIdx))
             compilerIdx = 0;
         DoFillCompilerSets(compilerIdx);
-        m_Options = CompilerFactory::GetCompiler(compilerIdx)->GetOptions();
+        m_Options = CompilerList::GetCompiler(compilerIdx)->GetOptions();
         m_CurrentCompilerIdx = compilerIdx;
         // compiler dependent settings
         DoFillCompilerDependentSettings();
@@ -397,9 +398,9 @@ void CompilerOptionsDlg::DoFillCompilerSets(int compilerIdx)
 {
     wxChoice* cmb = XRCCTRL(*this, "cmbCompiler", wxChoice);
     cmb->Clear();
-    for (unsigned int i = 0; i < CompilerFactory::GetCompilersCount(); ++i)
+    for (unsigned int i = 0; i < CompilerList::GetCompilersCount(); ++i)
     {
-        cmb->Append(CompilerFactory::GetCompiler(i)->GetName());
+        cmb->Append(CompilerList::GetCompiler(i)->GetName());
     }
 
 //    int compilerIdx = CompilerFactory::GetCompilerIndex(CompilerFactory::GetDefaultCompilerID());
@@ -468,7 +469,7 @@ void CompilerOptionsDlg::DoFillCompilerPrograms()
     if (m_pProject)
         return; // no "Programs" page
 
-    const Compiler* compiler = CompilerFactory::GetCompiler(m_CurrentCompilerIdx);
+    const Compiler* compiler = CompilerList::GetCompiler(m_CurrentCompilerIdx);
     if (!compiler)
         return;
     const CompilerPrograms& progs = compiler->GetPrograms();
@@ -694,7 +695,7 @@ void CompilerOptionsDlg::TextToOptions()
 
     wxString rest;
 
-    Compiler* compiler = CompilerFactory::GetCompiler(m_CurrentCompilerIdx);
+    Compiler* compiler = CompilerList::GetCompiler(m_CurrentCompilerIdx);
 
     XRCCTRL(*this, "txtCompilerDefines", wxTextCtrl)->Clear();
     unsigned int i = 0;
@@ -819,7 +820,7 @@ void CompilerOptionsDlg::DoLoadOptions()
     if (!m_pProject && !m_pTarget)
     {
         // global options
-        const Compiler* compiler = CompilerFactory::GetCompiler(m_CurrentCompilerIdx);
+        const Compiler* compiler = CompilerList::GetCompiler(m_CurrentCompilerIdx);
         if (compiler)
         {
             IncludeDirs = compiler->GetIncludeDirs();
@@ -912,7 +913,7 @@ void CompilerOptionsDlg::OptionsToText()
     DoGetCompileOptions(array, XRCCTRL(*this, "txtCompilerDefines", wxTextCtrl));
 
     int compilerIdx = XRCCTRL(*this, "cmbCompiler", wxChoice)->GetSelection();
-    const Compiler* compiler = CompilerFactory::GetCompiler(compilerIdx);
+    const Compiler* compiler = CompilerList::GetCompiler(compilerIdx);
 
     for (unsigned int i = 0; i < array.GetCount(); ++i)
     {
@@ -1000,7 +1001,7 @@ void CompilerOptionsDlg::DoSaveOptions()
     if (!m_pProject && !m_pTarget)
     {
         // global options
-        Compiler* compiler = CompilerFactory::GetCompiler(m_CurrentCompilerIdx);
+        Compiler* compiler = CompilerList::GetCompiler(m_CurrentCompilerIdx);
         if (compiler)
         {
             compiler->SetIncludeDirs(IncludeDirs);
@@ -1086,7 +1087,7 @@ void CompilerOptionsDlg::DoSaveOptions()
 
 void CompilerOptionsDlg::DoSaveCompilerPrograms()
 {
-    Compiler* compiler = CompilerFactory::GetCompiler(m_CurrentCompilerIdx);
+    Compiler* compiler = CompilerList::GetCompiler(m_CurrentCompilerIdx);
     if (m_pProject || !compiler) // no "Programs" page or no compiler
         return;
 
@@ -1158,7 +1159,7 @@ void CompilerOptionsDlg::DoSaveVars()
 void CompilerOptionsDlg::DoSaveCompilerDefinition()
 {
     wxXmlNode* root = new wxXmlNode(wxXML_ELEMENT_NODE, wxT("CodeBlocks_compiler_options"));
-    Compiler* compiler = CompilerFactory::GetCompiler(m_CurrentCompilerIdx);
+    Compiler* compiler = CompilerList::GetCompiler(m_CurrentCompilerIdx);
     const wxString name = wxT("name");
     const wxString value = wxT("value");
     wxXmlNode* node = new wxXmlNode(root, wxXML_ELEMENT_NODE, wxT("Program"));
@@ -1459,8 +1460,8 @@ void CompilerOptionsDlg::OnTreeSelectionChange(wxTreeEvent& event)
     ScopeTreeData* data = (ScopeTreeData*)tc->GetItemData(event.GetItem());
     if (!data)
         return;
-    int compilerIdx = data->GetTarget() ? CompilerFactory::GetCompilerIndex(data->GetTarget()->GetCompilerID()) :
-                        (data->GetProject() ? CompilerFactory::GetCompilerIndex(data->GetProject()->GetCompilerID()) :
+    int compilerIdx = data->GetTarget() ? CompilerList::GetCompilerIndex(data->GetTarget()->GetCompilerID()) :
+                        (data->GetProject() ? CompilerList::GetCompilerIndex(data->GetProject()->GetCompilerID()) :
                         XRCCTRL(*this, "cmbCompiler", wxChoice)->GetSelection());
     // in order to support projects/targets which have an unknown "user compiler", that is on the current
     // system that compiler is not (or no longer) installed, we should check the compilerIdx, in such a case it will
@@ -1509,7 +1510,7 @@ void CompilerOptionsDlg::OnTreeSelectionChange(wxTreeEvent& event)
             // the new selection might have a different compiler settings and/or even a different compiler
             // load all those new settings
             m_CurrentCompilerIdx = compilerIdx;
-            Compiler* compiler = CompilerFactory::GetCompiler(m_CurrentCompilerIdx);
+            Compiler* compiler = CompilerList::GetCompiler(m_CurrentCompilerIdx);
             if (compiler)
                 m_Options = compiler->GetOptions();
             DoFillCompilerDependentSettings();
@@ -1526,13 +1527,13 @@ void CompilerOptionsDlg::OnTreeSelectionChange(wxTreeEvent& event)
                     CompilerId.wx_str());
         Compiler* compiler = 0;
         if (m_pTarget && m_pTarget->SupportsCurrentPlatform())
-            compiler = CompilerFactory::SelectCompilerUI(msg);
+            compiler = CompilerList::SelectCompilerUI(msg);
 
         if (compiler)
         {   // a new compiler was chosen, proceed as if the user manually selected another compiler
             // that means set the compiler selection list accordingly
             // and go directly to (On)CompilerChanged
-            int NewCompilerIdx = CompilerFactory::GetCompilerIndex(compiler);
+            int NewCompilerIdx = CompilerList::GetCompilerIndex(compiler);
             XRCCTRL(*this, "cmbCompiler", wxChoice)->SetSelection(NewCompilerIdx);
             wxCommandEvent Dummy;
             OnCompilerChanged(Dummy);
@@ -1634,10 +1635,10 @@ void CompilerOptionsDlg::CompilerChanged()
     // not compiler change since we could (re)change the compiler of that project/target
     if (m_pProject)
     {
-        m_NewProjectOrTargetCompilerId = CompilerFactory::GetCompiler(m_CurrentCompilerIdx)->GetID();
+        m_NewProjectOrTargetCompilerId = CompilerList::GetCompiler(m_CurrentCompilerIdx)->GetID();
     }
     //load the new options (== options of the new selected compiler)
-    Compiler* compiler = CompilerFactory::GetCompiler(m_CurrentCompilerIdx);
+    Compiler* compiler = CompilerList::GetCompiler(m_CurrentCompilerIdx);
     if (compiler)
         m_Options = compiler->GetOptions();
     DoFillCompilerDependentSettings();
@@ -1654,7 +1655,7 @@ void CompilerOptionsDlg::UpdateCompilerForTargets(int compilerIdx)
         for (int i = 0; i < m_pProject->GetBuildTargetsCount(); ++i)
         {
             ProjectBuildTarget* target = m_pProject->GetBuildTarget(i);
-            Compiler* compiler = CompilerFactory::GetCompiler(compilerIdx);
+            Compiler* compiler = CompilerList::GetCompiler(compilerIdx);
             if (compiler)
                 target->SetCompilerID(compiler->GetID());
         }
@@ -1663,7 +1664,7 @@ void CompilerOptionsDlg::UpdateCompilerForTargets(int compilerIdx)
 
 void CompilerOptionsDlg::AutoDetectCompiler()
 {
-    Compiler* compiler = CompilerFactory::GetCompiler(m_CurrentCompilerIdx);
+    Compiler* compiler = CompilerList::GetCompiler(m_CurrentCompilerIdx);
     if (!compiler)
         return;
 
@@ -1702,7 +1703,7 @@ void CompilerOptionsDlg::AutoDetectCompiler()
     }
     XRCCTRL(*this, "txtMasterPath", wxTextCtrl)->SetValue(compiler->GetMasterPath());
     XRCCTRL(*this, "lstExtraPaths", wxListBox)->Clear();
-    const wxArrayString& extraPaths = CompilerFactory::GetCompiler(m_CurrentCompilerIdx)->GetExtraPaths();
+    const wxArrayString& extraPaths = CompilerList::GetCompiler(m_CurrentCompilerIdx)->GetExtraPaths();
        ArrayString2ListBox(extraPaths, XRCCTRL(*this, "lstExtraPaths", wxListBox));
     m_bDirty = true;
 } // AutoDetectCompiler
@@ -1729,7 +1730,7 @@ CompileOptionsBase* CompilerOptionsDlg::GetVarsOwner()
 {
     return m_pTarget ? m_pTarget
                      : (m_pProject ? m_pProject
-                                   : (CompileOptionsBase*)(CompilerFactory::GetCompiler(m_CurrentCompilerIdx)));
+                                   : (CompileOptionsBase*)(CompilerList::GetCompiler(m_CurrentCompilerIdx)));
 } // GetVarsOwner
 
 void CompilerOptionsDlg::OnCategoryChanged(cb_unused wxCommandEvent& event)
@@ -2078,9 +2079,9 @@ void CompilerOptionsDlg::OnSetDefaultCompilerClick(cb_unused wxCommandEvent& eve
 {
     wxChoice* cmb = XRCCTRL(*this, "cmbCompiler", wxChoice);
     int idx = cmb->GetSelection();
-    CompilerFactory::SetDefaultCompiler(idx);
+    CompilerList::SetDefaultCompiler(idx);
     wxString msg;
-    Compiler* compiler = CompilerFactory::GetDefaultCompiler();
+    Compiler* compiler = CompilerList::GetDefaultCompiler();
     #if wxCHECK_VERSION(3, 0, 0)
     msg.Printf(_("%s is now selected as the default compiler for new projects"), compiler ? compiler->GetName().wx_str() : _("[invalid]").wx_str());
     #else
@@ -2117,14 +2118,14 @@ void CompilerOptionsDlg::OnAddCompilerClick(cb_unused wxCommandEvent& event)
     cmb = XRCCTRL(*this, "cmbCompiler", wxChoice);
     wxString value = cbGetTextFromUser(_("Please enter the new compiler's name:"),
                                     _("Add new compiler"),
-                                    _("Copy of ") + CompilerFactory::GetCompiler(m_CurrentCompilerIdx)->GetName());
+                                    _("Copy of ") + CompilerList::GetCompiler(m_CurrentCompilerIdx)->GetName());
     if (!value.IsEmpty())
     {
         // make a copy of current compiler
         Compiler* newC = 0;
         try
         {
-            newC = CompilerFactory::CreateCompilerCopy(CompilerFactory::GetCompiler(m_CurrentCompilerIdx), value);
+            newC = CompilerList::CreateCompilerCopy(CompilerList::GetCompiler(m_CurrentCompilerIdx), value);
         }
         catch (cbException& e)
         {
@@ -2141,7 +2142,7 @@ void CompilerOptionsDlg::OnAddCompilerClick(cb_unused wxCommandEvent& event)
         }
         else
         {
-            m_CurrentCompilerIdx = CompilerFactory::GetCompilerIndex(newC);
+            m_CurrentCompilerIdx = CompilerList::GetCompilerIndex(newC);
 
             cmb->Append(value);
             cmb->SetSelection(cmb->GetCount() - 1);
@@ -2163,7 +2164,7 @@ void CompilerOptionsDlg::OnEditCompilerClick(cb_unused wxCommandEvent& event)
     wxString value = cbGetTextFromUser(_("Please edit the compiler's name:"), _("Rename compiler"), cmb->GetStringSelection());
     if (!value.IsEmpty())
     {
-        Compiler* compiler = CompilerFactory::GetCompiler(m_CurrentCompilerIdx);
+        Compiler* compiler = CompilerList::GetCompiler(m_CurrentCompilerIdx);
         if (compiler)
             compiler->SetName(value);
         cmb->SetString(m_CurrentCompilerIdx, value);
@@ -2179,7 +2180,7 @@ void CompilerOptionsDlg::OnRemoveCompilerClick(cb_unused wxCommandEvent& event)
     {
         wxChoice* cmb = XRCCTRL(*this, "cmbCompiler", wxChoice);
         int compilerIdx = m_CurrentCompilerIdx;
-        CompilerFactory::RemoveCompiler(CompilerFactory::GetCompiler(compilerIdx));
+        CompilerList::RemoveRegisteredCompiler(CompilerList::GetCompiler(compilerIdx));
         cmb->Delete(compilerIdx);
         while (compilerIdx >= (int)(cmb->GetCount()))
             --compilerIdx;
@@ -2199,7 +2200,7 @@ void CompilerOptionsDlg::OnResetCompilerClick(cb_unused wxCommandEvent& event)
                     _("Confirmation"),
                     wxYES | wxNO| wxICON_QUESTION | wxNO_DEFAULT) == wxID_YES)
     {
-        Compiler* compiler = CompilerFactory::GetCompiler(m_CurrentCompilerIdx);
+        Compiler* compiler = CompilerList::GetCompiler(m_CurrentCompilerIdx);
         if (compiler)
         {
             const wxString file = wxT("/compilers/options_") + compiler->GetID() + wxT(".xml");
@@ -2212,7 +2213,7 @@ void CompilerOptionsDlg::OnResetCompilerClick(cb_unused wxCommandEvent& event)
         }
         // run auto-detection
         AutoDetectCompiler();
-        CompilerFactory::SaveSettings();
+        CompilerList::SaveSettings();
         // refresh settings in dialog
         DoFillCompilerDependentSettings();
     }
@@ -2659,7 +2660,7 @@ void CompilerOptionsDlg::OnAdvancedClick(cb_unused wxCommandEvent& event)
     {
         wxChoice* cmb = XRCCTRL(*this, "cmbCompiler", wxChoice);
         int compilerIdx = cmb->GetSelection();
-        AdvancedCompilerOptionsDlg dlg2(this, CompilerFactory::GetCompiler(compilerIdx)->GetID());
+        AdvancedCompilerOptionsDlg dlg2(this, CompilerList::GetCompiler(compilerIdx)->GetID());
         PlaceWindow(&dlg2);
         dlg2.ShowModal();
         // check if dirty
@@ -2756,9 +2757,9 @@ void CompilerOptionsDlg::OnUpdateUI(cb_unused wxUpdateUIEvent& event)
         en = !data; // global options selected
         int idx   = XRCCTRL(*this, "cmbCompiler", wxChoice)->GetSelection();
         int count = XRCCTRL(*this, "cmbCompiler", wxChoice)->GetCount(); // compilers count
-        Compiler* compiler = CompilerFactory::GetCompiler(idx);
+        Compiler* compiler = CompilerList::GetCompiler(idx);
 
-        XRCCTRL(*this, "btnSetDefaultCompiler", wxButton)->Enable(CompilerFactory::GetCompilerIndex(CompilerFactory::GetDefaultCompiler()) != idx);
+        XRCCTRL(*this, "btnSetDefaultCompiler", wxButton)->Enable(CompilerList::GetCompilerIndex(CompilerList::GetDefaultCompiler()) != idx);
         XRCCTRL(*this, "btnAddCompiler",        wxButton)->Enable(en);
         XRCCTRL(*this, "btnRenameCompiler",     wxButton)->Enable(en && count);
         XRCCTRL(*this, "btnDelCompiler",        wxButton)->Enable(en &&
@@ -2778,7 +2779,7 @@ void CompilerOptionsDlg::OnApply()
 {
     m_CurrentCompilerIdx = XRCCTRL(*this, "cmbCompiler", wxChoice)->GetSelection();
     DoSaveCompilerDependentSettings();
-    CompilerFactory::SaveSettings();
+    CompilerList::SaveSettings();
 
     //others (projects don't have Other tab)
     if (!m_pProject)
@@ -2934,7 +2935,7 @@ void CompilerOptionsDlg::OnFlagsPopup(wxPropertyGridEvent& event)
         return;
     if (m_MenuOption == FMO_COnly)
     {
-        Compiler* compiler = CompilerFactory::GetCompiler(m_CurrentCompilerIdx);
+        Compiler* compiler = CompilerList::GetCompiler(m_CurrentCompilerIdx);
         wxTextEntryDialog dlg(this, wxT("List flags that will only be used during C compilation"),
                               wxT("C - only flags"), compiler->GetCOnlyFlags(), wxTextEntryDialogStyle|wxTE_MULTILINE|wxRESIZE_BORDER);
         // TODO: Hack for Ubuntu, see here: http://forums.codeblocks.org/index.php/topic,16463.msg115270.html#msg115270 (Remove if no longer needed.)
@@ -2959,7 +2960,7 @@ void CompilerOptionsDlg::OnFlagsPopup(wxPropertyGridEvent& event)
     }
     else if (m_MenuOption == FMO_CPPOnly)
     {
-        Compiler* compiler = CompilerFactory::GetCompiler(m_CurrentCompilerIdx);
+        Compiler* compiler = CompilerList::GetCompiler(m_CurrentCompilerIdx);
         wxTextEntryDialog dlg(this, wxT("List flags that will only be used during C++ compilation"),
                               wxT("C++ - only flags"), compiler->GetCPPOnlyFlags(), wxTextEntryDialogStyle|wxTE_MULTILINE|wxRESIZE_BORDER);
         // TODO: Hack for Ubuntu, see here: http://forums.codeblocks.org/index.php/topic,16463.msg115270.html#msg115270 (Remove if no longer needed.)
