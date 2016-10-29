@@ -8,6 +8,7 @@
 
 #include "scrollingdialog.h"
 #include "settings.h"
+#include "compilerlist.h" // CompilerListIndex
 
 class ProjectFile;
 
@@ -33,7 +34,7 @@ class DLLIMPORT ProjectFileOptionsDlg : public wxScrollingDialog
         ProjectFile* m_ProjectFile;
         wxString     m_FileNameStr;
         wxFileName   m_FileName;
-        int          m_LastBuildStageCompilerSel;
+        CompilerListIndex   m_LastBuildStageCompilerSel;
 
         DECLARE_EVENT_TABLE()
 };
