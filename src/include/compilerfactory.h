@@ -13,7 +13,9 @@
 
 class Compiler;
 
-typedef signed short int CompilerIndex;
+typedef signed short int CompilerListedIndex;
+typedef signed long int CompilerIndex;
+typedef wxString CompilerID;
 
 // Well, not really a factory ;)
 
@@ -24,24 +26,27 @@ class DLLIMPORT CompilerFactory
     public:
         /// @return the number of registered compilers.
         static size_t GetCompilersCount();
-        /// @return the compiler by an index.
+        /// @return the registered compiler by an index.
         static Compiler* GetCompiler(CompilerIndex index);
-        /// @return the compiler by a name (ID). *Not* the compiler's title...
+        /// @return the registered compiler by a name (ID). *Not* the compiler's title...
         static Compiler* GetCompiler(const wxString& id);
-        /// @return the compiler by title.
+        /// @return the registered compiler by title.
         static Compiler* GetCompilerByName(const wxString& title);
 
-        /// @return the compiler's index from its id. Returns -1 if it doesn't exist.
+        /// @return the listed compiler by an index.
+        static Compiler* GetListedCompiler(CompilerListedIndex index);
+
+        /// @return the registered compiler's index from its id. Returns -1 if it doesn't exist.
         static CompilerIndex GetCompilerIndex(const wxString& id);
-        /// @return the compiler's index. Returns -1 if it doesn't exist.
+        /// @return the registered compiler's index. Returns -1 if it doesn't exist.
         static CompilerIndex GetCompilerIndex(Compiler* compiler);
 
-        /// @return true if the specified compiler ID is valid, false if not.
+        /// @return true if the specified registered compiler ID is valid, false if not.
         static bool IsValidCompilerID(const wxString& id){ return GetCompilerIndex(id) != -1; }
 
-        /// @return true if compiler ID @c id inherits, directly or indirectly, from compiler ID @c from_id.
+        /// @return true if registered compiler ID @c id inherits, directly or indirectly, from compiler ID @c from_id.
         static bool CompilerInheritsFrom(const wxString& id, const wxString& from_id);
-        /// @return true if @c compiler inherits, directly or indirectly, from compiler ID @c from_id.
+        /// @return true if @c registered compiler inherits, directly or indirectly, from compiler ID @c from_id.
         static bool CompilerInheritsFrom(Compiler* compiler, const wxString& from_id);
 
         /// Register a supported (builtin) compiler.
@@ -54,7 +59,7 @@ class DLLIMPORT CompilerFactory
         static void RemoveCompiler(Compiler* compiler);
         /// Unregister all compilers.
         static void UnregisterCompilers();
-        /// get the version number as string for the compiler with the specified index
+        /// get the version number as string for the compiler with the specified ID
         static wxString GetCompilerVersionString(const wxString& Id);
 
         static void SaveSettings();
@@ -69,6 +74,7 @@ class DLLIMPORT CompilerFactory
         static Compiler* SelectCompilerUI(const wxString& message = _("Select compiler"), const wxString& preselectedID = wxEmptyString);
     private:
         static CompilersArray Compilers;
+        static CompilersArray ListedCompilers;
         static Compiler* s_DefaultCompiler;
 };
 

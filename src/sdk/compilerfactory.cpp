@@ -22,6 +22,7 @@
 
 // statics
 CompilersArray CompilerFactory::Compilers;
+CompilersArray CompilerFactory::ListedCompilers;
 Compiler* CompilerFactory::s_DefaultCompiler = nullptr;
 
 size_t CompilerFactory::GetCompilersCount()
@@ -37,6 +38,16 @@ Compiler* CompilerFactory::GetCompiler(CompilerIndex index)
     if ((Compilers.GetCount() < 1) || (index >= Compilers.GetCount()))
         return nullptr;
     return Compilers[index];
+}
+
+Compiler* CompilerFactory::GetListedCompiler(CompilerListedIndex index)
+{
+    // NOTE: The index can be -1 , if there is no compiler at all or less than number of compilers.
+    /* NOTE: Any negative value of index will be converted to a large unsigned integer.
+    Therefore it's safe to check if the index equals or exceeds the compiler count. */
+    if ((ListedCompilers.GetCount() < 1) || (index >= ListedCompilers.GetCount()))
+        return nullptr;
+    return ListedCompilers[index];
 }
 
 Compiler* CompilerFactory::GetCompiler(const wxString& id)
