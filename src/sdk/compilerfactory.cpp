@@ -24,6 +24,7 @@
 CompilersArray CompilerFactory::Compilers;
 CompilersArray CompilerFactory::ListedCompilers;
 Compiler* CompilerFactory::s_DefaultCompiler = nullptr;
+wxArrayString CompilerFactory::m_ListedCompilerIDs; // map to guarantee unique IDs
 
 size_t CompilerFactory::GetCompilersCount()
 {
@@ -220,6 +221,7 @@ void CompilerFactory::RemoveCompiler(Compiler* compiler)
 {
     if (!compiler || compiler->m_ParentID.IsEmpty())
         return;
+    RemoveListedCompiler(compiler);
     Manager::Get()->GetConfigManager(_T("compiler"))->DeleteSubPath(_T("/user_sets/") + compiler->GetID());
 
     Compilers.Remove(compiler);
@@ -229,6 +231,18 @@ void CompilerFactory::RemoveCompiler(Compiler* compiler)
     delete compiler;
 
     SaveSettings();
+}
+
+void CompilerFactory::RemoveListedCompiler(Compiler* compiler)
+{
+    if (!compiler || compiler->m_ParentID.IsEmpty())
+        return;
+
+    m_ListedCompilerIDs.Remove(compiler->GetID());
+    ListedCompilers.Remove(compiler);
+    Manager::Get()->GetLogManager()->DebugLog(F(_T("Listed Compiler \"%s\" removed"), compiler->GetName().wx_str()));
+
+    SaveListedSettings();
 }
 
 void CompilerFactory::UnregisterCompilers()
@@ -289,6 +303,10 @@ void CompilerFactory::SaveSettings()
         event.SetClientData(static_cast<void*>(Compilers[i]));
         Manager::Get()->ProcessEvent(event);
     }
+}
+
+void CompilerFactory::SaveListedSettings()
+{
 }
 
 void CompilerFactory::LoadSettings()

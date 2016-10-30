@@ -39,6 +39,12 @@ class DLLIMPORT CompilerFactory
         static Compiler* GetListedCompiler(CompilerListedIndex index);
         /// @return the listed compiler's index from its id. Returns -1 if it doesn't exist.
         static CompilerListedIndex GetListedCompilerIndex(const wxString& id);
+        /// Remove a listed compiler.
+        static void RemoveListedCompiler(Compiler* compiler);
+        /// Add a listed compiler from registered ID.
+        static void AddListedCompiler(const wxString& registeredId);
+        static void SaveListedSettings();
+        static void LoadListedSettings();
 
         /// @return the registered compiler's index from its id. Returns -1 if it doesn't exist.
         static CompilerIndex GetCompilerIndex(const wxString& id);
@@ -80,6 +86,7 @@ class DLLIMPORT CompilerFactory
         static CompilersArray Compilers;
         static CompilersArray ListedCompilers;
         static Compiler* s_DefaultCompiler;
+        static wxArrayString m_ListedCompilerIDs; // map to guarantee unique IDs
 };
 
 #endif // COMPILERFACTORY_H
