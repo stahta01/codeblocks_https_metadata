@@ -245,6 +245,14 @@ void CompilerFactory::RemoveListedCompiler(Compiler* compiler)
     SaveListedSettings();
 }
 
+void CompilerFactory::AddListedCompiler(const wxString& registeredId)
+{
+    ListedCompilers.Add(GetCompiler(registeredId));
+    m_ListedCompilerIDs.Add(registeredId);
+
+    SaveListedSettings();
+}
+
 void CompilerFactory::UnregisterCompilers()
 {
     WX_CLEAR_ARRAY(CompilerFactory::Compilers);
@@ -338,6 +346,16 @@ void CompilerFactory::LoadSettings()
         adc.ShowModal();
         adc.Raise();
     }
+    LoadListedSettings();
+}
+
+void CompilerFactory::LoadListedSettings()
+{
+    // m_ListedCompilerIDs.Add(ID);
+    // AddListedCompiler
+
+    // Temp code that just fakes loading the ListedCompilers from external source.
+
 }
 
 Compiler* CompilerFactory::SelectCompilerUI(const wxString& message, const wxString& preselectedID)
