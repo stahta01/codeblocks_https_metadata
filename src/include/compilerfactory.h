@@ -86,7 +86,7 @@ class DLLIMPORT CompilerFactory
         static CompilersArray Compilers;
         static CompilersArray ListedCompilers;
         static Compiler* s_DefaultCompiler;
-        static wxArrayString m_ListedCompilerIDs; // map to guarantee unique IDs
+        static wxArrayString ListedCompilerIDs;
 };
 
 #endif // COMPILERFACTORY_H

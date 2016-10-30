@@ -24,7 +24,7 @@
 CompilersArray CompilerFactory::Compilers;
 CompilersArray CompilerFactory::ListedCompilers;
 Compiler* CompilerFactory::s_DefaultCompiler = nullptr;
-wxArrayString CompilerFactory::m_ListedCompilerIDs; // map to guarantee unique IDs
+wxArrayString CompilerFactory::ListedCompilerIDs;
 
 size_t CompilerFactory::GetCompilersCount()
 {
@@ -238,7 +238,7 @@ void CompilerFactory::RemoveListedCompiler(Compiler* compiler)
     if (!compiler || compiler->m_ParentID.IsEmpty())
         return;
 
-    m_ListedCompilerIDs.Remove(compiler->GetID());
+    ListedCompilerIDs.Remove(compiler->GetID());
     ListedCompilers.Remove(compiler);
     Manager::Get()->GetLogManager()->DebugLog(F(_T("Listed Compiler \"%s\" removed"), compiler->GetName().wx_str()));
 
@@ -248,7 +248,7 @@ void CompilerFactory::RemoveListedCompiler(Compiler* compiler)
 void CompilerFactory::AddListedCompiler(const wxString& registeredId)
 {
     ListedCompilers.Add(GetCompiler(registeredId));
-    m_ListedCompilerIDs.Add(registeredId);
+    ListedCompilerIDs.Add(registeredId);
 
     SaveListedSettings();
 }
