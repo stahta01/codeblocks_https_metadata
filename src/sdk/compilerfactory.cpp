@@ -30,6 +30,11 @@ size_t CompilerFactory::GetCompilersCount()
     return Compilers.GetCount();
 }
 
+size_t CompilerFactory::GetListedCompilersCount()
+{
+    return ListedCompilers.GetCount();
+}
+
 Compiler* CompilerFactory::GetCompiler(CompilerIndex index)
 {
     // NOTE: The index can be -1 , if there is no compiler at all or less than number of compilers.
@@ -93,6 +98,17 @@ CompilerIndex CompilerFactory::GetCompilerIndex(const wxString& id)
         wxString oldId = Compilers[i]->GetID();
         oldId.Replace(wxT("-"), wxEmptyString);
         if (oldId.IsSameAs(lid))
+            return i;
+    }
+    return -1;
+}
+
+CompilerListedIndex CompilerFactory::GetListedCompilerIndex(const wxString& id)
+{
+    const wxString lid = id.Lower();
+    for (size_t i = 0; i < ListedCompilers.GetCount(); ++i)
+    {
+        if (ListedCompilers[i]->GetID().IsSameAs(lid))
             return i;
     }
     return -1;

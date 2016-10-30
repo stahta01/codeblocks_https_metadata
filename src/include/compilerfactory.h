@@ -33,8 +33,12 @@ class DLLIMPORT CompilerFactory
         /// @return the registered compiler by title.
         static Compiler* GetCompilerByName(const wxString& title);
 
+        /// @return the number of listed compilers.
+        static size_t GetListedCompilersCount();
         /// @return the listed compiler by an index.
         static Compiler* GetListedCompiler(CompilerListedIndex index);
+        /// @return the listed compiler's index from its id. Returns -1 if it doesn't exist.
+        static CompilerListedIndex GetListedCompilerIndex(const wxString& id);
 
         /// @return the registered compiler's index from its id. Returns -1 if it doesn't exist.
         static CompilerIndex GetCompilerIndex(const wxString& id);
