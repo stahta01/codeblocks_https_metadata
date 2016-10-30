@@ -350,22 +350,22 @@ void ProjectFileOptionsDlg::FillCompilers()
     // fill compilers combo
     wxChoice* cmb = XRCCTRL(*this, "cmbBuildStageCompiler", wxChoice);
     cmb->Clear();
-    for (unsigned int i = 0; i < CompilerFactory::GetCompilersCount(); ++i)
+    for (CompilerListedIndex i = 0; i < CompilerFactory::GetListedCompilersCount(); ++i)
     {
-        Compiler* compiler = CompilerFactory::GetCompiler(i);
+        Compiler* compiler = CompilerFactory::GetListedCompiler(i);
         if (compiler)
             cmb->Append(compiler->GetName());
     }
     // select project default compiler
-    m_LastBuildStageCompilerSel = CompilerFactory::GetCompilerIndex(m_ProjectFile->GetParentProject()->GetCompilerID());
+    m_LastBuildStageCompilerSel = CompilerFactory::GetListedCompilerIndex(m_ProjectFile->GetParentProject()->GetCompilerID());
     cmb->SetSelection(m_LastBuildStageCompilerSel);
 }
 
 void ProjectFileOptionsDlg::UpdateBuildCommand()
 {
     wxChoice* cmb = XRCCTRL(*this, "cmbBuildStageCompiler", wxChoice);
-    int idx = cmb->GetSelection();
-    Compiler* compiler = CompilerFactory::GetCompiler(idx);
+    CompilerListedIndex idx = cmb->GetSelection();
+    Compiler* compiler = CompilerFactory::GetListedCompiler(idx);
     if (!compiler)
       return;
 
@@ -384,7 +384,7 @@ void ProjectFileOptionsDlg::UpdateBuildCommand()
 
 void ProjectFileOptionsDlg::SaveBuildCommandSelection()
 {
-    Compiler* compiler = CompilerFactory::GetCompiler(m_LastBuildStageCompilerSel);
+    Compiler* compiler = CompilerFactory::GetListedCompiler(m_LastBuildStageCompilerSel);
     if (compiler)
     {
         m_ProjectFile->customBuild[compiler->GetID()].useCustomBuildCommand = XRCCTRL(*this, "chkBuildStage", wxCheckBox)->GetValue();

@@ -33,7 +33,7 @@ class DLLIMPORT ProjectFileOptionsDlg : public wxScrollingDialog
         ProjectFile* m_ProjectFile;
         wxString     m_FileNameStr;
         wxFileName   m_FileName;
-        int          m_LastBuildStageCompilerSel;
+        CompilerListedIndex m_LastBuildStageCompilerSel;
 
         DECLARE_EVENT_TABLE()
 };
