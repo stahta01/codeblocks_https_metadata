@@ -2059,6 +2059,36 @@
 		<Unit filename="plugins/compilergcc/resources/compilers/options_tricore-gcc.xml">
 			<Option target="Compiler" />
 		</Unit>
+		<Unit filename="plugins/compilergcc/resources/images/16x16/compile.png">
+			<Option target="Compiler" />
+		</Unit>
+		<Unit filename="plugins/compilergcc/resources/images/16x16/compilerun.png">
+			<Option target="Compiler" />
+		</Unit>
+		<Unit filename="plugins/compilergcc/resources/images/16x16/rebuild.png">
+			<Option target="Compiler" />
+		</Unit>
+		<Unit filename="plugins/compilergcc/resources/images/16x16/run.png">
+			<Option target="Compiler" />
+		</Unit>
+		<Unit filename="plugins/compilergcc/resources/images/16x16/stop.png">
+			<Option target="Compiler" />
+		</Unit>
+		<Unit filename="plugins/compilergcc/resources/images/compile.png">
+			<Option target="Compiler" />
+		</Unit>
+		<Unit filename="plugins/compilergcc/resources/images/compilerun.png">
+			<Option target="Compiler" />
+		</Unit>
+		<Unit filename="plugins/compilergcc/resources/images/rebuild.png">
+			<Option target="Compiler" />
+		</Unit>
+		<Unit filename="plugins/compilergcc/resources/images/run.png">
+			<Option target="Compiler" />
+		</Unit>
+		<Unit filename="plugins/compilergcc/resources/images/stop.png">
+			<Option target="Compiler" />
+		</Unit>
 		<Unit filename="plugins/compilergcc/resources/manifest.xml">
 			<Option target="Compiler" />
 		</Unit>
