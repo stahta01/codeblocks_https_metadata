@@ -56,6 +56,7 @@
 			</Target>
 			<Environment>
 				<Variable name="WX_CFG" value="" />
+				<Variable name="WX_COMPILER" value="gcc" />
 				<Variable name="WX_SUFFIX" value="u" />
 				<Variable name="WX_VERSION" value="30" />
 			</Environment>
@@ -67,7 +68,7 @@
 			<Add option="-std=gnu++11" />
 			<Add directory="bzip2" />
 			<Add directory="$(#WX30.include)" />
-			<Add directory="$(#WX30.lib)/gcc_dll$(WX_CFG)/msw$(WX_SUFFIX)" />
+			<Add directory="$(#WX30.lib)/$(WX_COMPILER)_dll$(WX_CFG)/msw$(WX_SUFFIX)" />
 		</Compiler>
 		<ResourceCompiler>
 			<Add directory="$(#WX30.include)" />
@@ -77,7 +78,7 @@
 			<Add library="codeblocks" />
 			<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)" />
 			<Add directory="bzip2" />
-			<Add directory="$(#WX30.lib)/gcc_dll$(WX_CFG)" />
+			<Add directory="$(#WX30.lib)/$(WX_COMPILER)_dll$(WX_CFG)" />
 		</Linker>
 		<Unit filename="bzip2/blocksort.c">
 			<Option compilerVar="CC" />
