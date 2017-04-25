@@ -18,7 +18,7 @@
 				<Option projectResourceIncludeDirsRelation="0" />
 			</Target>
 			<Environment>
-				<Variable name="WX_CFG" value="" />
+				<Variable name="WX_CFG" value="mono" />
 				<Variable name="WX_COMPILER" value="gcc" />
 				<Variable name="WX_SUFFIX" value="u" />
 				<Variable name="WX_VERSION" value="30" />
