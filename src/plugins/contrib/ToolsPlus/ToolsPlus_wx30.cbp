@@ -18,7 +18,6 @@
 				</Compiler>
 				<Linker>
 					<Add library="codeblocks" />
-					<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)" />
 					<Add library="gdi32" />
 					<Add directory="../../../devel30" />
 					<Add directory="$(#WX30.lib)/$(WX_COMPILER)_dll$(WX_CFG)" />

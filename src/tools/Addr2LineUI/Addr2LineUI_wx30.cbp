@@ -49,7 +49,6 @@
 		</ResourceCompiler>
 		<Linker>
 			<Add option="-mthreads" />
-			<Add library="wxmsw$(WX_VERSION)$(WX_SUFFIX)" />
 			<Add directory="$(#WX30.lib)/$(WX_COMPILER)_dll$(WX_CFG)" />
 		</Linker>
 		<Unit filename="Addr2LineUIApp.cpp" />
