@@ -72,6 +72,7 @@
 			</Target>
 			<Environment>
 				<Variable name="WX_CONFIG" value="wx-config --version=3.0" />
+				<Variable name="WX_TOOLKIT" value="msw" />
 			</Environment>
 		</Build>
 		<VirtualTargets>
