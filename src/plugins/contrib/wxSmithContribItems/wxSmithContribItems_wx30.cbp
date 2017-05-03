@@ -55,6 +55,9 @@
 					<Add library="wxspeedbutton" />
 					<Add library="wxled" />
 					<Add library="wxmathplot" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_propgrid" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_core" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
 					<Add directory="../../../devel30" />
 				</Linker>
 				<ExtraCommands>
