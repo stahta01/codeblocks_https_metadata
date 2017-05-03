@@ -150,6 +150,8 @@
 				</Compiler>
 				<Linker>
 					<Add option="-Wl,--export-all-symbols" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_core" />
+					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
 				</Linker>
 			</Target>
 			<Environment>
