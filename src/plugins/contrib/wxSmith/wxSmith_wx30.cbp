@@ -16,6 +16,11 @@
 				<Option compiler="gcc" />
 				<Option createStaticLib="1" />
 				<Linker>
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_richtext" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_propgrid" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_html" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_aui" />
+					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_adv" />
 					<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_core" />
 					<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
 				</Linker>
