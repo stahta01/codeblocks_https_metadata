@@ -53,6 +53,9 @@
 			<Add option="-Wl,--enable-auto-import" />
 			<Add option="-mthreads" />
 			<Add library="codeblocks" />
+			<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_adv" />
+			<Add library="wx$(WX_TOOLKIT)$(WX_VERSION)$(WX_SUFFIX)_core" />
+			<Add library="wxbase$(WX_VERSION)$(WX_SUFFIX)" />
 			<Add directory="../../../devel30" />
 			<Add directory="$(#WX30.lib)/$(WX_COMPILER)_dll$(WX_CFG)" />
 		</Linker>
