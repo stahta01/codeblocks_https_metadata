@@ -16,7 +16,6 @@ PluginSettings <- {
     HasModuleMenu = false
     HasToolbar = false
 }
-WxVersion <- 1; // 0 - wx 2.6, 1 - wx 2.8
 
 // -----------------------------------------------------------------------------
 // init wizard
@@ -43,7 +42,6 @@ function BeginWizard()
     Wizard.AddProjectPathPage();
     Wizard.AddPage(_T("PluginOptions"));
     Wizard.AddPage(_T("PluginInfo"));
-    Wizard.AddGenericSingleChoiceListPage(_T("wxVersionPage"), _T("Please select the wxWidgets version you want to use."), _T("wxWidgets 2.6.x;wxWidgets 2.8.x"), WxVersion); // select wxwidgets version
     Wizard.AddCompilerPage(_T(""), _T("gcc*"), true, false);
 }
 
@@ -145,27 +143,6 @@ function OnLeave_PluginInfo(fwd)
     return true;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// wxWidgets' version page
-////////////////////////////////////////////////////////////////////////////////
-
-function OnEnter_wxVersionPage(fwd)
-{
-    if (fwd)
-    {
-        WxVersion = Wizard.GetListboxSelection(_T("GenericChoiceList"));
-    }
-    return true;
-}
-
-function OnLeave_wxVersionPage(fwd)
-{
-    if (fwd)
-    {
-        WxVersion = Wizard.GetListboxSelection(_T("GenericChoiceList"));
-    }
-    return true;
-}
 
 // -----------------------------------------------------------------------------
 // each time, return a string of the form "filename.ext;contents"
@@ -217,27 +194,32 @@ function SetupTarget(target,is_debug)
         target.AddCompilerOption(_T("-DCB_PRECOMP"));
         target.AddCompilerOption(_T("-DWX_PRECOMP"));
         target.AddCompilerOption(_T("-DwxUSE_UNICODE"));
+        target.AddCompilerOption(_T("$(#CB_RELEASE_TYPE)"));
         target.AddCompilerOption(_T("-pipe"));
         target.AddCompilerOption(_T("-mthreads"));
         target.AddCompilerOption(_T("-fmessage-length=0"));
         target.AddCompilerOption(_T("-fexceptions"));
         target.AddCompilerOption(_T("-Winvalid-pch"));
+        target.AddCompilerOption(_T("-std=gnu++11"));
 
         target.AddLinkerOption(_T("-mthreads"));
 
+        target.SetVar(_T("WX_CFG"), _T(""), false);
+        target.SetVar(_T("WX_COMPILER"), _T("gcc"), false);
+        target.SetVar(_T("WX_SUFFIX"), _T("u"), false);
+        target.SetVar(_T("WX_VERSION"), _T("28"), false)
+
         target.AddIncludeDir(_T("$(#cb)\\include"));
         target.AddIncludeDir(_T("$(#cb)\\sdk\\wxscintilla\\include"));
+        target.AddIncludeDir(_T("$(#wx.lib)\\$(WX_COMPILER)_dll$(WX_CFG)\\msw$(WX_SUFFIX)"));
         target.AddIncludeDir(_T("$(#wx.include)"));
-        target.AddIncludeDir(_T("$(#wx.lib)\\gcc_dll\\mswu"));
+        target.AddIncludeDir(_T("$(#cb)/include/tinyxml"));
 
         target.AddLinkLib(_T("codeblocks"));
-        if (WxVersion == 0)
-            target.AddLinkLib(_T("wxmsw26u"));
-        else
-            target.AddLinkLib(_T("wxmsw28u"));
+        target.AddLinkLib(_T("wxmsw$(WX_VERSION)$(WX_SUFFIX)"));
 
         target.AddLibDir(_T("$(#cb)\\devel"));
-        target.AddLibDir(_T("$(#wx.lib)\\gcc_dll"));
+        target.AddLibDir(_T("$(#wx.lib)\\$(WX_COMPILER)_dll$(WX_CFG)"));
 
         target.SetHostApplication(_T("$(#cb)\\devel\\codeblocks") + DOT_EXT_EXECUTABLE);
     }
