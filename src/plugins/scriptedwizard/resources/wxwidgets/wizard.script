@@ -296,6 +296,7 @@ function OnLeave_WxConf(fwd)
         ConfigManager.Write(_T("/wx_project_wizard/unicode"), BoolToInt(IsUnicode));
         ConfigManager.Write(_T("/wx_project_wizard/debug"), BoolToInt(IsAdvOpt));
         ConfigManager.Write(_T("/wx_project_wizard/pch"), BoolToInt(WantPCH));
+        ConfigManager.Write(_T("/wx_project_wizard/configuration"), Configuration);
 
         // validate settings
         local lib_prefix;
