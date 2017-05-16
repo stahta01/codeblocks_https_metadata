@@ -276,7 +276,12 @@ function OnEnter_WxConf(fwd)
         {
             lib_compiler = _T("unknown");
         }
-        LibWxCompiler = lib_compiler;
+        LibWxCompiler = ConfigManager.Read(_T("/wx_project_wizard/compiler"), lib_compiler);
+        if (LibWxCompiler.Find(lib_compiler) != 0)
+        {
+            LibWxCompiler = lib_compiler;
+        }
+        Wizard.SetTextControlValue(_T("txtWxConfCompiler"), LibWxCompiler, lib_compiler);
     }
     return true;
 }
@@ -292,6 +297,7 @@ function OnLeave_WxConf(fwd)
         IsAdvOpt = Wizard.IsCheckboxChecked(_T("chkWxConfAdvOpt"));
         WantPCH = Wizard.IsCheckboxChecked(_T("chkWxConfPCH"));
         Configuration = Wizard.GetTextControlValue(_T("txtWxConfConfig"));
+        LibWxCompiler = Wizard.GetTextControlValue(_T("txtWxConfCompiler"));
 
         // Ask the user whether wizard shall add PCH support when empty Project is selected
         if (IsEmpty && WantPCH)
@@ -320,6 +326,7 @@ function OnLeave_WxConf(fwd)
         ConfigManager.Write(_T("/wx_project_wizard/debug"), BoolToInt(IsAdvOpt));
         ConfigManager.Write(_T("/wx_project_wizard/pch"), BoolToInt(WantPCH));
         ConfigManager.Write(_T("/wx_project_wizard/configuration"), Configuration);
+        ConfigManager.Write(_T("/wx_project_wizard/compiler"), LibWxCompiler);
 
         // validate settings
         local lib_prefix;
