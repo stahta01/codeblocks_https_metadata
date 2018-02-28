@@ -180,11 +180,11 @@ sdk_HEADERS = $(ALLHEADERS)
 
 sdk.h.gch: sdk_precomp.h.gch $(ALLHEADERS)
 	-rm -f sdk.h.gch
-	$(CXXCOMPILE) -o sdk.h.gch -xc++-header $(srcdir)/sdk.h
+	$(CXXCOMPILE) -DCB_PRECOMP -DDLL_EXPORT -DBUILDING_PLUGIN -o sdk.h.gch -xc++-header $(srcdir)/sdk.h
 
 sdk_precomp.h.gch: $(ALLHEADERS)
 	-rm -f sdk_precomp.h.gch
-	$(CXXCOMPILE) -o sdk_precomp.h.gch -xc++-header $(srcdir)/sdk_precomp.h
+	$(CXXCOMPILE) -DCB_PRECOMP -DDLL_EXPORT -DEXPORT_LIB -DEXPORT_EVENTS -o sdk_precomp.h.gch -xc++-header $(srcdir)/sdk_precomp.h
 
 clean-local:
 	-rm -f sdk.h.gch
