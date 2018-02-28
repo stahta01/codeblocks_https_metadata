@@ -1540,12 +1540,19 @@ void ConfigManager::InitPaths()
     ConfigManager::home_folder = wxStandardPathsBase::Get().GetUserConfigDir();
     ConfigManager::app_path = ::DetermineExecutablePath();
     wxString res_path = ::DetermineResourcesPath();
+#ifdef CB_AUTOCONF
+    wxString prefix(wxT(APP_PREFIX));
+#endif // CB_AUTOCONF
 
     // if non-empty, the app has overriden it (e.g. "--prefix" was passed in the command line)
     if (data_path_global.IsEmpty())
     {
         if (platform::windows)
+#ifdef CB_AUTOCONF
+            ConfigManager::data_path_global = prefix + _T("/share/codeblocks");
+#else
             ConfigManager::data_path_global = app_path + _T("\\share\\codeblocks");
+#endif // CB_AUTOCONF
         else if (platform::macosx)
             ConfigManager::data_path_global = res_path + _T("/share/codeblocks");
         else
@@ -1557,6 +1564,10 @@ void ConfigManager::InitPaths()
 #ifdef CB_AUTOCONF
     if (plugin_path_global.IsEmpty())
     {
+#ifdef __WINDOWS__
+        // GetInstallPrefix causes linking error with Windows
+        ConfigManager::plugin_path_global = prefix + _T("/lib/codeblocks/plugins");
+#else
         if (platform::windows)
             ConfigManager::plugin_path_global = data_path_global;
         else if (platform::macosx)
@@ -1576,8 +1587,9 @@ void ConfigManager::InitPaths()
             }
 #endif // __WXGTK__
         }
+#endif // __WINDOWS__
     }
-#endif
+#endif // CB_AUTOCONF
 
     wxString dataPathUser = ConfigManager::config_folder + wxFILE_SEP_PATH + _T("share");
 #ifdef __linux__

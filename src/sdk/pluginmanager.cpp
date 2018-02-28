@@ -730,7 +730,7 @@ bool PluginManager::ReadManifestFile(const wxString& pluginFilename,
         wxString actual = fname.GetFullName();
 
         // remove 'lib' prefix from plugin name (if any)
-        if (!platform::windows && actual.StartsWith(_T("lib")))
+        if (/* !platform::windows && */ actual.StartsWith(_T("lib")))
             actual.Remove(0, 3);
 
         actual = ConfigManager::LocateDataFile(actual, sdPluginsUser | sdDataUser | sdPluginsGlobal | sdDataGlobal);
@@ -870,7 +870,7 @@ void PluginManager::ReadExtraFilesFromManifestFile(const wxString& pluginFilenam
     wxString actual = fname.GetFullName();
 
     // remove 'lib' prefix from plugin name (if any)
-    if (!platform::windows && actual.StartsWith(_T("lib")))
+    if (/* !platform::windows && */ actual.StartsWith(_T("lib")))
         actual.Remove(0, 3);
 
     actual = ConfigManager::LocateDataFile(actual, sdPluginsUser | sdDataUser | sdPluginsGlobal | sdDataGlobal);
