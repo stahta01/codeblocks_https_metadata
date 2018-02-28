@@ -21,7 +21,7 @@ if CODEBLOCKS_LINUX
 AM_CPPFLAGS += -DENABLE_BINRELOC -DAPP_PREFIX="\"@prefix@\"" $(WX_GTK_CFLAGS) $(GTK_NOTEBOOK_FLAGS)
 endif
 if CODEBLOCKS_NT
-AM_CPPFLAGS += -DNOPCH -DWXUSINGDLL
+AM_CPPFLAGS += -DNOPCH -DWXUSINGDLL -DAPP_PREFIX="\"@prefix@\""
 endif
 
 bin_PROGRAMS = codeblocks
@@ -40,7 +40,7 @@ codeblocks_LDADD =  ../sdk/libcodeblocks.la \
 			$(WX_GTK_LIBS)
 
 if CODEBLOCKS_NT
-codeblocks_LDADD += -lcomctl32
+codeblocks_LDADD += -lcomctl32 -lexchndl
 endif
 
 codeblocks_SOURCES = app.cpp \
@@ -124,8 +124,16 @@ noinst_HEADERS = app.h \
 
 man_MANS = codeblocks.1
 
+if CODEBLOCKS_NT
+codeblocks_SOURCES += associations.cpp
+noinst_HEADERS += associations.h
+EXTRA_DIST = ipc.cpp \
+      ipc.h \
+      $(man_MANS)
+else
 EXTRA_DIST = associations.cpp \
-			associations.h \
-			ipc.h \
-			ipc.cpp \
-			$(man_MANS)
+ 			associations.h \
+ 			ipc.h \
+ 			ipc.cpp \
+ 			$(man_MANS)
+endif
