@@ -58,6 +58,9 @@
 
 //----------------------------------------------------------------------
 
+/* C::B begin */
+#if 0
+/* C::B end */
 #ifdef WXMAKINGDLL_SCI
     #define WXDLLIMPEXP_SCI WXEXPORT
 #elif defined(WXUSINGDLL)
@@ -65,6 +68,9 @@
 #else // not making nor using DLL
     #define WXDLLIMPEXP_SCI
 #endif
+/* C::B begin */
+#endif // #if 0
+/* C::B end */
 
 
 #ifdef SCI_NAMESPACE

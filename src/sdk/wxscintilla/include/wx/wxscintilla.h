@@ -36,13 +36,12 @@
 #endif
 /* C::B end */
 
-#ifdef WXMAKINGDLL_SCI
-    #define WXDLLIMPEXP_SCI WXEXPORT
-#elif defined(WXUSINGDLL_SCI) || defined(WXUSINGDLL)
-    #define WXDLLIMPEXP_SCI WXIMPORT
-#else // not making nor using DLL
-    #define WXDLLIMPEXP_SCI
-#endif
+#if defined(BUILDING_PLUGIN) || defined(EXPORT_LIB)
+    #include "settings.h"
+    #define WXDLLIMPEXP_SCI DLLIMPORT
+#else
+    #define WXDLLIMPEXP_SCI __declspec (dllexport)
+#endif // defined(BUILDING_PLUGIN) || defined(EXPORT_LIB)
 
 class WXDLLIMPEXP_FWD_CORE wxScrollBar;
 
