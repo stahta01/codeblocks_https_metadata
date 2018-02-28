@@ -23,6 +23,10 @@
 
 #include <memory>
 
+#if defined(__WINDOWS__) && defined(__WXGTK__)
+#include <wx/msw/wrapwin.h>
+#endif
+
 template<> FileManager* Mgr<FileManager>::instance = nullptr;
 template<> bool  Mgr<FileManager>::isShutdown = false;
 
