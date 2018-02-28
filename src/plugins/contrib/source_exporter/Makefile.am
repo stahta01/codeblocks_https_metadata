@@ -8,6 +8,10 @@ AM_CPPFLAGS = $(WX_CXXFLAGS) \
 		-include "sdk.h" \
 		-DwxPDF_USE_WXMODULE=0
 
+if CODEBLOCKS_NT
+AM_CPPFLAGS += -DWXUSINGDLL -DWXMAKINGDLL_PDFDOC
+endif
+
 pluginlibdir = $(pkglibdir)/plugins
 
 pluginlib_LTLIBRARIES = libexporter.la

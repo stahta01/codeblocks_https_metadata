@@ -14,9 +14,17 @@ AM_CPPFLAGS = $(WX_CXXFLAGS) \
 		-I$(top_srcdir)/src/include/mozilla_chardet/xpcom/base \
 		-I$(top_srcdir)/src/include/mozilla_chardet/xpcom/glue
 
+if CODEBLOCKS_NT
+AM_CPPFLAGS += -DWXUSINGDLL
+endif
+
 lib_LTLIBRARIES = libwxsmithlib.la
 
 libwxsmithlib_la_LDFLAGS = -version-info 0:1:0 -shared
+
+if CODEBLOCKS_NT
+libwxsmithlib_la_LDFLAGS += -no-undefined -Xlinker --export-all-symbols
+endif
 
 libwxsmithlib_la_LIBADD = ../../../sdk/libcodeblocks.la \
 				properties/libwxsmith_properties.la \

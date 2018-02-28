@@ -16,9 +16,17 @@ AM_CPPFLAGS = $(WX_CXXFLAGS) \
  			-I$(top_srcdir)/src/include/mozilla_chardet/xpcom/base \
  			-I$(top_srcdir)/src/include/mozilla_chardet/xpcom/glue
 
+if CODEBLOCKS_NT
+AM_CPPFLAGS += -DEXPORT_LIB -DEXPORT_EVENTS -DAPP_PREFIX="\"@prefix@\""
+endif
+
 lib_LTLIBRARIES = libcodeblocks.la
 
 libcodeblocks_la_LDFLAGS = -version-info @CODEBLOCKS_VERSION_INFO@
+
+if CODEBLOCKS_NT
+libcodeblocks_la_LDFLAGS += -shared -no-undefined -Xlinker --export-all-symbols
+endif
 
 libcodeblocks_la_LIBADD = scripting/bindings/libsqbindings.la \
 			scripting/sqplus/libsqplus.la \

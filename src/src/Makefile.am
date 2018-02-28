@@ -20,6 +20,9 @@ endif
 if CODEBLOCKS_LINUX
 AM_CPPFLAGS += -DENABLE_BINRELOC -DAPP_PREFIX="\"@prefix@\"" $(WX_GTK_CFLAGS) $(GTK_NOTEBOOK_FLAGS)
 endif
+if CODEBLOCKS_NT
+AM_CPPFLAGS += -DNOPCH -DWXUSINGDLL
+endif
 
 bin_PROGRAMS = codeblocks
 
@@ -35,6 +38,10 @@ install-exec-hook:
 codeblocks_LDADD =  ../sdk/libcodeblocks.la \
 			$(WX_LIBS) \
 			$(WX_GTK_LIBS)
+
+if CODEBLOCKS_NT
+codeblocks_LDADD += -lcomctl32
+endif
 
 codeblocks_SOURCES = app.cpp \
 			appglobals.cpp \

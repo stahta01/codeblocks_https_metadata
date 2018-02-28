@@ -1,6 +1,10 @@
 AM_CPPFLAGS = -I$(top_srcdir)/src/include/scripting/include \
 				-I$(top_srcdir)/src/include/scripting/squirrel
 
+if CODEBLOCKS_NT
+AM_CPPFLAGS += -DEXPORT_LIB
+endif
+
 noinst_LTLIBRARIES = libsquirrel.la
 
 libsquirrel_la_SOURCES = sqfuncstate.cpp \

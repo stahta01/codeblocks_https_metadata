@@ -9,6 +9,10 @@ wxcontribitems_LTLIBRARIES = libwxkwic.la
 
 libwxkwic_la_LDFLAGS = -version-info 0:1:0
 
+if CODEBLOCKS_NT
+libwxkwic_la_LDFLAGS += -shared -no-undefined
+endif
+
 libwxkwic_la_LIBADD = $(WX_LIBS)
 
 libwxkwic_la_SOURCES = \

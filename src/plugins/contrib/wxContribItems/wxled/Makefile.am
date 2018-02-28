@@ -6,11 +6,19 @@ AM_CPPFLAGS = -I$(srcdir)/gizmosled/include \
 -I$(srcdir)/lcdWindow/include \
 -I$(srcdir)/led/include
 
+if CODEBLOCKS_NT
+AM_CPPFLAGS += -DWXUSINGDLL -DWXMAKINGDLL_GIZMOS
+endif
+
 wxcontribitemsdir=$(libdir)/codeblocks/wxContribItems
 
 wxcontribitems_LTLIBRARIES = libwxled.la
 
 libwxled_la_LDFLAGS = -version-info 0:1:0
+
+if CODEBLOCKS_NT
+libwxled_la_LDFLAGS += -shared -no-undefined -Xlinker --export-all-symbols
+endif
 
 libwxled_la_LIBADD = $(WX_LIBS)
 

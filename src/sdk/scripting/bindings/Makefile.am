@@ -5,6 +5,10 @@ AM_CPPFLAGS = $(WX_CXXFLAGS) \
 			-I$(top_srcdir)/src/include/scripting/bindings \
 			-I$(top_srcdir)/src/include/scripting/sqplus
 
+if CODEBLOCKS_NT
+AM_CPPFLAGS += -DEXPORT_LIB -DEXPORT_EVENTS
+endif
+
 noinst_LTLIBRARIES = libsqbindings.la
 
 libsqbindings_la_SOURCES = scriptbindings.cpp \

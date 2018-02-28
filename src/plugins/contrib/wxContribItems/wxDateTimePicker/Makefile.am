@@ -2,6 +2,10 @@ AM_CPPFLAGS = $(WX_CXXFLAGS) \
 		-I$(srcdir)/include \
 		-I$(srcdir)/images
 
+if CODEBLOCKS_NT
+AM_CPPFLAGS += -DWXUSINGDLL
+endif
+
 wxcontribitemsdir = $(libdir)/codeblocks/wxContribItems
 
 wxcontribitems_LTLIBRARIES = libwxdatetimepicker.la
