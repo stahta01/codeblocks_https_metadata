@@ -47,7 +47,7 @@
 #include "tinywxuni.h"
 #include "filegroupsandmasks.h"
 
-#ifndef __WXMSW__
+#ifndef __WINDOWS__
     #include <unistd.h> // readlink
     #include <sys/stat.h> // lstat
 #endif
@@ -991,7 +991,7 @@ bool IsSuffixOfPath(wxFileName const & suffix, wxFileName const & path)
 
 bool cbResolveSymLinkedDirPath(wxString& dirpath)
 {
-#ifdef _WIN32
+#ifdef __WINDOWS__
     return false;
 #else
     if (dirpath.Last() == wxFILE_SEP_PATH)
@@ -1037,7 +1037,7 @@ bool cbResolveSymLinkedDirPath(wxString& dirpath)
     }
 
     return false;
-#endif // _WIN32
+#endif // __WINDOWS__
 }
 
 wxString cbResolveSymLinkedDirPathRecursive(wxString dirpath)
@@ -1333,7 +1333,7 @@ namespace platform
 // one thing that's not checked yet are circular symlinks - watch out!
 wxString realpath(const wxString& path)
 {
-#ifdef __WXMSW__
+#ifdef __WINDOWS__
     // no symlinks support on windows
     return path;
 #else
