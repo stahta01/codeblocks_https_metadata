@@ -126,7 +126,9 @@ ProjectOptionsDlg::ProjectOptionsDlg(wxWindow* parent, cbProject* project)
     bool hasPCH = compiler && compiler->GetSwitches().supportsPCH;
     XRCCTRL(*this, "rbPCHStrategy", wxRadioBox)->Enable(hasPCH);
 
-    XRCCTRL(*this, "chkExtendedObjNames", wxCheckBox)->SetValue(m_Project->GetExtendedObjectNamesGeneration());
+    wxCheckBox* chkEON = XRCCTRL(*this, "chkExtendedObjNames", wxCheckBox);
+    chkEON->SetValue(m_Project->GetExtendedObjectNamesGeneration());
+    chkEON->Enable(!(m_Project->IsMakefileCustom()));
 
     XRCCTRL(*this, "chkShowNotes", wxCheckBox)->SetValue(m_Project->GetShowNotesOnLoad());
     XRCCTRL(*this, "txtNotes", wxTextCtrl)->SetValue(m_Project->GetNotes());
@@ -271,8 +273,13 @@ void ProjectOptionsDlg::DoTargetChange(bool saveOld)
     TargetFilenameGenerationPolicy prefixPolicy;
     TargetFilenameGenerationPolicy extensionPolicy;
     target->GetTargetFilenameGenerationPolicy(prefixPolicy, extensionPolicy);
-    XRCCTRL(*this, "chkAutoGenPrefix", wxCheckBox)->SetValue(prefixPolicy == tgfpPlatformDefault);
-    XRCCTRL(*this, "chkAutoGenExt", wxCheckBox)->SetValue(extensionPolicy == tgfpPlatformDefault);
+    wxCheckBox* chkAGP = XRCCTRL(*this, "chkAutoGenPrefix", wxCheckBox);
+    bool customMake = m_Project->IsMakefileCustom();
+    chkAGP->SetValue(prefixPolicy == tgfpPlatformDefault);
+    chkAGP->Enable(!customMake);
+    wxCheckBox* chkAGE = XRCCTRL(*this, "chkAutoGenExt", wxCheckBox);
+    chkAGE->SetValue(extensionPolicy == tgfpPlatformDefault);
+    chkAGE->Enable(!customMake);
 
     chkCR->Enable(false);
     chkSL->Enable(target->GetTargetType() == ttDynamicLib);
@@ -1330,7 +1337,9 @@ void ProjectOptionsDlg::EndModal(int retCode)
         m_Project->SetMakefileExecutionDir(XRCCTRL(*this, "txtExecutionDir", wxTextCtrl)->GetValue());
         m_Project->SetTargetType(TargetType(XRCCTRL(*this, "cmbProjectType", wxComboBox)->GetSelection()));
         m_Project->SetModeForPCH((PCHMode)XRCCTRL(*this, "rbPCHStrategy", wxRadioBox)->GetSelection());
-        m_Project->SetExtendedObjectNamesGeneration(XRCCTRL(*this, "chkExtendedObjNames", wxCheckBox)->GetValue());
+        wxCheckBox* chkEON = XRCCTRL(*this, "chkExtendedObjNames", wxCheckBox);
+        m_Project->SetExtendedObjectNamesGeneration(chkEON->GetValue());
+        chkEON->Enable(!(m_Project->IsMakefileCustom()));
         m_Project->SetShowNotesOnLoad(XRCCTRL(*this, "chkShowNotes", wxCheckBox)->GetValue());
         m_Project->SetCheckForExternallyModifiedFiles(XRCCTRL(*this, "chkCheckFiles", wxCheckBox)->GetValue());
         m_Project->SetNotes(XRCCTRL(*this, "txtNotes", wxTextCtrl)->GetValue());
