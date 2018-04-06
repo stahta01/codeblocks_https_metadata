@@ -37,6 +37,7 @@
     #include "projectmanager.h"
     #include "sdk_events.h"
 #endif
+#include "cbassert.h"
 #include "cbstyledtextctrl.h"
 #include "cbcolourmanager.h"
 

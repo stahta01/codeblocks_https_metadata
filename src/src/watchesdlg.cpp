@@ -30,6 +30,7 @@
 
 #include "watchesdlg.h"
 
+#include "cbassert.h"
 #include "cbcolourmanager.h"
 #include "debuggermanager.h"
 

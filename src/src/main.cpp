@@ -63,6 +63,7 @@
 #include <templatemanager.h>
 #include <toolsmanager.h>
 #include <uservarmanager.h>
+#include "cbassert.h"
 
 #include "debugger_interface_creator.h"
 #include "debuggermenu.h"

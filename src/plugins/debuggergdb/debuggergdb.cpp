@@ -37,6 +37,7 @@
     #include "globals.h"
 #endif
 
+#include "cbassert.h"
 #include <wx/tokenzr.h>
 #include "editarraystringdlg.h"
 #include "projectloader_hooks.h"

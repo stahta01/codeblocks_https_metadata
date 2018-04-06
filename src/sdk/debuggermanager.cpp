@@ -35,6 +35,7 @@
 #include <sstream>
 #include <wx/toolbar.h>
 
+#include "cbassert.h"
 #include "debuggermanager.h"
 
 #include "annoyingdialog.h"

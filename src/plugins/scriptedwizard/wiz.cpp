@@ -39,6 +39,7 @@
     #include <projectmanager.h>
     #include <scriptingmanager.h>
 #endif // CB_PRECOMP
+#include "cbassert.h"
 #include <scripting/bindings/sc_base_types.h>
 
 #include "wiz.h"

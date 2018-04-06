@@ -17,6 +17,8 @@
     #include "configmanager.h"
 #endif
 
+#include "cbassert.h"
+
 #include <wx/clipbrd.h>
 #include <wx/dataobj.h>
 #include <wx/wupdlock.h>

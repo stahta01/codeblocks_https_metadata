@@ -35,7 +35,7 @@ void Bindings::SetDefaultsCodeBlocks()
     "BlkAllc;blockallocated.h|"
     "BlockAllocated;blockallocated.h|"
     "BlockAllocator;blockallocated.h|"
-    "cbAssert;cbexception.h|"
+    "cbAssert;cbassert.h|"
     "cbC2U;globals.h|"
     "cbCodeCompletionPlugin;cbplugin.h|"
     "cbCompilerPlugin;cbplugin.h|"

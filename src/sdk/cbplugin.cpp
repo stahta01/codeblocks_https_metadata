@@ -31,6 +31,7 @@
     #include "sdk_events.h"
 #endif
 
+#include "cbassert.h"
 #include <wx/toolbar.h>
 
 #include "annoyingdialog.h"

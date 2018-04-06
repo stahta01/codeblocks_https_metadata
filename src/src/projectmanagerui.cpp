@@ -36,6 +36,7 @@
 #include <wx/dataobj.h>
 #include <wx/dnd.h>
 
+#include "cbassert.h"
 #include "cbauibook.h"
 #include "cbcolourmanager.h"
 #include "confirmreplacedlg.h"

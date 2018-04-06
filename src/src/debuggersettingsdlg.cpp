@@ -12,6 +12,7 @@
     #include "cbexception.h"
     #include "cbplugin.h"
 #endif
+#include "cbassert.h"
 //(*InternalHeaders(DebuggerSettingsDlg)
 #include <wx/button.h>
 #include <wx/font.h>
