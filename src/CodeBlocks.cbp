@@ -728,6 +728,7 @@
 			<Add option="-DCB_PRECOMP" />
 			<Add option="-DWX_PRECOMP" />
 			<Add option="-DwxUSE_UNICODE" />
+			<Add option="-D_ISOC99_SOURCE" />
 			<Add directory="$(#WX.include)" />
 			<Add directory="$(#WX.lib)/gcc_dll$(WX_CFG)/msw$(WX_SUFFIX)" />
 			<Add directory="sdk/wxscintilla/include" />
