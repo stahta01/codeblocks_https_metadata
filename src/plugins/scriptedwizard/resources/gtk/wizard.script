@@ -116,6 +116,7 @@ function SetupProject(project)
         project.AddIncludeDir(GtkPathDefaultInc + wxFILE_SEP_PATH + _T("gtk-2.0"));
         project.AddIncludeDir(GtkPathDefaultInc + wxFILE_SEP_PATH + _T("cairo"));
         project.AddIncludeDir(GtkPathDefaultInc + wxFILE_SEP_PATH + _T("gdk"));
+        project.AddIncludeDir(GtkPathDefaultInc + wxFILE_SEP_PATH + _T("gtk-2.0") + wxFILE_SEP_PATH + _T("gdk"));
         project.AddIncludeDir(GtkPathDefaultInc + wxFILE_SEP_PATH + _T("glib-2.0"));
         // Notice GtkPathDefault*Lib* at some positions. This is correct as of 2.8.20
         project.AddIncludeDir(GtkPathDefaultLib + wxFILE_SEP_PATH + _T("glib-2.0") + wxFILE_SEP_PATH + _T("include"));
