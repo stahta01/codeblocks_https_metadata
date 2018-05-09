@@ -27,7 +27,6 @@
     #include <wx/toolbar.h>
     #include <wx/utils.h>
     #include <wx/xrc/xmlres.h>
-    #include <wx/wxscintilla.h>
 
     #include <cbeditor.h>
     #include <configmanager.h>
