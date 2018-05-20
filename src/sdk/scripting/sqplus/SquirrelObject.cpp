@@ -84,7 +84,7 @@ BOOL_T SquirrelObject::SetDelegate(SquirrelObject &obj)
 {
 	if(obj.GetType() == OT_TABLE ||
 		obj.GetType() == OT_NULL) {
-			switch(_o._type) {
+			switch(_o._sqtype) {
 				case OT_USERDATA:
 				case OT_TABLE:
 					sq_pushobject(SquirrelVM::_VM,_o);
@@ -102,7 +102,7 @@ BOOL_T SquirrelObject::SetDelegate(SquirrelObject &obj)
 SquirrelObject SquirrelObject::GetDelegate()
 {
 	SquirrelObject ret;
-	if(_o._type == OT_TABLE || _o._type == OT_USERDATA)
+	if(_o._sqtype == OT_TABLE || _o._sqtype == OT_USERDATA)
 	{
     SQInteger top = sq_gettop(SquirrelVM::_VM);
 		sq_pushobject(SquirrelVM::_VM,_o);
@@ -354,7 +354,7 @@ SquirrelObject SquirrelObject::ArrayPop(SQBool returnPoppedVal) {
 
 SQObjectType SquirrelObject::GetType()
 {
-	return _o._type;
+	return _o._sqtype;
 }
 
 BOOL_T SquirrelObject::GetSlot(INT_T key) const

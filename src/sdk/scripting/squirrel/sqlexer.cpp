@@ -397,13 +397,13 @@ SQInteger SQLexer::ReadNumber()
 #define THEX 3
 #define TSCIENTIFIC 4
 #define TOCTAL 5
-	SQInteger type = TINT, firstchar = CUR_CHAR;
+	SQInteger sqtype = TINT, firstchar = CUR_CHAR;
 	SQChar *sTemp;
 	INIT_TEMP_STRING();
 	NEXT();
 	if(firstchar == _SC('0') && (toupper(CUR_CHAR) == _SC('X') || scisodigit(CUR_CHAR)) ) {
 		if(scisodigit(CUR_CHAR)) {
-			type = TOCTAL;
+			sqtype = TOCTAL;
 			while(scisodigit(CUR_CHAR)) {
 				APPEND_CHAR(CUR_CHAR);
 				NEXT();
@@ -412,7 +412,7 @@ SQInteger SQLexer::ReadNumber()
 		}
 		else {
 			NEXT();
-			type = THEX;
+			sqtype = THEX;
 			while(isxdigit(CUR_CHAR)) {
 				APPEND_CHAR(CUR_CHAR);
 				NEXT();
@@ -424,10 +424,10 @@ SQInteger SQLexer::ReadNumber()
 		// C::B patch: Eliminate compiler warnings
 		APPEND_CHAR((char)firstchar);
 		while (CUR_CHAR == _SC('.') || scisdigit(CUR_CHAR) || isexponent(CUR_CHAR)) {
-            if(CUR_CHAR == _SC('.') || isexponent(CUR_CHAR)) type = TFLOAT;
+            if(CUR_CHAR == _SC('.') || isexponent(CUR_CHAR)) sqtype = TFLOAT;
 			if(isexponent(CUR_CHAR)) {
-				if(type != TFLOAT) Error(_SC("invalid numeric format"));
-				type = TSCIENTIFIC;
+				if(sqtype != TFLOAT) Error(_SC("invalid numeric format"));
+				sqtype = TSCIENTIFIC;
 				APPEND_CHAR(CUR_CHAR);
 				NEXT();
 				if(CUR_CHAR == '+' || CUR_CHAR == '-'){
@@ -442,7 +442,7 @@ SQInteger SQLexer::ReadNumber()
 		}
 	}
 	TERMINATE_BUFFER();
-	switch(type) {
+	switch(sqtype) {
 	case TSCIENTIFIC:
 	case TFLOAT:
 		_fvalue = (SQFloat)scstrtod(&_longstr[0],&sTemp);

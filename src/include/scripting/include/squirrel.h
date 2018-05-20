@@ -188,7 +188,7 @@ typedef char SQChar;
 #define SQ_MATCHTYPEMASKSTRING (-99999)
 
 #define _RT_MASK 0x00FFFFFF
-#define _RAW_TYPE(type) (type&_RT_MASK)
+#define _RAW_TYPE(sqtype) (sqtype&_RT_MASK)
 
 #define _RT_NULL			0x00000001
 #define _RT_INTEGER			0x00000002
@@ -256,7 +256,7 @@ typedef union tagSQObjectValue
 
 typedef struct tagSQObject
 {
-	SQObjectType _type;
+	SQObjectType _sqtype;
 	SQObjectValue _unVal;
 }SQObject;
 
@@ -432,25 +432,25 @@ SQUIRREL_API SQRESULT sq_stackinfos(HSQUIRRELVM v,SQInteger level,SQStackInfos *
 SQUIRREL_API void sq_setdebughook(HSQUIRRELVM v);
 
 /*UTILITY MACRO*/
-#define sq_isnumeric(o) ((o)._type&SQOBJECT_NUMERIC)
-#define sq_istable(o) ((o)._type==OT_TABLE)
-#define sq_isarray(o) ((o)._type==OT_ARRAY)
-#define sq_isfunction(o) ((o)._type==OT_FUNCPROTO)
-#define sq_isclosure(o) ((o)._type==OT_CLOSURE)
-#define sq_isgenerator(o) ((o)._type==OT_GENERATOR)
-#define sq_isnativeclosure(o) ((o)._type==OT_NATIVECLOSURE)
-#define sq_isstring(o) ((o)._type==OT_STRING)
-#define sq_isinteger(o) ((o)._type==OT_INTEGER)
-#define sq_isfloat(o) ((o)._type==OT_FLOAT)
-#define sq_isuserpointer(o) ((o)._type==OT_USERPOINTER)
-#define sq_isuserdata(o) ((o)._type==OT_USERDATA)
-#define sq_isthread(o) ((o)._type==OT_THREAD)
-#define sq_isnull(o) ((o)._type==OT_NULL)
-#define sq_isclass(o) ((o)._type==OT_CLASS)
-#define sq_isinstance(o) ((o)._type==OT_INSTANCE)
-#define sq_isbool(o) ((o)._type==OT_BOOL)
-#define sq_isweakref(o) ((o)._type==OT_WEAKREF)
-#define sq_type(o) ((o)._type)
+#define sq_isnumeric(o) ((o)._sqtype&SQOBJECT_NUMERIC)
+#define sq_istable(o) ((o)._sqtype==OT_TABLE)
+#define sq_isarray(o) ((o)._sqtype==OT_ARRAY)
+#define sq_isfunction(o) ((o)._sqtype==OT_FUNCPROTO)
+#define sq_isclosure(o) ((o)._sqtype==OT_CLOSURE)
+#define sq_isgenerator(o) ((o)._sqtype==OT_GENERATOR)
+#define sq_isnativeclosure(o) ((o)._sqtype==OT_NATIVECLOSURE)
+#define sq_isstring(o) ((o)._sqtype==OT_STRING)
+#define sq_isinteger(o) ((o)._sqtype==OT_INTEGER)
+#define sq_isfloat(o) ((o)._sqtype==OT_FLOAT)
+#define sq_isuserpointer(o) ((o)._sqtype==OT_USERPOINTER)
+#define sq_isuserdata(o) ((o)._sqtype==OT_USERDATA)
+#define sq_isthread(o) ((o)._sqtype==OT_THREAD)
+#define sq_isnull(o) ((o)._sqtype==OT_NULL)
+#define sq_isclass(o) ((o)._sqtype==OT_CLASS)
+#define sq_isinstance(o) ((o)._sqtype==OT_INSTANCE)
+#define sq_isbool(o) ((o)._sqtype==OT_BOOL)
+#define sq_isweakref(o) ((o)._sqtype==OT_WEAKREF)
+#define sq_type(o) ((o)._sqtype)
 
 /* deprecated */
 #define sq_createslot(v,n) sq_newslot(v,n,SQFalse)

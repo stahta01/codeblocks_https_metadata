@@ -103,7 +103,7 @@ static SQInteger _blob__nexti(HSQUIRRELVM v)
 		sq_pushnull(v);
 		return 1;
 	}
-	return sq_throwerror(v,_SC("internal error (_nexti) wrong argument type"));
+	return sq_throwerror(v,_SC("internal error (_nexti) wrong argument sqtype"));
 }
 
 static SQInteger _blob__typeof(HSQUIRRELVM v)
@@ -249,4 +249,3 @@ SQRESULT sqstd_register_bloblib(HSQUIRRELVM v)
 {
 	return declare_stream(v,_SC("blob"),(SQUserPointer)SQSTD_BLOB_TYPE_TAG,_SC("std_blob"),_blob_methods,bloblib_funcs);
 }
-

@@ -52,7 +52,7 @@ static const SQChar *g_nnames[] =
 typedef int SQRexNodeType;
 
 typedef struct tagSQRexNode{
-	SQRexNodeType type;
+	SQRexNodeType sqtype;
 	SQInteger left;
 	SQInteger right;
 	SQInteger next;
@@ -76,12 +76,12 @@ struct SQRex{
 
 static SQInteger sqstd_rex_list(SQRex *exp);
 
-static SQInteger sqstd_rex_newnode(SQRex *exp, SQRexNodeType type)
+static SQInteger sqstd_rex_newnode(SQRex *exp, SQRexNodeType sqtype)
 {
 	SQRexNode n;
-	n.type = type;
+	n.sqtype = sqtype;
 	n.next = n.right = n.left = -1;
-	if(type == OP_EXPR)
+	if(sqtype == OP_EXPR)
 		n.right = exp->_nsubexpr++;
 	if(exp->_nallocated < (exp->_nsize + 1)) {
 		SQInteger oldsize = exp->_nallocated;
@@ -182,9 +182,9 @@ static SQInteger sqstd_rex_class(SQRex *exp)
 			SQInteger r;
 			if(*exp->_p++ == ']') sqstd_rex_error(exp,_SC("unfinished range"));
 			r = sqstd_rex_newnode(exp,OP_RANGE);
-			if(exp->_nodes[first].type>*exp->_p) sqstd_rex_error(exp,_SC("invalid range"));
-			if(exp->_nodes[first].type == OP_CCLASS) sqstd_rex_error(exp,_SC("cannot use character classes in ranges"));
-			exp->_nodes[r].left = exp->_nodes[first].type;
+			if(exp->_nodes[first].sqtype>*exp->_p) sqstd_rex_error(exp,_SC("invalid range"));
+			if(exp->_nodes[first].sqtype == OP_CCLASS) sqstd_rex_error(exp,_SC("cannot use character classes in ranges"));
+			exp->_nodes[r].left = exp->_nodes[first].sqtype;
 			SQInteger t = sqstd_rex_escapechar(exp);
 			exp->_nodes[r].right = t;
             exp->_nodes[chain].next = r;
@@ -365,7 +365,7 @@ static SQBool sqstd_rex_matchcclass(SQInteger cclass,SQChar c)
 static SQBool sqstd_rex_matchclass(SQRex* exp,SQRexNode *node,SQChar c)
 {
 	do {
-		switch(node->type) {
+		switch(node->sqtype) {
 			case OP_RANGE:
 				if(c >= node->left && c <= node->right) return SQTrue;
 				break;
@@ -373,7 +373,7 @@ static SQBool sqstd_rex_matchclass(SQRex* exp,SQRexNode *node,SQChar c)
 				if(sqstd_rex_matchcclass(node->left,c)) return SQTrue;
 				break;
 			default:
-				if(c == node->type)return SQTrue;
+				if(c == node->sqtype)return SQTrue;
 		}
 	} while((node->next != -1) && (node = &exp->_nodes[node->next]));
 	return SQFalse;
@@ -382,8 +382,8 @@ static SQBool sqstd_rex_matchclass(SQRex* exp,SQRexNode *node,SQChar c)
 static const SQChar *sqstd_rex_matchnode(SQRex* exp,SQRexNode *node,const SQChar *str,SQRexNode *next)
 {
 
-	SQRexNodeType type = node->type;
-	switch(type) {
+	SQRexNodeType sqtype = node->sqtype;
+	switch(sqtype) {
 	case OP_GREEDY: {
 		//SQRexNode *greedystop = (node->next != -1) ? &exp->_nodes[node->next] : NULL;
 		SQRexNode *greedystop = NULL;
@@ -407,8 +407,8 @@ static const SQChar *sqstd_rex_matchnode(SQRex* exp,SQRexNode *node,const SQChar
 			if(greedystop) {
 				//checks that 0 matches satisfy the expression(if so skips)
 				//if not would always stop(for instance if is a '?')
-				if(greedystop->type != OP_GREEDY ||
-				(greedystop->type == OP_GREEDY && ((greedystop->right >> 16)&0x0000FFFF) != 0))
+				if(greedystop->sqtype != OP_GREEDY ||
+				(greedystop->sqtype == OP_GREEDY && ((greedystop->right >> 16)&0x0000FFFF) != 0))
 				{
 					SQRexNode *gnext = NULL;
 					if(greedystop->next != -1) {
@@ -459,7 +459,7 @@ static const SQChar *sqstd_rex_matchnode(SQRex* exp,SQRexNode *node,const SQChar
 			SQRexNode *n = &exp->_nodes[node->left];
 			const SQChar *cur = str;
 			SQInteger capture = -1;
-			if(node->type != OP_NOCAPEXPR && node->right == exp->_currsubexp) {
+			if(node->sqtype != OP_NOCAPEXPR && node->right == exp->_currsubexp) {
 				capture = exp->_currsubexp;
 				exp->_matches[capture].begin = cur;
 				exp->_currsubexp++;
@@ -507,7 +507,7 @@ static const SQChar *sqstd_rex_matchnode(SQRex* exp,SQRexNode *node,const SQChar
 		return str;
 	case OP_NCLASS:
 	case OP_CLASS:
-		if(sqstd_rex_matchclass(exp,&exp->_nodes[node->left],*str)?(type == OP_CLASS?SQTrue:SQFalse):(type == OP_NCLASS?SQTrue:SQFalse)) {
+		if(sqstd_rex_matchclass(exp,&exp->_nodes[node->left],*str)?(sqtype == OP_CLASS?SQTrue:SQFalse):(sqtype == OP_NCLASS?SQTrue:SQFalse)) {
             // C::B patch: Avoid compiler warnings (2) (and above/below)
 			++str;
 			return str;
@@ -521,7 +521,7 @@ static const SQChar *sqstd_rex_matchnode(SQRex* exp,SQRexNode *node,const SQChar
 		}
 		return NULL;
 	default: /* char */
-		if(*str != node->type) return NULL;
+		if(*str != node->sqtype) return NULL;
         // C::B patch: Avoid compiler warnings (4) (and above)
 		++str;
 		return str;
@@ -556,10 +556,10 @@ SQRex *sqstd_rex_compile(const SQChar *pattern,const SQChar **error)
 			t = &exp->_nodes[0];
 			scprintf(_SC("\n"));
 			for(i = 0;i < nsize; i++) {
-				if(exp->_nodes[i].type>MAX_CHAR)
-					scprintf(_SC("[%02d] %10s "),i,g_nnames[exp->_nodes[i].type-MAX_CHAR]);
+				if(exp->_nodes[i].sqtype>MAX_CHAR)
+					scprintf(_SC("[%02d] %10s "),i,g_nnames[exp->_nodes[i].sqtype-MAX_CHAR]);
 				else
-					scprintf(_SC("[%02d] %10c "),i,exp->_nodes[i].type);
+					scprintf(_SC("[%02d] %10c "),i,exp->_nodes[i].sqtype);
 				scprintf(_SC("left %02d right %02d next %02d\n"),exp->_nodes[i].left,exp->_nodes[i].right,exp->_nodes[i].next);
 			}
 			scprintf(_SC("\n"));

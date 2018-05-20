@@ -18,15 +18,15 @@ struct SQOuterVar
 	{
 		_name = name;
 		_src=src;
-		_type=t;
+		_sqtype=t;
 	}
 	SQOuterVar(const SQOuterVar &ov)
 	{
-		_type=ov._type;
+		_sqtype=ov._sqtype;
 		_src=ov._src;
 		_name=ov._name;
 	}
-	SQOuterType _type;
+	SQOuterType _sqtype;
 	SQObjectPtr _name;
 	SQObjectPtr _src;
 };
@@ -59,15 +59,15 @@ typedef sqvector<SQLineInfo> SQLineInfoVec;
 		+(nouters*sizeof(SQOuterVar))+(nlineinf*sizeof(SQLineInfo)) \
 		+(localinf*sizeof(SQLocalVarInfo))+(defparams*sizeof(SQInteger)))
 
-#define _CONSTRUCT_VECTOR(type,size,ptr) { \
+#define _CONSTRUCT_VECTOR(sqtype,size,ptr) { \
 	for(SQInteger n = 0; n < size; n++) { \
-			new (&ptr[n]) type(); \
+			new (&ptr[n]) sqtype(); \
 		} \
 }
 
-#define _DESTRUCT_VECTOR(type,size,ptr) { \
+#define _DESTRUCT_VECTOR(sqtype,size,ptr) { \
 	for(SQInteger nl = 0; nl < size; nl++) { \
-			ptr[nl].~type(); \
+			ptr[nl].~sqtype(); \
 	} \
 }
 struct SQFunctionProto : public SQRefCounted

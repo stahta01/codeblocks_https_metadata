@@ -11,7 +11,7 @@
 				<Option output="../lib/libsqstdlib.a" />
 				<Option working_dir="" />
 				<Option object_output="Release" />
-				<Option type="2" />
+				<Option sqtype="2" />
 				<Option compiler="gcc" />
 				<Option includeInTargetAll="1" />
 				<Option createDefFile="1" />
@@ -30,7 +30,7 @@
 				<Option output="../lib/libsqstdlibD.a" />
 				<Option working_dir="" />
 				<Option object_output="Debug" />
-				<Option type="2" />
+				<Option sqtype="2" />
 				<Option compiler="gcc" />
 				<Option includeInTargetAll="1" />
 				<Option createDefFile="1" />
@@ -49,7 +49,7 @@
 				<Option output="../lib/libsqstdlibDU.a" />
 				<Option working_dir="" />
 				<Option object_output="Debug - Unicode" />
-				<Option type="2" />
+				<Option sqtype="2" />
 				<Option compiler="gcc" />
 				<Option includeInTargetAll="1" />
 				<Option createDefFile="1" />
@@ -69,7 +69,7 @@
 				<Option output="../lib/libsqstdlibU.a" />
 				<Option working_dir="" />
 				<Option object_output="Release - Unicode" />
-				<Option type="2" />
+				<Option sqtype="2" />
 				<Option compiler="gcc" />
 				<Option includeInTargetAll="1" />
 				<Option createDefFile="1" />

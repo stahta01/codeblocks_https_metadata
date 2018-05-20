@@ -76,7 +76,7 @@ SQInstructionDesc g_InstrDesc[]={
 #endif
 void DumpLiteral(SQObjectPtr &o)
 {
-	switch(type(o)){
+	switch(sqtype(o)){
 		case OT_STRING:	scprintf(_SC("\"%s\""),_stringval(o));break;
 		case OT_FLOAT: scprintf(_SC("{%f}"),_float(o));break;
 		case OT_INTEGER:
@@ -128,7 +128,7 @@ void SQFuncState::Dump(SQFunctionProto *func)
 	scprintf(_SC("SQInstruction sizeof %d\n"),sizeof(SQInstruction));
 	scprintf(_SC("SQObject sizeof %d\n"),sizeof(SQObject));
 	scprintf(_SC("--------------------------------------------------------------------\n"));
-	scprintf(_SC("*****FUNCTION [%s]\n"),type(func->_name)==OT_STRING?_stringval(func->_name):_SC("unknown"));
+	scprintf(_SC("*****FUNCTION [%s]\n"),sqtype(func->_name)==OT_STRING?_stringval(func->_name):_SC("unknown"));
 	scprintf(_SC("-----LITERALS\n"));
 	SQObjectPtr refidx,key,val;
 	SQInteger idx;
@@ -296,7 +296,7 @@ SQInteger SQFuncState::PopTarget()
 {
 	SQInteger npos=_targetstack.back();
 	SQLocalVarInfo t=_vlocals[_targetstack.back()];
-	if(type(t._name)==OT_NULL){
+	if(sqtype(t._name)==OT_NULL){
 		_vlocals.pop_back();
 	}
 	_targetstack.pop_back();
@@ -314,7 +314,7 @@ void SQFuncState::SetStackSize(SQInteger n)
 	while(size>n){
 		size--;
 		SQLocalVarInfo lvi=_vlocals.back();
-		if(type(lvi._name)!=OT_NULL){
+		if(sqtype(lvi._name)!=OT_NULL){
 			lvi._end_op=GetCurrentPos();
 			_localvarinfos.push_back(lvi);
 		}
@@ -335,7 +335,7 @@ bool SQFuncState::IsConstant(const SQObject &name,SQObject &e)
 bool SQFuncState::IsLocal(SQUnsignedInteger stkpos)
 {
 	if(stkpos>=_vlocals.size())return false;
-	else if(type(_vlocals[stkpos]._name)!=OT_NULL)return true;
+	else if(sqtype(_vlocals[stkpos]._name)!=OT_NULL)return true;
 	return false;
 }
 
@@ -356,7 +356,7 @@ SQInteger SQFuncState::GetLocalVariable(const SQObject &name)
 {
 	SQInteger locals=_vlocals.size();
 	while(locals>=1){
-		if(type(_vlocals[locals-1]._name)==OT_STRING && _string(_vlocals[locals-1]._name)==_string(name)){
+		if(sqtype(_vlocals[locals-1]._name)==OT_STRING && _string(_vlocals[locals-1]._name)==_string(name)){
 			return locals-1;
 		}
 		locals--;

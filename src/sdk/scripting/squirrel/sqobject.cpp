@@ -12,9 +12,9 @@
 #include "sqclosure.h"
 
 
-const SQChar *IdType2Name(SQObjectType type)
+const SQChar *IdType2Name(SQObjectType sqtype)
 {
-	switch(_RAW_TYPE(type))
+	switch(_RAW_TYPE(sqtype))
 	{
 	case _RT_NULL:return _SC("null");
 	case _RT_INTEGER:return _SC("integer");
@@ -42,7 +42,7 @@ const SQChar *IdType2Name(SQObjectType type)
 
 const SQChar *GetTypeName(const SQObjectPtr &obj1)
 {
-	return IdType2Name(type(obj1));
+	return IdType2Name(sqtype(obj1));
 }
 
 SQString *SQString::Create(SQSharedState *ss,const SQChar *s,SQInteger len)
@@ -72,7 +72,7 @@ SQInteger SQString::Next(const SQObjectPtr &refpos, SQObjectPtr &outkey, SQObjec
 
 SQUnsignedInteger TranslateIndex(const SQObjectPtr &idx)
 {
-	switch(type(idx)){
+	switch(sqtype(idx)){
 		case OT_NULL:
 			return 0;
 		case OT_INTEGER:
@@ -82,11 +82,11 @@ SQUnsignedInteger TranslateIndex(const SQObjectPtr &idx)
 	return 0;
 }
 
-SQWeakRef *SQRefCounted::GetWeakRef(SQObjectType type)
+SQWeakRef *SQRefCounted::GetWeakRef(SQObjectType sqtype)
 {
 	if(!_weakref) {
 		sq_new(_weakref,SQWeakRef);
-		_weakref->_obj._type = type;
+		_weakref->_obj._sqtype = sqtype;
 		_weakref->_obj._unVal.pRefCounted = this;
 	}
 	return _weakref;
@@ -95,13 +95,13 @@ SQWeakRef *SQRefCounted::GetWeakRef(SQObjectType type)
 SQRefCounted::~SQRefCounted()
 {
 	if(_weakref) {
-		_weakref->_obj._type = OT_NULL;
+		_weakref->_obj._sqtype = OT_NULL;
 		_weakref->_obj._unVal.pRefCounted = NULL;
 	}
 }
 
 void SQWeakRef::Release() {
-	if(ISREFCOUNTED(_obj._type)) {
+	if(ISREFCOUNTED(_obj._sqtype)) {
 		_obj._unVal.pRefCounted->_weakref = NULL;
 	}
 	sq_delete(this,SQWeakRef);
@@ -183,7 +183,7 @@ bool SQGenerator::Resume(SQVM *v,SQInteger target)
 	v->ci->_prevtop = (SQInt32)prevtop;
 	v->ci->_prevstkbase = (SQInt32)(v->_stackbase - oldstackbase);
 	_state=eRunning;
-	if (type(v->_debughook) != OT_NULL && _rawval(v->_debughook) != _rawval(v->ci->_closure))
+	if (sqtype(v->_debughook) != OT_NULL && _rawval(v->_debughook) != _rawval(v->ci->_closure))
 		v->CallDebugHook(_SC('c'));
 
 	return true;
@@ -265,8 +265,8 @@ bool CheckTag(HSQUIRRELVM v,SQWRITEFUNC read,SQUserPointer up,SQInteger tag)
 
 bool WriteObject(HSQUIRRELVM v,SQUserPointer up,SQWRITEFUNC write,SQObjectPtr &o)
 {
-	_CHECK_IO(SafeWrite(v,write,up,&type(o),sizeof(SQObjectType)));
-	switch(type(o)){
+	_CHECK_IO(SafeWrite(v,write,up,&sqtype(o),sizeof(SQObjectType)));
+	switch(sqtype(o)){
 	case OT_STRING:
 		_CHECK_IO(SafeWrite(v,write,up,&_string(o)->_len,sizeof(SQInteger)));
 		_CHECK_IO(SafeWrite(v,write,up,_stringval(o),rsl(_string(o)->_len)));
@@ -364,7 +364,7 @@ bool SQFunctionProto::Save(SQVM *v,SQUserPointer up,SQWRITEFUNC write)
 
 	_CHECK_IO(WriteTag(v,write,up,SQ_CLOSURESTREAM_PART));
 	for(i=0;i<noutervalues;i++){
-		_CHECK_IO(SafeWrite(v,write,up,&_outervalues[i]._type,sizeof(SQUnsignedInteger)));
+		_CHECK_IO(SafeWrite(v,write,up,&_outervalues[i]._sqtype,sizeof(SQUnsignedInteger)));
 		_CHECK_IO(WriteObject(v,up,write,_outervalues[i]._src));
 		_CHECK_IO(WriteObject(v,up,write,_outervalues[i]._name));
 	}
@@ -440,13 +440,13 @@ bool SQFunctionProto::Load(SQVM *v,SQUserPointer up,SQREADFUNC read,SQObjectPtr 
 	_CHECK_IO(CheckTag(v,read,up,SQ_CLOSURESTREAM_PART));
 
 	for(i = 0; i < noutervalues; i++){
-		SQUnsignedInteger type;
+		SQUnsignedInteger sqtype;
 		// C::B patch: Avoid compiler warnings about shadowing params
 		SQObjectPtr name_;
-		_CHECK_IO(SafeRead(v,read,up, &type, sizeof(SQUnsignedInteger)));
+		_CHECK_IO(SafeRead(v,read,up, &sqtype, sizeof(SQUnsignedInteger)));
 		_CHECK_IO(ReadObject(v, up, read, o));
 		_CHECK_IO(ReadObject(v, up, read, name_));
-		f->_outervalues[i] = SQOuterVar(name_,o, (SQOuterType)type);
+		f->_outervalues[i] = SQOuterVar(name_,o, (SQOuterType)sqtype);
 	}
 	_CHECK_IO(CheckTag(v,read,up,SQ_CLOSURESTREAM_PART));
 
@@ -585,4 +585,3 @@ void SQUserData::Mark(SQCollectable **chain){
 void SQCollectable::UnMark() { _uiRef&=~MARK_FLAG; }
 
 #endif
-
