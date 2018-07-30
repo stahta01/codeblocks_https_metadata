@@ -6,12 +6,12 @@
 //(*Headers(HeadersDetectorDlg)
 #include "scrollingdialog.h"
 #include <wx/timer.h>
-class wxStaticBoxSizer;
+class wxBoxSizer;
 class wxFlexGridSizer;
 class wxGauge;
-class wxStdDialogButtonSizer;
-class wxBoxSizer;
+class wxStaticBoxSizer;
 class wxStaticText;
+class wxStdDialogButtonSizer;
 //*)
 
 #include <cbproject.h>
@@ -26,12 +26,12 @@ class HeadersDetectorDlg: public wxScrollingDialog
 	private:
 
 		//(*Declarations(HeadersDetectorDlg)
-		wxStaticText* m_ProjectName;
-		wxStaticText* m_FileNameTxt;
-		wxStaticText* StaticText1;
-		wxTimer Timer1;
 		wxGauge* m_ProgressBar;
+		wxStaticText* StaticText1;
 		wxStaticText* StaticText2;
+		wxStaticText* m_FileNameTxt;
+		wxStaticText* m_ProjectName;
+		wxTimer Timer1;
 		//*)
 
 		//(*Identifiers(HeadersDetectorDlg)

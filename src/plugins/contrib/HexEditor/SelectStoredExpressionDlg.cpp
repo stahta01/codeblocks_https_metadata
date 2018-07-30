@@ -24,8 +24,8 @@
 #include <configmanager.h>
 
 //(*InternalHeaders(SelectStoredExpressionDlg)
-#include <wx/string.h>
 #include <wx/intl.h>
+#include <wx/string.h>
 //*)
 
 //(*IdInit(SelectStoredExpressionDlg)
@@ -56,11 +56,11 @@ SelectStoredExpressionDlg::SelectStoredExpressionDlg(wxWindow* parent,const wxSt
 void SelectStoredExpressionDlg::BuildContent(wxWindow* parent)
 {
 	//(*Initialize(SelectStoredExpressionDlg)
-	wxBoxSizer* BoxSizer3;
-	wxBoxSizer* BoxSizer2;
 	wxBoxSizer* BoxSizer1;
-	wxStdDialogButtonSizer* StdDialogButtonSizer1;
+	wxBoxSizer* BoxSizer2;
+	wxBoxSizer* BoxSizer3;
 	wxStaticBoxSizer* StaticBoxSizer1;
+	wxStdDialogButtonSizer* StdDialogButtonSizer1;
 
 	Create(parent, wxID_ANY, _("Stored Expressions"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, _T("wxID_ANY"));
 	BoxSizer1 = new wxBoxSizer(wxVERTICAL);

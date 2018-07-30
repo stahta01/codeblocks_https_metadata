@@ -24,15 +24,15 @@
 #include "projectconfigurationpanel.h"
 
 //(*InternalHeaders(ProjectConfigurationPanel)
-#include <wx/checkbox.h>
-#include <wx/sizer.h>
 #include <wx/button.h>
-#include <wx/string.h>
+#include <wx/checkbox.h>
 #include <wx/intl.h>
+#include <wx/listbox.h>
+#include <wx/sizer.h>
 #include <wx/stattext.h>
+#include <wx/string.h>
 #include <wx/textctrl.h>
 #include <wx/treectrl.h>
-#include <wx/listbox.h>
 //*)
 
 #include <wx/tokenzr.h>
@@ -95,17 +95,17 @@ ProjectConfigurationPanel::ProjectConfigurationPanel(wxWindow* parent,ProjectCon
     m_KnownLibs(KnownLibs)
 {
 	//(*Initialize(ProjectConfigurationPanel)
-	wxStaticBoxSizer* StaticBoxSizer2;
-	wxBoxSizer* BoxSizer3;
-	wxBoxSizer* BoxSizer7;
-	wxBoxSizer* BoxSizer2;
-	wxStaticBoxSizer* StaticBoxSizer3;
-	wxBoxSizer* BoxSizer4;
 	wxBoxSizer* BoxSizer1;
-	wxStaticBoxSizer* m_DisableAuto;
-	wxBoxSizer* BoxSizer6;
+	wxBoxSizer* BoxSizer2;
+	wxBoxSizer* BoxSizer3;
+	wxBoxSizer* BoxSizer4;
 	wxBoxSizer* BoxSizer5;
+	wxBoxSizer* BoxSizer6;
+	wxBoxSizer* BoxSizer7;
 	wxStaticBoxSizer* StaticBoxSizer1;
+	wxStaticBoxSizer* StaticBoxSizer2;
+	wxStaticBoxSizer* StaticBoxSizer3;
+	wxStaticBoxSizer* m_DisableAuto;
 
 	Create(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL, _T("wxID_ANY"));
 	BoxSizer1 = new wxBoxSizer(wxVERTICAL);
@@ -139,7 +139,7 @@ ProjectConfigurationPanel::ProjectConfigurationPanel(wxWindow* parent,ProjectCon
 	BoxSizer6->Add(BoxSizer2, 0, wxALIGN_CENTER_VERTICAL, 5);
 	BoxSizer3 = new wxBoxSizer(wxVERTICAL);
 	StaticBoxSizer2 = new wxStaticBoxSizer(wxVERTICAL, this, _("Known libraries"));
-	m_KnownLibrariesTree = new wxTreeCtrl(this, ID_TREECTRL1, wxDefaultPosition, wxDefaultSize, wxTR_HIDE_ROOT|wxTR_SINGLE|wxTR_DEFAULT_STYLE|wxSUNKEN_BORDER, wxDefaultValidator, _T("ID_TREECTRL1"));
+	m_KnownLibrariesTree = new wxTreeCtrl(this, ID_TREECTRL1, wxDefaultPosition, wxDefaultSize, wxTR_HIDE_ROOT|wxTR_SINGLE|wxTR_DEFAULT_STYLE|wxBORDER_SUNKEN, wxDefaultValidator, _T("ID_TREECTRL1"));
 	StaticBoxSizer2->Add(m_KnownLibrariesTree, 1, wxALL|wxEXPAND, 5);
 	BoxSizer4 = new wxBoxSizer(wxHORIZONTAL);
 	StaticText1 = new wxStaticText(this, ID_STATICTEXT1, _("Filter:"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT1"));

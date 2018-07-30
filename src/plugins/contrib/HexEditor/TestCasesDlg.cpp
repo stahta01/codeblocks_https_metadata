@@ -23,8 +23,8 @@
 #include "TestCasesDlg.h"
 
 //(*InternalHeaders(TestCasesDlg)
-#include <wx/string.h>
 #include <wx/intl.h>
+#include <wx/string.h>
 //*)
 
 //(*IdInit(TestCasesDlg)

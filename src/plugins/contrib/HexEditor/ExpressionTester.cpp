@@ -32,8 +32,8 @@
 #include <globals.h>
 
 //(*InternalHeaders(ExpressionTester)
-#include <wx/string.h>
 #include <wx/intl.h>
+#include <wx/string.h>
 //*)
 
 //(*IdInit(ExpressionTester)
@@ -66,10 +66,10 @@ ExpressionTester::ExpressionTester( wxWindow* parent, FileContentBase* content, 
 void ExpressionTester::BuildContent(wxWindow* parent)
 {
 	//(*Initialize(ExpressionTester)
-	wxFlexGridSizer* FlexGridSizer1;
-	wxBoxSizer* BoxSizer3;
-	wxBoxSizer* BoxSizer2;
 	wxBoxSizer* BoxSizer1;
+	wxBoxSizer* BoxSizer2;
+	wxBoxSizer* BoxSizer3;
+	wxFlexGridSizer* FlexGridSizer1;
 	wxStaticBoxSizer* StaticBoxSizer1;
 
 	Create(parent, wxID_ANY, _("ExpressionTester"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, _T("wxID_ANY"));

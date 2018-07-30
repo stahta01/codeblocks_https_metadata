@@ -24,9 +24,9 @@
 #define EXPRESSIONTESTER_H
 
 //(*Headers(ExpressionTester)
-#include <wx/sizer.h>
-#include <wx/button.h>
 #include "scrollingdialog.h"
+#include <wx/button.h>
+#include <wx/sizer.h>
 #include <wx/stattext.h>
 #include <wx/textctrl.h>
 //*)
@@ -43,18 +43,18 @@ class ExpressionTester: public wxScrollingDialog
 	private:
 
 		//(*Declarations(ExpressionTester)
-		wxButton* Button4;
 		wxButton* Button1;
-		wxStaticText* m_Parsing;
 		wxButton* Button2;
 		wxButton* Button3;
+		wxButton* Button4;
 		wxStaticText* StaticText1;
-		wxTextCtrl* m_Expr;
-		wxStaticText* StaticText3;
-		wxTextCtrl* m_Dump;
-		wxStaticText* StaticText4;
 		wxStaticText* StaticText2;
+		wxStaticText* StaticText3;
+		wxStaticText* StaticText4;
+		wxStaticText* m_Parsing;
 		wxStaticText* m_Result;
+		wxTextCtrl* m_Dump;
+		wxTextCtrl* m_Expr;
 		//*)
 
 		//(*Identifiers(ExpressionTester)

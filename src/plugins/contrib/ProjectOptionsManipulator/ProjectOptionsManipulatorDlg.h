@@ -8,16 +8,16 @@
 
 //(*Headers(ProjectOptionsManipulatorDlg)
 #include <wx/dialog.h>
-class wxStdDialogButtonSizer;
-class wxCheckBox;
-class wxTextCtrl;
-class wxRadioBox;
-class wxStaticText;
-class wxFlexGridSizer;
 class wxBoxSizer;
 class wxButton;
-class wxStaticBoxSizer;
+class wxCheckBox;
 class wxChoice;
+class wxFlexGridSizer;
+class wxRadioBox;
+class wxStaticBoxSizer;
+class wxStaticText;
+class wxStdDialogButtonSizer;
+class wxTextCtrl;
 //*)
 
 class ProjectOptionsManipulatorDlg: public wxDialog
@@ -49,25 +49,25 @@ class ProjectOptionsManipulatorDlg: public wxDialog
     EProjectTargetTypeOption GetTargetTypeOption();
 
 		//(*Declarations(ProjectOptionsManipulatorDlg)
-		wxRadioBox* m_RboOperation;
-		wxTextCtrl* m_TxtCustomVar;
-		wxCheckBox* m_ChkOptionReplacePattern;
-		wxCheckBox* m_ChkOptionsCustomVar;
-		wxCheckBox* m_ChkOptionsLinkerPath;
 		wxButton* m_BtnSearchCompilerDest;
-		wxCheckBox* m_ChkOptionsResCompiler;
-		wxTextCtrl* m_TxtOptionReplace;
-		wxChoice* m_ChoOptionLevel;
+		wxButton* m_BtnSearchCompilerSrc;
+		wxCheckBox* m_ChkOptionReplacePattern;
+		wxCheckBox* m_ChkOptionsCompiler;
+		wxCheckBox* m_ChkOptionsCompilerPath;
+		wxCheckBox* m_ChkOptionsCustomVar;
 		wxCheckBox* m_ChkOptionsLinker;
 		wxCheckBox* m_ChkOptionsLinkerLibs;
-		wxCheckBox* m_ChkOptionsCompiler;
-		wxChoice* m_ChoScanProjects;
-		wxButton* m_BtnSearchCompilerSrc;
-		wxChoice* m_ChoTargetType;
-		wxRadioBox* m_RboOptionSearch;
-		wxChoice* m_ChoScan;
+		wxCheckBox* m_ChkOptionsLinkerPath;
 		wxCheckBox* m_ChkOptionsResCompPath;
-		wxCheckBox* m_ChkOptionsCompilerPath;
+		wxCheckBox* m_ChkOptionsResCompiler;
+		wxChoice* m_ChoOptionLevel;
+		wxChoice* m_ChoScan;
+		wxChoice* m_ChoScanProjects;
+		wxChoice* m_ChoTargetType;
+		wxRadioBox* m_RboOperation;
+		wxRadioBox* m_RboOptionSearch;
+		wxTextCtrl* m_TxtCustomVar;
+		wxTextCtrl* m_TxtOptionReplace;
 		wxTextCtrl* m_TxtOptionSearch;
 		//*)
 

@@ -24,12 +24,12 @@
 #define SEARCHDIALOG_H
 
 //(*Headers(SearchDialog)
-#include <wx/combobox.h>
-#include <wx/sizer.h>
-#include <wx/button.h>
-#include <wx/radiobut.h>
 #include "scrollingdialog.h"
+#include <wx/button.h>
+#include <wx/combobox.h>
 #include <wx/radiobox.h>
+#include <wx/radiobut.h>
+#include <wx/sizer.h>
 //*)
 
 #include "FileContentBase.h"
@@ -57,13 +57,13 @@ class SearchDialog: public wxScrollingDialog
 		//*)
 
 		//(*Declarations(SearchDialog)
-		wxRadioButton* m_SearchTypeString;
-		wxComboBox* m_SearchValue;
-		wxRadioButton* m_SearchTypeExpression;
 		wxButton* Button1;
+		wxComboBox* m_SearchValue;
 		wxRadioBox* m_Direction;
 		wxRadioBox* m_StartFrom;
+		wxRadioButton* m_SearchTypeExpression;
 		wxRadioButton* m_SearchTypeHex;
+		wxRadioButton* m_SearchTypeString;
 		//*)
 
 		//(*Handlers(SearchDialog)

@@ -24,12 +24,12 @@
 #define HEXEDITPANEL_H
 
 //(*Headers(HexEditPanel)
-#include <wx/scrolbar.h>
-#include <wx/checkbox.h>
-#include <wx/sizer.h>
 #include <wx/button.h>
+#include <wx/checkbox.h>
 #include <wx/menu.h>
 #include <wx/panel.h>
+#include <wx/scrolbar.h>
+#include <wx/sizer.h>
 #include <wx/statline.h>
 #include <wx/stattext.h>
 #include <wx/textctrl.h>
@@ -74,81 +74,81 @@ class HexEditPanel: public EditorBase
         typedef FileContentBase::OffsetT OffsetT;
 
         //(*Declarations(HexEditPanel)
+        wxBoxSizer* BoxSizer1;
+        wxBoxSizer* BoxSizer2;
+        wxBoxSizer* BoxSizer3;
+        wxBoxSizer* BoxSizer4;
+        wxBoxSizer* PreviewSizer;
+        wxButton* Button1;
+        wxButton* Button2;
+        wxButton* Button3;
+        wxButton* Button4;
+        wxButton* Button5;
+        wxButton* Button6;
+        wxButton* m_BlockSize;
+        wxButton* m_ColsModeBtn;
+        wxButton* m_DigitBits;
+        wxButton* m_Endianess;
+        wxCheckBox* CheckBox1;
+        wxFlexGridSizer* FlexGridSizer1;
+        wxMenu m_BaseMenu;
+        wxMenu m_BlockSizeMenu;
+        wxMenu m_ColsModeMenu;
+        wxMenu m_EndianessMenu;
+        wxMenu* MenuItem10;
+        wxMenu* MenuItem19;
+        wxMenu* MenuItem28;
+        wxMenuItem* MenuItem11;
+        wxMenuItem* MenuItem12;
+        wxMenuItem* MenuItem13;
+        wxMenuItem* MenuItem14;
+        wxMenuItem* MenuItem15;
+        wxMenuItem* MenuItem16;
+        wxMenuItem* MenuItem17;
+        wxMenuItem* MenuItem18;
+        wxMenuItem* MenuItem1;
+        wxMenuItem* MenuItem20;
+        wxMenuItem* MenuItem21;
+        wxMenuItem* MenuItem22;
+        wxMenuItem* MenuItem23;
+        wxMenuItem* MenuItem24;
+        wxMenuItem* MenuItem25;
+        wxMenuItem* MenuItem26;
+        wxMenuItem* MenuItem27;
         wxMenuItem* MenuItem29;
         wxMenuItem* MenuItem2;
-        wxMenu m_ColsModeMenu;
-        wxMenuItem* MenuItem23;
-        wxBoxSizer* PreviewSizer;
-        wxMenu* MenuItem10;
-        wxMenuItem* MenuItem31;
-        wxMenuItem* MenuItem1;
-        wxButton* m_ColsModeBtn;
-        wxMenu* MenuItem19;
-        wxFlexGridSizer* FlexGridSizer1;
         wxMenuItem* MenuItem30;
-        wxTextCtrl* m_Expression;
-        wxBoxSizer* BoxSizer3;
-        wxStaticLine* StaticLine2;
-        wxMenu m_EndianessMenu;
-        wxStaticText* m_ExpressionVal;
-        wxStaticText* m_LDoubleVal;
-        wxMenuItem* MenuItem16;
-        wxMenuItem* MenuItem12;
-        wxMenuItem* MenuItem25;
-        wxButton* m_BlockSize;
-        wxScrollBar* m_ContentScroll;
-        wxStaticText* m_FloatVal;
+        wxMenuItem* MenuItem31;
         wxMenuItem* MenuItem32;
-        wxButton* Button4;
-        wxMenuItem* MenuItem20;
-        wxStaticText* m_DwordVal;
-        wxButton* Button1;
-        wxPanel* m_DrawArea;
-        wxCheckBox* CheckBox1;
-        wxButton* Button2;
         wxMenuItem* MenuItem33;
-        wxButton* Button3;
-        wxMenu m_BaseMenu;
-        wxMenuItem* MenuItem24;
-        wxBoxSizer* BoxSizer2;
-        wxMenuItem* MenuItem15;
-        wxStaticText* StaticText1;
-        wxMenuItem* MenuItem21;
-        wxMenuItem* MenuItem17;
-        wxStaticText* StaticText3;
-        wxMenu m_BlockSizeMenu;
         wxMenuItem* MenuItem3;
-        wxStaticLine* StaticLine1;
-        wxButton* Button5;
-        wxMenuItem* MenuItem9;
-        wxStaticText* StaticText8;
-        wxStaticText* m_WordVal;
-        wxBoxSizer* BoxSizer4;
-        wxMenuItem* MenuItem11;
-        wxMenu* MenuItem28;
-        wxMenuItem* MenuItem22;
-        wxMenuItem* MenuItem5;
-        wxStaticText* StaticText4;
-        wxTimer ReparseTimer;
-        wxBoxSizer* BoxSizer1;
-        wxStaticText* m_DoubleVal;
-        wxStaticText* StaticText5;
-        wxStaticText* StaticText2;
-        wxMenuItem* MenuItem27;
-        wxMenuItem* MenuItem18;
-        wxMenuItem* MenuItem7;
-        wxMenuItem* MenuItem6;
         wxMenuItem* MenuItem4;
-        wxMenuItem* MenuItem26;
-        wxStaticText* StaticText6;
-        wxMenuItem* MenuItem13;
-        wxStaticText* m_ByteVal;
-        wxStaticText* m_Status;
+        wxMenuItem* MenuItem5;
+        wxMenuItem* MenuItem6;
+        wxMenuItem* MenuItem7;
         wxMenuItem* MenuItem8;
-        wxButton* Button6;
-        wxMenuItem* MenuItem14;
-        wxButton* m_Endianess;
-        wxButton* m_DigitBits;
+        wxMenuItem* MenuItem9;
+        wxPanel* m_DrawArea;
+        wxScrollBar* m_ContentScroll;
+        wxStaticLine* StaticLine1;
+        wxStaticLine* StaticLine2;
+        wxStaticText* StaticText1;
+        wxStaticText* StaticText2;
+        wxStaticText* StaticText3;
+        wxStaticText* StaticText4;
+        wxStaticText* StaticText5;
+        wxStaticText* StaticText6;
+        wxStaticText* StaticText8;
+        wxStaticText* m_ByteVal;
+        wxStaticText* m_DoubleVal;
+        wxStaticText* m_DwordVal;
+        wxStaticText* m_ExpressionVal;
+        wxStaticText* m_FloatVal;
+        wxStaticText* m_LDoubleVal;
+        wxStaticText* m_Status;
+        wxStaticText* m_WordVal;
+        wxTextCtrl* m_Expression;
+        wxTimer ReparseTimer;
         //*)
 
         //(*Identifiers(HexEditPanel)

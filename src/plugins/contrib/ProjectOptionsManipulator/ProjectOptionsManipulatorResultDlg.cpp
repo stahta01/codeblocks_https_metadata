@@ -10,12 +10,12 @@
 #include "ProjectOptionsManipulatorResultDlg.h"
 
 //(*InternalHeaders(ProjectOptionsManipulatorResultDlg)
+#include <wx/button.h>
+#include <wx/intl.h>
 #include <wx/sizer.h>
 #include <wx/stattext.h>
-#include <wx/textctrl.h>
-#include <wx/intl.h>
-#include <wx/button.h>
 #include <wx/string.h>
+#include <wx/textctrl.h>
 //*)
 
 //(*IdInit(ProjectOptionsManipulatorResultDlg)
@@ -30,9 +30,9 @@ END_EVENT_TABLE()
 ProjectOptionsManipulatorResultDlg::ProjectOptionsManipulatorResultDlg(wxWindow* parent,wxWindowID id)
 {
 	//(*Initialize(ProjectOptionsManipulatorResultDlg)
-	wxStaticText* lblResult;
-	wxBoxSizer* bszMainV;
 	wxBoxSizer* bszMainH;
+	wxBoxSizer* bszMainV;
+	wxStaticText* lblResult;
 	wxStdDialogButtonSizer* sbzOK;
 
 	Create(parent, id, _("Project Options Plugin - Results"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, _T("id"));

@@ -8,10 +8,10 @@
 
 //(*Headers(ProjectOptionsManipulatorResultDlg)
 #include <wx/dialog.h>
+class wxBoxSizer;
+class wxStaticText;
 class wxStdDialogButtonSizer;
 class wxTextCtrl;
-class wxStaticText;
-class wxBoxSizer;
 //*)
 
 class ProjectOptionsManipulatorResultDlg: public wxDialog

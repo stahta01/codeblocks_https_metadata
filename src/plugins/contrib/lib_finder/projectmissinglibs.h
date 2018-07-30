@@ -3,12 +3,12 @@
 
 //(*Headers(ProjectMissingLibs)
 #include "scrollingdialog.h"
-class wxStaticBoxSizer;
-class wxFlexGridSizer;
 class wxButton;
+class wxFlexGridSizer;
+class wxPanel;
+class wxStaticBoxSizer;
 class wxStaticLine;
 class wxStaticText;
-class wxPanel;
 //*)
 
 #include <wx/stattext.h>
@@ -28,11 +28,11 @@ class ProjectMissingLibs: public wxScrollingDialog, public WebResourcesManager::
 	private:
 
 		//(*Declarations(ProjectMissingLibs)
-		wxPanel* m_LibsBack;
-		wxStaticText* m_StatusText;
-		wxFlexGridSizer* m_LibsContainer;
 		wxButton* Button1;
 		wxButton* m_MissingDefsBtn;
+		wxFlexGridSizer* m_LibsContainer;
+		wxPanel* m_LibsBack;
+		wxStaticText* m_StatusText;
 		//*)
 
 		//(*Identifiers(ProjectMissingLibs)

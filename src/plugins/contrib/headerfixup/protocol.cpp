@@ -10,8 +10,12 @@
 #include "protocol.h"
 
 //(*InternalHeaders(Protocol)
-#include <wx/string.h>
+#include <wx/button.h>
 #include <wx/intl.h>
+#include <wx/sizer.h>
+#include <wx/stattext.h>
+#include <wx/string.h>
+#include <wx/textctrl.h>
 //*)
 
 #include <wx/event.h>
@@ -39,9 +43,9 @@ Protocol::Protocol(wxWindow* parent,wxWindowID /*id*/)
 {
   //(*Initialize(Protocol)
   wxBoxSizer* sizMain;
-  wxStaticText* lblProtocol;
-  wxStaticBoxSizer* sizProtocol;
   wxButton* btnOK;
+  wxStaticBoxSizer* sizProtocol;
+  wxStaticText* lblProtocol;
 
   Create(parent, wxID_ANY, _("Header Fixup - Protocol"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, _T("wxID_ANY"));
   sizMain = new wxBoxSizer(wxVERTICAL);

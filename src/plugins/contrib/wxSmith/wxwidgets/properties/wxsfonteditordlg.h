@@ -26,17 +26,17 @@
 #include "wxsfontproperty.h"
 
 //(*Headers(wxsFontEditorDlg)
+#include "scrollingdialog.h"
+#include <wx/button.h>
+#include <wx/checkbox.h>
+#include <wx/choice.h>
+#include <wx/combobox.h>
+#include <wx/listbox.h>
+#include <wx/radiobut.h>
 #include <wx/sizer.h>
+#include <wx/spinctrl.h>
 #include <wx/stattext.h>
 #include <wx/textctrl.h>
-#include <wx/checkbox.h>
-#include <wx/listbox.h>
-#include <wx/spinctrl.h>
-#include <wx/radiobut.h>
-#include <wx/choice.h>
-#include <wx/button.h>
-#include "scrollingdialog.h"
-#include <wx/combobox.h>
 //*)
 
 class wxsFontEditorDlg: public wxScrollingDialog
@@ -97,46 +97,46 @@ class wxsFontEditorDlg: public wxScrollingDialog
         //*)
 
         //(*Declarations(wxsFontEditorDlg)
-        wxStaticBoxSizer* StaticBoxSizer2;
-        wxChoice* BaseFontVal;
-        wxRadioButton* WeightNorm;
-        wxRadioButton* WeightBold;
-        wxCheckBox* UnderUse;
-        wxCheckBox* StyleUse;
-        wxRadioButton* UnderYes;
-        wxRadioButton* StyleSlant;
-        wxButton* FaceUp;
-        wxStaticBoxSizer* StaticBoxSizer4;
-        wxTextCtrl* TestArea;
-        wxSpinCtrl* SizeVal;
-        wxRadioButton* StyleNorm;
-        wxCheckBox* BaseFontUse;
-        wxChoice* FontType;
-        wxCheckBox* WeightUse;
-        wxButton* FaceAdd;
-        wxStaticText* BaseFontTxt;
-        wxFlexGridSizer* FlexGridSizer2;
-        wxChoice* EncodVal;
-        wxBoxSizer* BoxSizer2;
-        wxTextCtrl* RelSizeVal;
-        wxCheckBox* FamUse;
-        wxRadioButton* WeightLight;
-        wxStaticBoxSizer* StaticBoxSizer3;
-        wxStaticBoxSizer* StaticBoxSizer6;
-        wxCheckBox* SizeUse;
-        wxButton* FaceDown;
-        wxCheckBox* EncodUse;
-        wxRadioButton* StyleItal;
-        wxButton* FaceDel;
-        wxListBox* FaceList;
-        wxComboBox* FamVal;
-        wxStaticBoxSizer* StaticBoxSizer1;
-        wxCheckBox* RelSizeUse;
-        wxBoxSizer* BoxSizer3;
-        wxStaticBoxSizer* StaticBoxSizer5;
-        wxRadioButton* UnderNo;
-        wxButton* FaceEdit;
         wxBoxSizer* BaseFontSizer;
+        wxBoxSizer* BoxSizer2;
+        wxBoxSizer* BoxSizer3;
+        wxButton* FaceAdd;
+        wxButton* FaceDel;
+        wxButton* FaceDown;
+        wxButton* FaceEdit;
+        wxButton* FaceUp;
+        wxCheckBox* BaseFontUse;
+        wxCheckBox* EncodUse;
+        wxCheckBox* FamUse;
+        wxCheckBox* RelSizeUse;
+        wxCheckBox* SizeUse;
+        wxCheckBox* StyleUse;
+        wxCheckBox* UnderUse;
+        wxCheckBox* WeightUse;
+        wxChoice* BaseFontVal;
+        wxChoice* EncodVal;
+        wxChoice* FontType;
+        wxComboBox* FamVal;
+        wxFlexGridSizer* FlexGridSizer2;
+        wxListBox* FaceList;
+        wxRadioButton* StyleItal;
+        wxRadioButton* StyleNorm;
+        wxRadioButton* StyleSlant;
+        wxRadioButton* UnderNo;
+        wxRadioButton* UnderYes;
+        wxRadioButton* WeightBold;
+        wxRadioButton* WeightLight;
+        wxRadioButton* WeightNorm;
+        wxSpinCtrl* SizeVal;
+        wxStaticBoxSizer* StaticBoxSizer1;
+        wxStaticBoxSizer* StaticBoxSizer2;
+        wxStaticBoxSizer* StaticBoxSizer3;
+        wxStaticBoxSizer* StaticBoxSizer4;
+        wxStaticBoxSizer* StaticBoxSizer5;
+        wxStaticBoxSizer* StaticBoxSizer6;
+        wxStaticText* BaseFontTxt;
+        wxTextCtrl* RelSizeVal;
+        wxTextCtrl* TestArea;
         //*)
 
     private:

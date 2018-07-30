@@ -1,13 +1,13 @@
 #include "projectmissinglibs.h"
 
 //(*InternalHeaders(ProjectMissingLibs)
-#include <wx/sizer.h>
 #include <wx/button.h>
-#include <wx/panel.h>
-#include <wx/string.h>
 #include <wx/intl.h>
+#include <wx/panel.h>
+#include <wx/sizer.h>
 #include <wx/statline.h>
 #include <wx/stattext.h>
+#include <wx/string.h>
 //*)
 #include <wx/stattext.h>
 #include <wx/checkbox.h>
@@ -46,27 +46,27 @@ ProjectMissingLibs::ProjectMissingLibs(wxWindow* parent,wxArrayString& missingLi
     , m_DetectionManager( currentResults )
 {
 	//(*Initialize(ProjectMissingLibs)
-	wxStaticBoxSizer* StaticBoxSizer2;
-	wxStaticLine* StaticLine10;
 	wxFlexGridSizer* FlexGridSizer1;
 	wxFlexGridSizer* FlexGridSizer2;
-	wxStaticLine* StaticLine2;
+	wxStaticBoxSizer* StaticBoxSizer1;
+	wxStaticBoxSizer* StaticBoxSizer2;
+	wxStaticLine* StaticLine10;
 	wxStaticLine* StaticLine11;
-	wxStaticLine* StaticLine14;
 	wxStaticLine* StaticLine12;
 	wxStaticLine* StaticLine13;
-	wxStaticText* StaticText1;
-	wxStaticText* StaticText3;
+	wxStaticLine* StaticLine14;
+	wxStaticLine* StaticLine2;
 	wxStaticLine* StaticLine3;
+	wxStaticText* StaticText1;
 	wxStaticText* StaticText2;
-	wxStaticBoxSizer* StaticBoxSizer1;
+	wxStaticText* StaticText3;
 
 	Create(parent, wxID_ANY, _("Missing libraries definitions"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, _T("wxID_ANY"));
 	FlexGridSizer1 = new wxFlexGridSizer(0, 1, 0, 0);
 	FlexGridSizer1->AddGrowableCol(0);
 	FlexGridSizer1->AddGrowableRow(0);
 	StaticBoxSizer1 = new wxStaticBoxSizer(wxVERTICAL, this, _("Unknown libraries"));
-	m_LibsBack = new wxPanel(this, ID_PANEL1, wxDefaultPosition, wxSize(308,113), wxSUNKEN_BORDER|wxTAB_TRAVERSAL, _T("ID_PANEL1"));
+	m_LibsBack = new wxPanel(this, ID_PANEL1, wxDefaultPosition, wxSize(308,113), wxBORDER_SUNKEN|wxTAB_TRAVERSAL, _T("ID_PANEL1"));
 	m_LibsContainer = new wxFlexGridSizer(0, 5, 0, 0);
 	m_LibsContainer->AddGrowableCol(0);
 	m_LibsContainer->AddGrowableCol(2);

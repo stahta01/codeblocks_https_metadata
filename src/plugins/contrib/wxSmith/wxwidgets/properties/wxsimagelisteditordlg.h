@@ -26,15 +26,15 @@
 
 
 //(*Headers(wxsImageListEditorDlg)
-#include <wx/sizer.h>
-#include <wx/stattext.h>
-#include <wx/checkbox.h>
-#include <wx/colordlg.h>
-#include <wx/panel.h>
-#include <wx/filedlg.h>
+#include "scrollingdialog.h"
 #include <wx/bmpbuttn.h>
 #include <wx/button.h>
-#include "scrollingdialog.h"
+#include <wx/checkbox.h>
+#include <wx/colordlg.h>
+#include <wx/filedlg.h>
+#include <wx/panel.h>
+#include <wx/sizer.h>
+#include <wx/stattext.h>
 //*)
 
 #include "wxsimagelistproperty.h"
@@ -65,61 +65,61 @@ class wxsImageListEditorDlg: public wxScrollingDialog
         static  bool            SaveXPM(wxImage * image, wxOutputStream& stream);
 
         //(*Declarations(wxsImageListEditorDlg)
-        wxStaticText* StaticText10;
-        wxStaticText* StaticText22;
-        wxStaticText* StaticText9;
-        wxStaticText* StaticText20;
-        wxButton* bOK;
-        wxPanel* Panel5;
-        wxBitmapButton* bSaveList;
-        wxStaticText* StaticText29;
-        wxBitmapButton* bRight;
-        wxButton* bCancel;
-        wxStaticText* StaticText13;
-        wxStaticText* StaticText2;
-        wxPanel* Panel4;
-        wxStaticText* StaticText14;
-        wxStaticText* StaticText6;
-        wxStaticText* StaticText26;
-        wxPanel* Panel11;
-        wxBitmapButton* bSave;
-        wxPanel* Panel9;
-        wxStaticText* StaticText19;
-        wxStaticText* StaticText8;
-        wxStaticText* StaticText11;
-        wxBitmapButton* bClear;
-        wxStaticText* StaticText18;
         wxBitmapButton* bAdd;
-        wxPanel* Panel8;
-        wxPanel* Panel1;
-        wxColourDialog* ColourDialog1;
-        wxStaticText* StaticText1;
-        wxStaticText* StaticText27;
-        wxFileDialog* FileDialog1;
-        wxStaticText* StaticText3;
-        wxPanel* Panel6;
-        wxStaticText* StaticText21;
-        wxPanel* Panel3;
+        wxBitmapButton* bClear;
+        wxBitmapButton* bDel;
+        wxBitmapButton* bLeft;
+        wxBitmapButton* bRead;
+        wxBitmapButton* bRight;
+        wxBitmapButton* bSave;
+        wxBitmapButton* bSaveList;
+        wxButton* bCancel;
         wxButton* bColor;
+        wxButton* bOK;
+        wxCheckBox* cxTransparent;
+        wxColourDialog* ColourDialog1;
+        wxFileDialog* FileDialog1;
+        wxPanel* Panel10;
+        wxPanel* Panel11;
+        wxPanel* Panel12;
+        wxPanel* Panel1;
+        wxPanel* Panel2;
+        wxPanel* Panel3;
+        wxPanel* Panel4;
+        wxPanel* Panel5;
+        wxPanel* Panel6;
+        wxPanel* Panel7;
+        wxPanel* Panel8;
+        wxPanel* Panel9;
+        wxStaticText* StaticText10;
+        wxStaticText* StaticText11;
+        wxStaticText* StaticText12;
+        wxStaticText* StaticText13;
+        wxStaticText* StaticText14;
+        wxStaticText* StaticText15;
+        wxStaticText* StaticText16;
+        wxStaticText* StaticText17;
+        wxStaticText* StaticText18;
+        wxStaticText* StaticText19;
+        wxStaticText* StaticText1;
+        wxStaticText* StaticText20;
+        wxStaticText* StaticText21;
+        wxStaticText* StaticText22;
         wxStaticText* StaticText23;
         wxStaticText* StaticText24;
-        wxStaticText* StaticText5;
-        wxStaticText* StaticText7;
-        wxPanel* Panel7;
-        wxBitmapButton* bLeft;
-        wxCheckBox* cxTransparent;
-        wxStaticText* StaticText28;
-        wxStaticText* StaticText15;
-        wxStaticText* StaticText12;
-        wxPanel* Panel2;
-        wxPanel* Panel10;
         wxStaticText* StaticText25;
-        wxBitmapButton* bDel;
+        wxStaticText* StaticText26;
+        wxStaticText* StaticText27;
+        wxStaticText* StaticText28;
+        wxStaticText* StaticText29;
+        wxStaticText* StaticText2;
+        wxStaticText* StaticText3;
         wxStaticText* StaticText4;
-        wxStaticText* StaticText17;
-        wxPanel* Panel12;
-        wxBitmapButton* bRead;
-        wxStaticText* StaticText16;
+        wxStaticText* StaticText5;
+        wxStaticText* StaticText6;
+        wxStaticText* StaticText7;
+        wxStaticText* StaticText8;
+        wxStaticText* StaticText9;
         //*)
 
     protected:

@@ -10,15 +10,15 @@
 #include "ProjectOptionsManipulatorDlg.h"
 
 //(*InternalHeaders(ProjectOptionsManipulatorDlg)
-#include <wx/sizer.h>
-#include <wx/stattext.h>
-#include <wx/radiobox.h>
-#include <wx/textctrl.h>
+#include <wx/button.h>
 #include <wx/checkbox.h>
 #include <wx/choice.h>
 #include <wx/intl.h>
-#include <wx/button.h>
+#include <wx/radiobox.h>
+#include <wx/sizer.h>
+#include <wx/stattext.h>
 #include <wx/string.h>
+#include <wx/textctrl.h>
 //*)
 
 //(*IdInit(ProjectOptionsManipulatorDlg)
@@ -63,20 +63,20 @@ ProjectOptionsManipulatorDlg::ProjectOptionsManipulatorDlg(wxWindow* parent,wxWi
 {
 	//(*Initialize(ProjectOptionsManipulatorDlg)
 	wxBoxSizer* bszCustomVar;
-	wxStaticText* lblOptionReplace;
-	wxStaticText* lblOptionsLevel;
+	wxBoxSizer* bszMainH;
 	wxBoxSizer* bszOperation;
 	wxBoxSizer* bszScan;
 	wxFlexGridSizer* flsOptions;
 	wxFlexGridSizer* flsReplace;
-	wxStaticText* lblOptionSearch;
-	wxStdDialogButtonSizer* sbzOKCancel;
-	wxStaticBoxSizer* sbsScope;
-	wxStaticBoxSizer* sbsItem;
-	wxBoxSizer* bszMainH;
-	wxStaticText* lblScanColon;
 	wxFlexGridSizer* flsSearch;
+	wxStaticBoxSizer* sbsItem;
+	wxStaticBoxSizer* sbsScope;
+	wxStaticText* lblOptionReplace;
+	wxStaticText* lblOptionSearch;
+	wxStaticText* lblOptionsLevel;
+	wxStaticText* lblScanColon;
 	wxStaticText* lblScanWithin;
+	wxStdDialogButtonSizer* sbzOKCancel;
 
 	Create(parent, id, _("Project Options Plugin"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, _T("id"));
 	bszMainH = new wxBoxSizer(wxVERTICAL);
@@ -106,7 +106,7 @@ ProjectOptionsManipulatorDlg::ProjectOptionsManipulatorDlg(wxWindow* parent,wxWi
 		_("Remove files w/o target"),
 		_("Replace compiler")
 	};
-	m_RboOperation = new wxRadioBox(this, ID_RBO_OPERATION, _("Operation:"), wxDefaultPosition, wxDefaultSize, 7, __wxRadioBoxChoices_1, 1, 0, wxDefaultValidator, _T("ID_RBO_OPERATION"));
+	m_RboOperation = new wxRadioBox(this, ID_RBO_OPERATION, _("Operation:"), wxDefaultPosition, wxDefaultSize, 7, __wxRadioBoxChoices_1, 1, wxRA_SPECIFY_COLS, wxDefaultValidator, _T("ID_RBO_OPERATION"));
 	m_RboOperation->SetSelection(0);
 	bszOperation->Add(m_RboOperation, 0, wxEXPAND, 5);
 	lblOptionsLevel = new wxStaticText(this, wxID_ANY, _("Search for option:"), wxDefaultPosition, wxDefaultSize, 0, _T("wxID_ANY"));
@@ -203,11 +203,11 @@ ProjectOptionsManipulatorDlg::ProjectOptionsManipulatorDlg(wxWindow* parent,wxWi
 	bszMainH->Fit(this);
 	bszMainH->SetSizeHints(this);
 
-	Connect(ID_CHO_SCAN,wxEVT_COMMAND_CHOICE_SELECTED,wxCommandEventHandler(ProjectOptionsManipulatorDlg::OnScanSelect));
-	Connect(ID_RBO_OPERATION,wxEVT_COMMAND_RADIOBOX_SELECTED,wxCommandEventHandler(ProjectOptionsManipulatorDlg::OnOperationSelect));
-	Connect(ID_BTN_SEARCH_COMPILER_SRC,wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(ProjectOptionsManipulatorDlg::OnSearchCompilerClick));
-	Connect(ID_BTN_SEARCH_COMPILER_DEST,wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(ProjectOptionsManipulatorDlg::OnSearchCompilerClick));
-	Connect(ID_CHO_TARGET_TYPE,wxEVT_COMMAND_CHOICE_SELECTED,wxCommandEventHandler(ProjectOptionsManipulatorDlg::OnTargetTypeSelect));
+	Connect(ID_CHO_SCAN,wxEVT_COMMAND_CHOICE_SELECTED,(wxObjectEventFunction)&ProjectOptionsManipulatorDlg::OnScanSelect);
+	Connect(ID_RBO_OPERATION,wxEVT_COMMAND_RADIOBOX_SELECTED,(wxObjectEventFunction)&ProjectOptionsManipulatorDlg::OnOperationSelect);
+	Connect(ID_BTN_SEARCH_COMPILER_SRC,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ProjectOptionsManipulatorDlg::OnSearchCompilerClick);
+	Connect(ID_BTN_SEARCH_COMPILER_DEST,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ProjectOptionsManipulatorDlg::OnSearchCompilerClick);
+	Connect(ID_CHO_TARGET_TYPE,wxEVT_COMMAND_CHOICE_SELECTED,(wxObjectEventFunction)&ProjectOptionsManipulatorDlg::OnTargetTypeSelect);
 	//*)
 }
 

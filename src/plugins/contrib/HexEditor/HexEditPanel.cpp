@@ -54,8 +54,8 @@
 #include "SearchDialog.h"
 
 //(*InternalHeaders(HexEditPanel)
-#include <wx/string.h>
 #include <wx/intl.h>
+#include <wx/string.h>
 //*)
 
 

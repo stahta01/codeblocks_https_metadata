@@ -30,10 +30,10 @@
 #endif
 
 //(*Headers(wxsFontFaceEditorDlg)
+#include "scrollingdialog.h"
+#include <wx/button.h>
 #include <wx/sizer.h>
 #include <wx/textctrl.h>
-#include <wx/button.h>
-#include "scrollingdialog.h"
 //*)
 
 class wxsFontFaceEditorDlg: public wxScrollingDialog
@@ -56,10 +56,10 @@ class wxsFontFaceEditorDlg: public wxScrollingDialog
         //*)
 
         //(*Declarations(wxsFontFaceEditorDlg)
-        wxTextCtrl* FaceName;
         wxButton* Button1;
         wxButton* Button2;
         wxButton* Button3;
+        wxTextCtrl* FaceName;
         //*)
 
     private:

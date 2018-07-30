@@ -3,17 +3,17 @@
 
 //(*Headers(LibrariesDlg)
 #include "scrollingdialog.h"
-class wxTextCtrl;
-class wxStaticBoxSizer;
-class wxFlatNotebook;
-class wxListBox;
-class wxFlexGridSizer;
-class wxButton;
-class wxStdDialogButtonSizer;
 class wxBoxSizer;
-class wxStaticText;
-class wxPanel;
+class wxButton;
 class wxCheckBox;
+class wxFlatNotebook;
+class wxFlexGridSizer;
+class wxListBox;
+class wxPanel;
+class wxStaticBoxSizer;
+class wxStaticText;
+class wxStdDialogButtonSizer;
+class wxTextCtrl;
 //*)
 
 #include "resultmap.h"
@@ -29,59 +29,59 @@ class LibrariesDlg: public wxScrollingDialog
     private:
 
         //(*Declarations(LibrariesDlg)
-        wxTextCtrl* m_ObjectsDir;
-        wxCheckBox* m_ShowPredefined;
-        wxButton* m_ConfDelete;
-        wxTextCtrl* m_LinkerDir;
-        wxTextCtrl* m_PkgConfigName;
-        wxPanel* Panel6;
-        wxPanel* Panel1;
-        wxPanel* Panel7;
-        wxTextCtrl* m_Name;
-        wxTextCtrl* m_LFlags;
-        wxTextCtrl* m_CFlags;
-        wxTextCtrl* m_Required;
         wxButton* Button1;
         wxButton* Button2;
         wxButton* Button3;
-        wxPanel* Panel9;
-        wxPanel* Panel8;
-        wxTextCtrl* m_Compilers;
-        wxListBox* m_Configurations;
-        wxStaticText* StaticText1;
-        wxStaticText* StaticText10;
-        wxPanel* Panel10;
-        wxPanel* Panel2;
-        wxStaticText* m_Type;
-        wxButton* Button8;
-        wxStaticText* StaticText3;
-        wxPanel* Panel4;
-        wxTextCtrl* m_Categories;
-        wxPanel* Panel5;
-        wxButton* m_ConfigUp;
-        wxTextCtrl* m_Headers;
-        wxTextCtrl* m_CompilerDirs;
         wxButton* Button5;
-        wxStaticText* StaticText8;
-        wxCheckBox* m_ShowPkgConfig;
-        wxTextCtrl* m_Defines;
-        wxPanel* Panel3;
-        wxStaticText* StaticText7;
-        wxTextCtrl* m_BasePath;
-        wxStaticText* StaticText4;
-        wxListBox* m_Libraries;
-        wxButton* m_ConfigDown;
-        wxStaticText* StaticText5;
-        wxStaticText* StaticText2;
-        wxButton* m_ConfDuplicate;
-        wxTextCtrl* m_Description;
-        wxStaticText* StaticText6;
-        wxTextCtrl* m_Libs;
-        wxButton* Button7;
-        wxStaticText* StaticText9;
         wxButton* Button6;
-        wxStaticText* StaticText11;
+        wxButton* Button7;
+        wxButton* Button8;
+        wxButton* m_ConfDelete;
+        wxButton* m_ConfDuplicate;
+        wxButton* m_ConfigDown;
+        wxButton* m_ConfigUp;
+        wxCheckBox* m_ShowPkgConfig;
+        wxCheckBox* m_ShowPredefined;
         wxFlatNotebook* FlatNotebook1;
+        wxListBox* m_Configurations;
+        wxListBox* m_Libraries;
+        wxPanel* Panel10;
+        wxPanel* Panel1;
+        wxPanel* Panel2;
+        wxPanel* Panel3;
+        wxPanel* Panel4;
+        wxPanel* Panel5;
+        wxPanel* Panel6;
+        wxPanel* Panel7;
+        wxPanel* Panel8;
+        wxPanel* Panel9;
+        wxStaticText* StaticText10;
+        wxStaticText* StaticText11;
+        wxStaticText* StaticText1;
+        wxStaticText* StaticText2;
+        wxStaticText* StaticText3;
+        wxStaticText* StaticText4;
+        wxStaticText* StaticText5;
+        wxStaticText* StaticText6;
+        wxStaticText* StaticText7;
+        wxStaticText* StaticText8;
+        wxStaticText* StaticText9;
+        wxStaticText* m_Type;
+        wxTextCtrl* m_BasePath;
+        wxTextCtrl* m_CFlags;
+        wxTextCtrl* m_Categories;
+        wxTextCtrl* m_CompilerDirs;
+        wxTextCtrl* m_Compilers;
+        wxTextCtrl* m_Defines;
+        wxTextCtrl* m_Description;
+        wxTextCtrl* m_Headers;
+        wxTextCtrl* m_LFlags;
+        wxTextCtrl* m_Libs;
+        wxTextCtrl* m_LinkerDir;
+        wxTextCtrl* m_Name;
+        wxTextCtrl* m_ObjectsDir;
+        wxTextCtrl* m_PkgConfigName;
+        wxTextCtrl* m_Required;
         //*)
 
         //(*Identifiers(LibrariesDlg)

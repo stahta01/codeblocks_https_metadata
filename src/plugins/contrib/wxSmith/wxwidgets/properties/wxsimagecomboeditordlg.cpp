@@ -25,8 +25,8 @@
 //(*InternalHeaders(wxsImageComboEditorDlg)
 #include <wx/artprov.h>
 #include <wx/bitmap.h>
-#include <wx/intl.h>
 #include <wx/image.h>
+#include <wx/intl.h>
 #include <wx/string.h>
 //*)
 #include "../wxsitemresdata.h"
@@ -65,20 +65,20 @@ END_EVENT_TABLE()
     wxsImageComboEditorDlg::wxsImageComboEditorDlg(wxWindow* parent)
     {
         //(*Initialize(wxsImageComboEditorDlg)
-        wxBoxSizer* BoxSizer4;
-        wxBoxSizer* BoxSizer6;
-        wxBoxSizer* BoxSizer5;
         wxBoxSizer* BoxSizer10;
-        wxBoxSizer* BoxSizer7;
-        wxBoxSizer* BoxSizer8;
-        wxBoxSizer* BoxSizer13;
-        wxBoxSizer* BoxSizer2;
         wxBoxSizer* BoxSizer11;
         wxBoxSizer* BoxSizer12;
+        wxBoxSizer* BoxSizer13;
         wxBoxSizer* BoxSizer14;
         wxBoxSizer* BoxSizer1;
-        wxBoxSizer* BoxSizer9;
+        wxBoxSizer* BoxSizer2;
         wxBoxSizer* BoxSizer3;
+        wxBoxSizer* BoxSizer4;
+        wxBoxSizer* BoxSizer5;
+        wxBoxSizer* BoxSizer6;
+        wxBoxSizer* BoxSizer7;
+        wxBoxSizer* BoxSizer8;
+        wxBoxSizer* BoxSizer9;
 
         Create(parent, wxID_ANY, _("wxBitmapComboBox Editor"), wxDefaultPosition, wxDefaultSize, wxCAPTION|wxDEFAULT_DIALOG_STYLE, _T("wxID_ANY"));
         SetMinSize(wxSize(-1,-1));
@@ -88,7 +88,7 @@ END_EVENT_TABLE()
         BoxSizer2 = new wxBoxSizer(wxVERTICAL);
         StaticText1 = new wxStaticText(this, ID_STATICTEXT1, _("Combo-Box"), wxDefaultPosition, wxDefaultSize, wxST_NO_AUTORESIZE|wxALIGN_CENTRE, _T("ID_STATICTEXT1"));
         BoxSizer2->Add(StaticText1, 0, wxALL|wxALIGN_LEFT, 5);
-        m_pTree = new wxTreeCtrl(this, ID_TREECTRL1, wxPoint(0,32), wxSize(240,272), wxTR_EDIT_LABELS|wxTR_NO_BUTTONS|wxTR_NO_LINES|wxTR_HIDE_ROOT|wxRAISED_BORDER, wxDefaultValidator, _T("ID_TREECTRL1"));
+        m_pTree = new wxTreeCtrl(this, ID_TREECTRL1, wxPoint(0,32), wxSize(240,272), wxTR_EDIT_LABELS|wxTR_NO_BUTTONS|wxTR_NO_LINES|wxTR_HIDE_ROOT|wxBORDER_RAISED, wxDefaultValidator, _T("ID_TREECTRL1"));
         BoxSizer2->Add(m_pTree, 0, wxALL|wxEXPAND, 0);
         BoxSizer13->Add(BoxSizer2, 0, wxALL|wxALIGN_TOP, 5);
         BoxSizer3 = new wxBoxSizer(wxVERTICAL);
@@ -160,16 +160,16 @@ END_EVENT_TABLE()
         BoxSizer1->Fit(this);
         BoxSizer1->SetSizeHints(this);
 
-        Connect(ID_TREECTRL1,wxEVT_COMMAND_TREE_SEL_CHANGED,wxTreeEventHandler(wxsImageComboEditorDlg::OnTreeSelectionChanged));
-        Connect(ID_BITMAPBUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(wxsImageComboEditorDlg::OnBtnAddItemClick));
-        Connect(ID_BITMAPBUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(wxsImageComboEditorDlg::OnBtnMoveUpClick));
-        Connect(ID_BITMAPBUTTON3,wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(wxsImageComboEditorDlg::OnBtnMoveDownClick));
-        Connect(ID_BITMAPBUTTON4,wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(wxsImageComboEditorDlg::OnBtnDeleteItemClick));
-        Connect(ID_BITMAPBUTTON5,wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(wxsImageComboEditorDlg::OnBtnDeleteAllClick));
-        Connect(ID_BITMAPBUTTON6,wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(wxsImageComboEditorDlg::OnBtnEditItemClick));
-        Connect(ID_COMBOBOX1,wxEVT_COMMAND_COMBOBOX_SELECTED,wxCommandEventHandler(wxsImageComboEditorDlg::OnCmbImageSelect));
-        Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(wxsImageComboEditorDlg::OnBtnOKClick));
-        Connect(ID_BUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,wxCommandEventHandler(wxsImageComboEditorDlg::OnBtnCancelClick));
+        Connect(ID_TREECTRL1,wxEVT_COMMAND_TREE_SEL_CHANGED,(wxObjectEventFunction)&wxsImageComboEditorDlg::OnTreeSelectionChanged);
+        Connect(ID_BITMAPBUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&wxsImageComboEditorDlg::OnBtnAddItemClick);
+        Connect(ID_BITMAPBUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&wxsImageComboEditorDlg::OnBtnMoveUpClick);
+        Connect(ID_BITMAPBUTTON3,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&wxsImageComboEditorDlg::OnBtnMoveDownClick);
+        Connect(ID_BITMAPBUTTON4,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&wxsImageComboEditorDlg::OnBtnDeleteItemClick);
+        Connect(ID_BITMAPBUTTON5,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&wxsImageComboEditorDlg::OnBtnDeleteAllClick);
+        Connect(ID_BITMAPBUTTON6,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&wxsImageComboEditorDlg::OnBtnEditItemClick);
+        Connect(ID_COMBOBOX1,wxEVT_COMMAND_COMBOBOX_SELECTED,(wxObjectEventFunction)&wxsImageComboEditorDlg::OnCmbImageSelect);
+        Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&wxsImageComboEditorDlg::OnBtnOKClick);
+        Connect(ID_BUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&wxsImageComboEditorDlg::OnBtnCancelClick);
         //*)
     }
 

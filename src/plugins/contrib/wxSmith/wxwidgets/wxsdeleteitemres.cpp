@@ -25,8 +25,8 @@
 #include <prep.h>
 
 //(*InternalHeaders(wxsDeleteItemRes)
-#include <wx/intl.h>
 #include <wx/button.h>
+#include <wx/intl.h>
 #include <wx/string.h>
 //*)
 
@@ -44,9 +44,9 @@ END_EVENT_TABLE()
 wxsDeleteItemRes::wxsDeleteItemRes()
 {
     //(*Initialize(wxsDeleteItemRes)
-    wxStaticText* StaticText1;
     wxBoxSizer* BoxSizer1;
     wxStaticBoxSizer* StaticBoxSizer1;
+    wxStaticText* StaticText1;
     wxStdDialogButtonSizer* StdDialogButtonSizer1;
 
     Create(0, wxID_ANY, _("Deleting resource"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE, _T("wxID_ANY"));
@@ -74,7 +74,7 @@ wxsDeleteItemRes::wxsDeleteItemRes()
     BoxSizer1->Fit(this);
     BoxSizer1->SetSizeHints(this);
 
-    Connect(ID_CHECKBOX2,wxEVT_COMMAND_CHECKBOX_CLICKED,wxCommandEventHandler(wxsDeleteItemRes::Onm_DeleteSourcesClick));
+    Connect(ID_CHECKBOX2,wxEVT_COMMAND_CHECKBOX_CLICKED,(wxObjectEventFunction)&wxsDeleteItemRes::Onm_DeleteSourcesClick);
     //*)
 }
 

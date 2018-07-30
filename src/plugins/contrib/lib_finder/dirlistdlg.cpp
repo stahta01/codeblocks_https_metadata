@@ -31,10 +31,10 @@
 
 
 //(*InternalHeaders(DirListDlg)
-#include <wx/sizer.h>
 #include <wx/button.h>
-#include <wx/string.h>
 #include <wx/intl.h>
+#include <wx/sizer.h>
+#include <wx/string.h>
 #include <wx/textctrl.h>
 //*)
 

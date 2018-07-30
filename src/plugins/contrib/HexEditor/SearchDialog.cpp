@@ -25,8 +25,8 @@
 #include "ExpressionExecutor.h"
 
 //(*InternalHeaders(SearchDialog)
-#include <wx/string.h>
 #include <wx/intl.h>
+#include <wx/string.h>
 //*)
 
 #include <globals.h>
@@ -85,11 +85,11 @@ SearchDialog::SearchDialog( wxWindow* parent, FileContentBase* content, FileCont
 void SearchDialog::BuildContent(wxWindow* parent)
 {
 	//(*Initialize(SearchDialog)
-	wxBoxSizer* BoxSizer3;
-	wxBoxSizer* BoxSizer2;
 	wxBoxSizer* BoxSizer1;
-	wxStdDialogButtonSizer* StdDialogButtonSizer1;
+	wxBoxSizer* BoxSizer2;
+	wxBoxSizer* BoxSizer3;
 	wxStaticBoxSizer* StaticBoxSizer1;
+	wxStdDialogButtonSizer* StdDialogButtonSizer1;
 
 	Create(parent, wxID_ANY, _("Search..."), wxDefaultPosition, wxDefaultSize, wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, _T("wxID_ANY"));
 	BoxSizer1 = new wxBoxSizer(wxVERTICAL);
