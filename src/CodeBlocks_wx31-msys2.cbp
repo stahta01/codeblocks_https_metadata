@@ -699,7 +699,7 @@
 				<Variable name="WX_CFG" value="" />
 				<Variable name="WX_SUFFIX" value="u" />
 				<Variable name="WX_TOOLKIT" value="msw" />
-				<Variable name="WX_VERSION" value="31" />
+				<Variable name="WX_VERSION" value="3.1" />
 			</Environment>
 		</Build>
 		<VirtualTargets>
@@ -721,17 +721,12 @@
 			<Add option="-DcbDEBUG" />
 			<Add option="-DNOPCH" />
 			<Add option="-DwxUSE_UNICODE" />
-			<Add directory="$(#WX31_64.include)" />
-			<Add directory="$(#WX31_64.lib)/gcc_dll$(WX_CFG)/msw$(WX_SUFFIX)" />
 			<Add directory="sdk/wxscintilla/include" />
 			<Add directory="include/tinyxml" />
+			<Add directory="$(TARGET_COMPILER_DIR)lib/wx/include/$(WX_TOOLKIT)-unicode-$(WX_VERSION)" />
+			<Add directory="$(TARGET_COMPILER_DIR)include/wx-$(WX_VERSION)" />
 		</Compiler>
-		<ResourceCompiler>
-			<Add directory="$(#WX31_64.include)" />
-			<Add directory="$(#WX31_64)/lib/gcc_dll$(WX_CFG)/msw$(WX_SUFFIX)" />
-		</ResourceCompiler>
 		<Linker>
-			<Add directory="$(#WX31_64.lib)/gcc_dll$(WX_CFG)" />
 			<Add directory="devel31_msys2" />
 		</Linker>
 		<Unit filename="base/tinyxml/tinystr.cpp">
