@@ -381,7 +381,9 @@ void MacrosManager::RecalcVars(cbProject* project, EditorBase* editor, ProjectBu
             m_Macros[_T("TARGET_LIB")]          = c->GetPrograms().LIB;
             wxFileName MasterPath;
             MasterPath.SetPath(c->GetMasterPath(), wxPATH_NATIVE);
-            m_Macros[_T("TARGET_COMPILER_DIR")] = MasterPath.GetPathWithSep(wxPATH_NATIVE);
+            m_Macros[_T("TARGET_COMPILER_DIR")] = MixedFilename(
+                MasterPath.GetPathWithSep(wxPATH_NATIVE)
+            );
         }
         m_Macros[_T("TARGET_OBJECT_DIR")] = target->GetObjectOutput();
     }
