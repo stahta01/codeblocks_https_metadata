@@ -138,8 +138,7 @@ EnvironmentSettingsDlg::EnvironmentSettingsDlg(wxWindow* parent, wxAuiDockArt* a
     wxTextCtrl* txt = XRCCTRL(*this, "txtConsoleShell", wxTextCtrl);
     txt->SetValue(cfg->Read(_T("/console_shell"), DEFAULT_CONSOLE_SHELL));
 #ifdef __WXMSW__
-    // under win32, this option is not needed, so disable it
-    txt->Enable(false);
+    txt->SetValue(cfg->Read(_T("/console_shell"), "cmd.exe"));
 #endif
 
     wxComboBox *combo = XRCCTRL(*this, "cbConsoleTerm", wxComboBox);
