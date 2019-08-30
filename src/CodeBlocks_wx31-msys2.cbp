@@ -685,7 +685,7 @@
 				</ExtraCommands>
 			</Target>
 			<Environment>
-				<Variable name="WX_CONFIG" value="sh.exe -c &apos;wx-config-3.1 --version=3.1" />
+				<Variable name="WX_CONFIG" value="sh.exe -c &apos;wx-config-3.1 --version=3.1 --prefix=$(TARGET_COMPILER_DIR)" />
 			</Environment>
 		</Build>
 		<VirtualTargets>
