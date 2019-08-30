@@ -211,9 +211,9 @@
 					<Add after="zip -jq9 devel31_msys2\share\CodeBlocks\resources.zip src\resources\*.xrc" />
 					<Add after="zip -jq9 devel31_msys2\share\CodeBlocks\start_here.zip src\resources\start_here\*.html src\resources\start_here\*.png" />
 					<Add after='cmd /c &quot;cd src\resources &amp; zip -0 -q ..\..\devel31_msys2\share\CodeBlocks\resources.zip images\*.png images\16x16\*.png&quot;' />
-					<Add after='cmd /c &quot;copy $(TARGET_COMPILER_DIR)bin\libwinpthread-1.dll devel31_msys2\&quot;' />
-					<Add after='cmd /c &quot;copy $(TARGET_COMPILER_DIR)bin\exchndl.dll devel31_msys2\&quot;' />
-					<Add after='cmd /c &quot;copy $(TARGET_COMPILER_DIR)bin\mgwhelp.dll devel31_msys2\&quot;' />
+					<Add after="sh.exe -c &apos;cp $(TARGET_COMPILER_DIR)bin/libwinpthread-1.dll devel31_msys2/&apos;" />
+					<Add after="sh.exe -c &apos;cp $(TARGET_COMPILER_DIR)bin/exchndl.dll devel31_msys2/&apos;" />
+					<Add after="sh.exe -c &apos;cp $(TARGET_COMPILER_DIR)bin/mgwhelp.dll devel31_msys2/&apos;" />
 					<Mode after="always" />
 				</ExtraCommands>
 			</Target>
