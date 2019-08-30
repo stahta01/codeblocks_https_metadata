@@ -258,6 +258,38 @@ wxString UnixFilename(const wxString& filename, wxPathFormat format)
     return result;
 }
 
+wxString MixedFilename(const wxString& filename, wxPathFormat format)
+{
+    wxString result = filename;
+
+    if (format == wxPATH_NATIVE)
+    {
+        if (platform::windows)
+            format = wxPATH_WIN;
+        else
+            format = wxPATH_UNIX;
+    }
+
+    // Unc-names always override platform specific settings otherwise they become corrupted
+    bool unc_name = result.StartsWith(_T("\\\\"));
+    if (format == wxPATH_WIN || unc_name) // wxPATH_WIN == wxPATH_DOS == wxPATH_OS2
+    {
+        result.Replace(wxT("\\"), wxT("/"));
+        while (result.Replace(wxT("//"), wxT("/")))
+            ; // loop for recursive removal of duplicate slashes
+        if (unc_name)
+            result.Prepend(wxT("/"));
+    }
+    else
+    {
+        result.Replace(wxT("\\"), wxT("/"));
+        while (result.Replace(wxT("//"), wxT("/")))
+            ; // loop for recursive removal of duplicate slashes
+    }
+
+    return result;
+}
+
 void QuoteStringIfNeeded(wxString& str)
 {
     if ( NeedQuotes(str) )

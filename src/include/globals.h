@@ -222,6 +222,7 @@ extern DLLIMPORT wxArrayString MakeUniqueArray(const wxArrayString& array, bool 
 extern DLLIMPORT wxString MakeUniqueString(const wxString& text,  const wxString& separator = DEFAULT_ARRAY_SEP, bool caseSens = true);
 extern DLLIMPORT void AppendArray(const wxArrayString& from, wxArrayString& to);
 
+extern DLLIMPORT wxString MixedFilename(const wxString& filename, wxPathFormat format = wxPATH_NATIVE);
 extern DLLIMPORT wxString UnixFilename(const wxString& filename, wxPathFormat format = wxPATH_NATIVE);
 extern DLLIMPORT void QuoteStringIfNeeded(wxString& str);
 extern DLLIMPORT bool NeedQuotes(const wxString &str);
